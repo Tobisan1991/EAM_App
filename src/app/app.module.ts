@@ -4,12 +4,14 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { TutorialVideoComponent } from './tutorial-video/tutorial-video.component';
+import { ImageListComponent } from './image-list/image-list.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    TutorialVideoComponent
+    TutorialVideoComponent,
+    ImageListComponent
   ],
   imports: [
     BrowserModule
