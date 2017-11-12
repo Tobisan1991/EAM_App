@@ -8,4 +8,6 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'Welcome to our EAM App';
   navigation = 'Startmenü';
+
+  //generate Moduls! ng g component youcomponentName
 }
