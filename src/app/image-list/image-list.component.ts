@@ -8,7 +8,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class ImageListComponent implements OnInit {
 
-  title = 'Hier kommt unsere Image Liste: '
+  imageListTitle = 'Image List Component'
   constructor() { }
 
   ngOnInit() {[ {

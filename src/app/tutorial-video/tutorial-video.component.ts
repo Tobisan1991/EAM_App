@@ -8,6 +8,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class TutorialVideoComponent implements OnInit {
 
+
+  tutVideoTitle = 'Tutorial Video Component'
+
   constructor() { }
 
   ngOnInit() {
