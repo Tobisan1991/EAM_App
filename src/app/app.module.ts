@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { TutorialVideoComponent } from './tutorial-video/tutorial-video.component';
 import { ImageListComponent } from './image-list/image-list.component';
 import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video-list.component';
+import { TopBarListComponent } from './top-bar-list/top-bar-list.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video
     AppComponent,
     TutorialVideoComponent,
     ImageListComponent,
-    TutorialVideoListComponent
+    TutorialVideoListComponent,
+    TopBarListComponent,
+    TopBarComponent
   ],
 
   imports: [

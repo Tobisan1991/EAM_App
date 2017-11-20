@@ -1,6 +1,10 @@
 
 <h1>{{title}}</h1>
-<p *ngFor= 'let item of videoList'>
+<div *ngFor= 'let item of videoList'>
     <a href='videos/{{item.slug}}'>{{item.name}}</a>
     <!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
-</p>
+    <div [innerHTML] = 'item.embed'></div>
+
+        <iframe width="560" height="315" [src]="getEmbedUrl(item)" frameborder="0" allowfullscreen></iframe>
+
+</div>
