@@ -1,47 +1,24 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-image-list',
   templateUrl: './image-list.component.html',
-  styleUrls: ['./image-list.component.css'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./image-list.component.css']
 })
 export class ImageListComponent implements OnInit {
 
   title = 'Hier kommt unsere Image Liste: '
-  constructor() { }
+  constructor(private route: ActivatedRoute) { }
 
-  ngOnInit() {[ {
-    "productId":1,
-    "productName":"Beauty Products",
-    "productCode": "XXXXXX",            
-    "description":  "Skin Care",           
-    "imageUrl":"app/images/1.png"
- },
-{
-     "productId":2,
-    "productName":"Samsung Galaxy J5",
-    "productCode": "MOB-124",      
-    "description":  "8GB, Gold",
-    "imageUrl":"app/images/2.png"
- }]
-    
+  ngOnInit() {
+    this.route.params.subscribe(function(params){
+      console.log(params)
+    })
+
   }
 
- onCreate(){ [ {
-    "productId":1,
-    "productName":"Beauty Products",
-    "productCode": "XXXXXX",            
-    "description":  "Skin Care",           
-    "imageUrl":"app/images/1.png"
- },
-{
-     "productId":2,
-    "productName":"Samsung Galaxy J5",
-    "productCode": "MOB-124",      
-    "description":  "8GB, Gold",
-    "imageUrl":"app/images/2.png"
- }]}
 
 
 }
