@@ -2,13 +2,14 @@
 <div style="text-align:center">
   <h1>
     {{title}}!
+    <app-top-bar-list></app-top-bar-list>
   </h1>
   <hr>
 
-  <router-outlet>
-  </router-outlet>
+  <body>  <router-outlet>
+    </router-outlet>
+  </body>
 
-  <app-top-bar-list></app-top-bar-list>
 
   <!-- <div *ngFor="let image of imageList">
     <img class="image-poster" src="{{image.imageUrl}}"/> -->

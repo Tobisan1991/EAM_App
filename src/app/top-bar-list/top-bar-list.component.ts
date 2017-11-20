@@ -19,6 +19,9 @@ export class TopBarListComponent implements OnInit {
   },{
     name: "Statistics",
     slug: "statistics"
+  },{
+    name: "Tutorials",
+    slug: "tutorials"
   } ];
  // Home","Configure","Statistics
   constructor() { }

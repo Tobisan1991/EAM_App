@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {DomSanitizer} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-tutorial-video-list',
@@ -11,26 +10,26 @@ export class TutorialVideoListComponent implements OnInit {
   
   videoList = [{
     // HIER KOMMT DANN DIE DATENBANK ANBINDUNG Z.B. REIN
-    name: "Video 1",
+    name: "Einführungsvideo",
     slug: "video-1",
     embed:`6wD4V0rvlDI`
   },
   {
-    name: "Video 2",
+    name: "Fortgeschritten",
     slug: "video-2",
     embed: `6wD4V0rvlDI`
   },{
-    name: "Video 3",
+    name: "Perfection",
     slug: "video-3",
     embed: `nzyJ9imm29w`
   } ];
-  constructor(private sanitizer: DomSanitizer) { }
+  constructor() { }
   
     ngOnInit() {
     }
 
     getEmbedUrl(item){
-return this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/' + item.embed)
+    return 'https://www.youtube.com/embed/' + item.embed
     }
 
 }

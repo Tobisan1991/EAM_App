@@ -10,6 +10,7 @@ import { ImageListComponent } from './image-list/image-list.component';
 import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video-list.component';
 import { TopBarListComponent } from './top-bar-list/top-bar-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
+import { SafePipe } from './utility/safe.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { TopBarComponent } from './top-bar/top-bar.component';
     ImageListComponent,
     TutorialVideoListComponent,
     TopBarListComponent,
-    TopBarComponent
+    TopBarComponent,
+    SafePipe
   ],
 
   imports: [
