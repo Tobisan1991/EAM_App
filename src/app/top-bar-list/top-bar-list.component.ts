@@ -11,7 +11,7 @@ export class TopBarListComponent implements OnInit {
   topbarList = [{
     // HIER KOMMT DANN DIE DATENBANK ANBINDUNG Z.B. REIN
     name: "Home",
-    slug: "home"
+    slug: "homet"
   },
   {
     name: "Business Function",
