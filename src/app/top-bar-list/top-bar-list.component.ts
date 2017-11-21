@@ -14,16 +14,20 @@ export class TopBarListComponent implements OnInit {
     slug: "home"
   },
   {
-    name: "Configure",
-    slug: "configure"
+    name: "Business Function",
+    slug: "business_function"
+  },
+  {
+    name: "Business Process",
+    slug: "business_process"
+  },
+  {
+    name: "Appsystem",
+    slug: "appsystem"
   },{
-    name: "Statistics",
-    slug: "statistics"
-  },{
-    name: "Tutorials",
-    slug: "tutorials"
+    name: "Application",
+    slug: "application"
   } ];
- // Home","Configure","Statistics
   constructor() { }
   
     ngOnInit() {
