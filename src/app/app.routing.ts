@@ -13,11 +13,14 @@ import { ApplicationComponent } from './application/application.component';
 import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    
     {
         path:"",
         component: TopBarListComponent,
     },
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    
+    
 
     {
         path:"topbar",
