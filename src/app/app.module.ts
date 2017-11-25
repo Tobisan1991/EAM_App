@@ -11,6 +11,7 @@ import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video
 import { TopBarListComponent } from './top-bar-list/top-bar-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { SafePipe } from './utility/safe.pipe';
+import { BusinessFunctionComponent } from './business-function/business-function.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { SafePipe } from './utility/safe.pipe';
     TutorialVideoListComponent,
     TopBarListComponent,
     TopBarComponent,
-    SafePipe
+    SafePipe,
+    BusinessFunctionComponent
   ],
 
   imports: [

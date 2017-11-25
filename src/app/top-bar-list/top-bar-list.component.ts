@@ -8,11 +8,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TopBarListComponent implements OnInit {
 
-  topbarList = [{
+  topbarList = [
     // HIER KOMMT DANN DIE DATENBANK ANBINDUNG Z.B. REIN
-    name: "Home",
-    slug: "home"
-  },
   {
     name: "Business Function",
     slug: "business_function"

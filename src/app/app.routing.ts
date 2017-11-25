@@ -6,6 +6,7 @@ import { ImageListComponent } from './image-list/image-list.component';
 import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { TopBarListComponent } from './top-bar-list/top-bar-list.component';
+import { BusinessFunctionComponent } from './business-function/business-function.component';
 
 
 const appRoutes: Routes = [
@@ -29,10 +30,14 @@ const appRoutes: Routes = [
         path:"videos",
         component: TutorialVideoListComponent,
     },
-{
-    path:"videos/:slug",
-    component: TutorialVideoComponent,
-}
+    {
+        path:"videos/:slug",
+        component: TutorialVideoComponent,
+    },
+    {
+        path:"businessFunction",
+        component: BusinessFunctionComponent,
+    }
 
 
 ]

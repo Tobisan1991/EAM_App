@@ -1,0 +1,31 @@
+<p>
+  business-function works!
+</p>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading">Status</div>
+  <div class="panel-body">
+    <h3>{{title}}</h3>
+    <form #userForm="ngForm" (ngSubmit)="onSubmit(userForm.value)">
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" ngModel>
+      </div>
+      <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" name="email" ngModel>
+      </div>
+      <div class="form-group">
+        <label>Street</label>
+        <input type="text" class="form-control" name="street" ngModel>
+      </div>
+      <div class="form-group">
+        <label>PLZ</label>
+        <input type="text" class="form-control" name="plz" ngModel>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>  
+  </div>
+</div>
