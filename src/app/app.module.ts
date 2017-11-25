@@ -12,6 +12,10 @@ import { TopBarListComponent } from './top-bar-list/top-bar-list.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { SafePipe } from './utility/safe.pipe';
 import { BusinessFunctionComponent } from './business-function/business-function.component';
+import { BusinessProcessComponent } from './business-process/business-process.component';
+import { AppsystemComponent } from './appsystem/appsystem.component';
+import { ApplicationComponent } from './application/application.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -23,7 +27,11 @@ import { BusinessFunctionComponent } from './business-function/business-function
     TopBarListComponent,
     TopBarComponent,
     SafePipe,
-    BusinessFunctionComponent
+    BusinessFunctionComponent,
+    BusinessProcessComponent,
+    AppsystemComponent,
+    ApplicationComponent,
+    HomeComponent
   ],
 
   imports: [

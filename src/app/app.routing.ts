@@ -7,13 +7,18 @@ import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { TopBarListComponent } from './top-bar-list/top-bar-list.component';
 import { BusinessFunctionComponent } from './business-function/business-function.component';
-
+import { BusinessProcessComponent } from './business-process/business-process.component';
+import { AppsystemComponent } from './appsystem/appsystem.component';
+import { ApplicationComponent } from './application/application.component';
+import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
     {
         path:"",
         component: TopBarListComponent,
     },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+
     {
         path:"topbar",
         component: TopBarListComponent,
@@ -35,8 +40,24 @@ const appRoutes: Routes = [
         component: TutorialVideoComponent,
     },
     {
-        path:"businessFunction",
+        path:"function",
         component: BusinessFunctionComponent,
+    },
+    {
+        path:"process",
+        component: BusinessProcessComponent,
+    },
+    {
+        path:"appsystem",
+        component: AppsystemComponent,
+    },
+    {
+        path:"application",
+        component: ApplicationComponent,
+    },
+    {
+        path:"home",
+        component: HomeComponent,
     }
 
 
