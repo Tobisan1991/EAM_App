@@ -35,11 +35,11 @@ const appRoutes: Routes = [
         component: ImageListComponent,
     },
     {
-        path:"videos",
+        path:"tutorial",
         component: TutorialVideoListComponent,
     },
     {
-        path:"videos/:slug",
+        path:"tutorial/:slug",
         component: TutorialVideoComponent,
     },
     {

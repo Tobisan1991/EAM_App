@@ -23,3 +23,7 @@
     color: #fff;
     border-color: rgba(255, 255, 255, 0.1);
 }
+footer { 
+    color: rgb(133, 59, 59);
+    display: block;
+}

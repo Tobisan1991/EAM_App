@@ -24,6 +24,9 @@ export class TopBarListComponent implements OnInit {
   },{
     name: "Application",
     slug: "application"
+  }, {
+    name: "Tutorial",
+    slug: "tutorial"
   } ];
   constructor() { }
   
