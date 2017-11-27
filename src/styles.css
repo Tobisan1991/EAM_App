@@ -14,7 +14,37 @@ p {
     font-size: 20px;
 }
 
+.footer{
+position: absolute;
+bottom: 0px;
+color: rgb(142, 143, 143);
+}
 
+#form{
+    padding:15px;
+}
+
+.navbar-adjustment{
+    width: 100%;
+}
+
+.bg-color{
+    background-color: #2C3E50 !important;
+}
+.activ-link{
+    color: #18BC9C !important
+}
+
+.btn-style {
+    color: #fff;
+    background-color: #95a5a6;
+    border-color: #95a5a6;
+}
+
+.navbar-dark .navbar-toggler {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.1);
+}
 
 
 /* .mr-auto, .mx-auto {
