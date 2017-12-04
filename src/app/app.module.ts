@@ -16,6 +16,7 @@ import { BusinessProcessComponent } from './business-process/business-process.co
 import { AppsystemComponent } from './appsystem/appsystem.component';
 import { ApplicationComponent } from './application/application.component';
 import { HomeComponent } from './home/home.component';
+import { BusinessFunctionListComponent } from './business-function-list/business-function-list.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { HomeComponent } from './home/home.component';
     BusinessProcessComponent,
     AppsystemComponent,
     ApplicationComponent,
-    HomeComponent
+    HomeComponent,
+    BusinessFunctionListComponent
   ],
 
   imports: [
