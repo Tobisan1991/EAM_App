@@ -7,7 +7,13 @@
 <div class="card text-white bg-primary">
     <div class="card-body">
       <blockquote class="card-blockquote">
-        <p>Business Function</p>
+
+        <p (click)="onSelect()">Business Function</p>
+        <div *ngIf="BusinessClicked == true">
+            Name: {{BusinessFunction.test}}
+
+        </div>
+        
         <footer>hier könnte man die 4 menüpunkte reinbringen wie bei der app - kachelmäßig <cite title="Source Title">Source Title</cite></footer>
       </blockquote>
     </div>
