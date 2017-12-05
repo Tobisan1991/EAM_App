@@ -27,14 +27,18 @@ export class BusinessFunctionComponent implements OnInit {
   }
 
 fbGetData(){
-  firebase.database().ref('/').on('child_added', (snapshot) => {
+  firebase.database().ref('/BFunctions/').on('child_added', (snapshot) => {
     this.liste.push(snapshot.val())
   }
-)
+)}
+
+fbPostData(descr, name){
+  firebase.database().ref('/').push({descr: descr, name: name});
+}
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 erkl
   //ärung zu root verzeichnis etc.
 
 }
 
 
-}
+
