@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
+declare var firebase: any;
+
 
 @Component({
   selector: 'app-business-function',
@@ -18,11 +20,21 @@ export class BusinessFunctionComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-  this.dataService.fetchData().subscribe(
-    (data) => this.liste = data
-  );
+  //this.dataService.fetchData().subscribe(
+ //   (data) => this.liste = data
+ // );
+  this.fbGetData();
   }
 
+fbGetData(){
+  firebase.database().ref('/').on('child_added', (snapshot) => {
+    this.liste.push(snapshot.val())
+  }
+)
+  // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 erkl
+  //ärung zu root verzeichnis etc.
+
+}
 
 
 }
