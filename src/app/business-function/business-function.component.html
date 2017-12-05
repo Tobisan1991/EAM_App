@@ -11,9 +11,9 @@
 <form id="add-bfunc">
   <div class="form-group">
     <label>Name</label>
-    <input type="text" [(ngModel)]="name" name="name" ngModel placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]="name" class="form-control" name="name" ngModel placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
     <label>Description</label>
-    <input type="text" [(ngModel)]="descr" name="descr" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]="descr" class="form-control" name="descr" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
   </div>
   <button (click)="fbPostData(descr, name)">Add</button>
 </form>

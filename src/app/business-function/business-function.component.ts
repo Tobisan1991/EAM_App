@@ -33,7 +33,7 @@ fbGetData(){
 )}
 
 fbPostData(descr, name){
-  firebase.database().ref('/').push({descr: descr, name: name});
+  firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
 }
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 erkl
   //ärung zu root verzeichnis etc.
