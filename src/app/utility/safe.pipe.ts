@@ -3,14 +3,13 @@ import {DomSanitizer} from '@angular/platform-browser'
 
 
 @Pipe({
-  name: 'safe'
+  name: 'ytlink'
 })
 export class SafePipe implements PipeTransform {
 constructor(private sanitizer: DomSanitizer){ }
 
   transform(value: any, args?: any): any {
     if(value){
-
       return this.sanitizer.bypassSecurityTrustResourceUrl(value);
     }
     return this.sanitizer.bypassSecurityTrustResourceUrl(value);

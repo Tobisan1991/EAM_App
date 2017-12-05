@@ -8,24 +8,33 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class TutorialVideoListComponent implements OnInit {
   
+  @Input()
+  passedlink: string;
+
+  
   videoList = [{
     // HIER KOMMT DANN DIE DATENBANK ANBINDUNG Z.B. REIN
     name: "Einführungsvideo",
     slug: "video-1",
-    embed:`6wD4V0rvlDI`
+    embed:`6wD4V0rvlDI`,
+    text: "hier kommt der Text zu Tutorial 1"
   },
   {
     name: "Fortgeschritten",
     slug: "video-2",
-    embed: `6wD4V0rvlDI`
+    embed: `nzyJ9imm29w`,
+    text: "hier kommt der Text zu Tutorial 2"
   },{
     name: "Perfection",
     slug: "video-3",
-    embed: `nzyJ9imm29w`
+    embed: `lYvmbQiFnXE`,
+    text: "hier kommt der Text zu Tutorial 3"
   } ];
   constructor() { }
   
     ngOnInit() {
+
+      console.log(this.passedlink);
     }
 
     getEmbedUrl(item){

@@ -8,7 +8,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./tutorial-video.component.css'],
   
 })
+
+
+
 export class TutorialVideoComponent implements OnInit, OnDestroy{
+
+  @Input()
   private routeSub:any;
   private slug:string;
   title = "Video Tutorials";
