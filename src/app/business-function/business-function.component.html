@@ -1,28 +1,32 @@
 
 
-<ul id="bfunc-listing">
-
- <div class="single-bfunctions" 
- *ngFor='let bfunc of liste'>
-<b> Name: </b>{{bfunc.Name}} <br>
-<b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-<b> Key: </b>   {{bfunc.$key}}
-<button (click)="deleteSth(bfunc.$key)">Delete Item </button>
-
-</div>
-</ul>
+  
 
 <form id="add-bfunc">
+  <fieldset>
   <div class="form-group">
     <label>Name</label>
-    <input type="text" [(ngModel)]="name" class="form-control" name="name" ngModel placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+    <input type="form-group" [(ngModel)]="name" class="form-control" name="name" ngModel placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
     <label>Description</label>
-    <input type="text" [(ngModel)]="descr" class="form-control" name="descr" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
-    <label>Business Function to Remove</label>
-  </div>  
+    
+    <input type="form-group" [(ngModel)]="descr" class="form-control" name="descr" rows="3" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
+      </div>  
+      <br>
   <button (click)="fbPostData(descr, name)">Add</button>
-  
+  </fieldset>
 </form> 
+
+<ul id="bfunc-listing">
+  <br>
+   <div class="single-bfunctions" 
+   *ngFor='let bfunc of liste'>
+  <b> Name: </b>{{bfunc.Name}} <br>
+  <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
+  <b> Key: </b>   {{bfunc.$key}}
+  <button (click)="deleteSth(bfunc.$key)">Delete Item </button>
+  
+  </div>
+  </ul>
 
 <!-- <div class="panel panel-primary">
   <div class="panel-heading">
