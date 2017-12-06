@@ -29,6 +29,7 @@ export class BusinessFunctionComponent implements OnInit {
 fbGetData(){
   firebase.database().ref('/BFunctions/').on('child_added', (snapshot) => {
     this.liste.push(snapshot.val())
+    
   }
 )}
 
@@ -37,7 +38,9 @@ fbPostData(descr, name){
 }
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 erkl
   //ärung zu root verzeichnis etc.
-
+deleteSth(id){
+  firebase.database().ref().child('/BFunctions/').remove(id);
+}
 }
 
 
