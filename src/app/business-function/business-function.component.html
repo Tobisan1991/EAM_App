@@ -6,8 +6,8 @@
  *ngFor='let bfunc of liste'>
 <b> Name: </b>{{bfunc.Name}} <br>
 <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-<b> Key: </b>   {{bfunc.$key}}
-<button (click)="deleteSth(bfunc.$key)">Delete Item </button>
+<b> Key: </b>   {{bfunc.Name}}
+<button (click)="deleteSth(bfunc.Name)">Delete Item </button>
 
 </div>
 </ul>

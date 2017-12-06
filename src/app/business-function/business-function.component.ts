@@ -27,18 +27,22 @@ export class BusinessFunctionComponent implements OnInit {
   }
 
 fbGetData(){
-  firebase.database().ref('/BFunctions/').on('child_added', (snapshot) => {
+  firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
     this.liste.push(snapshot.val())
     
   }
 )}
 
 fbPostData(descr, name){
-  firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
+ // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
+  firebase.database().ref().child('/BFunctions/').child(name).set({
+    Descr: descr, Name: name
+    });
 }
-  // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 erkl
-  //ärung zu root verzeichnis etc.
+  // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 
+  //erklärung zu root verzeichnis etc.
 deleteSth(id){
+ // firebase.database().ref('/BFunctions/').
   firebase.database().ref().child('/BFunctions/').remove(id);
 }
 }
