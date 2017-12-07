@@ -27,7 +27,6 @@
   </div>  
   <button (click)="fbPostData(descr, name)" type="submit" class="btn btn-primary">Add</button>
  <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
-  
 </form> 
 
 <ul id="bfunc-listing">
@@ -36,8 +35,7 @@
    *ngFor='let bfunc of liste'>
   <b> Name: </b>{{bfunc.Name}} <br>
   <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-  <b> Key: </b>   {{bfunc.$key}}
-  <button (click)="deleteSth(bfunc.$key)" type="submit" class="btn btn-primary">Delete Item </button>
+  <button (click)="deleteSth(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
   
   </div>
   </ul>
