@@ -6,8 +6,8 @@
  *ngFor='let bfunc of liste'>
 <b> Name: </b>{{bfunc.Name}} <br>
 <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-
-<button (click)="deleteSth(bfunc.$key=bfunc.Name)">Delete Item </button>
+<b> Key: </b>   {{bfunc.$key}}
+<button (click)="deleteSth(bfunc.$key)">Delete Item </button>
 
 </div>
 </ul>
@@ -19,10 +19,8 @@
     <label>Description</label>
     <input type="text" [(ngModel)]="descr" class="form-control" name="descr" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
     <label>Business Function to Remove</label>
-    <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" ng-model placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
   </div>  
   <button (click)="fbPostData(descr, name)">Add</button>
- <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
   
 </form> 
 
