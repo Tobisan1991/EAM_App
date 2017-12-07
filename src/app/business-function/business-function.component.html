@@ -1,6 +1,16 @@
 
 
-  
+<ul id="bfunc-listing">
+
+ <div class="single-bfunctions" 
+ *ngFor='let bfunc of liste'>
+<b> Name: </b>{{bfunc.Name}} <br>
+<b> Beschreibung: </b>  {{bfunc.Descr}}<br>
+
+<button (click)="deleteSth(bfunc.$key=bfunc.Name)">Delete Item </button>
+
+</div>
+</ul>
 
 <form id="add-bfunc">
   <fieldset>
@@ -8,12 +18,13 @@
     <label>Name</label>
     <input type="form-group" [(ngModel)]="name" class="form-control" name="name" ngModel placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
     <label>Description</label>
-    
-    <input type="form-group" [(ngModel)]="descr" class="form-control" name="descr" rows="3" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
-      </div>  
-      <br>
+    <input type="text" [(ngModel)]="descr" class="form-control" name="descr" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
+    <label>Business Function to Remove</label>
+    <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" ng-model placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
+  </div>  
   <button (click)="fbPostData(descr, name)">Add</button>
-  </fieldset>
+ <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
+  
 </form> 
 
 <ul id="bfunc-listing">
