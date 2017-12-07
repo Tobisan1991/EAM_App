@@ -41,10 +41,17 @@ fbPostData(descr, name){
 }
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 
   //erklärung zu root verzeichnis etc.
-deleteSth(id){
+  /*
+deleteSth(key){
  // firebase.database().ref('/BFunctions/').
-  firebase.database().ref().child('/BFunctions/').remove(id);
-}
+  firebase.database().ref().child('/BFunctions/'+key+'/').remove();
+}*/
+
+deleteSth(key){
+  // firebase.database().ref('/BFunctions/').
+   firebase.database().ref().child('/BFunctions/'+key+'/').remove();
+ }
+
 }
 
 
