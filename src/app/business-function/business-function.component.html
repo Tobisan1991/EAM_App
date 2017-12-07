@@ -1,6 +1,6 @@
 
 
-<ul id="bfunc-listing">
+<!-- <ul id="bfunc-listing">
 
  <div class="single-bfunctions" 
  *ngFor='let bfunc of liste'>
@@ -10,8 +10,12 @@
 <button (click)="deleteSth(bfunc.$key=bfunc.Name)">Delete Item </button>
 
 </div>
-</ul>
+</ul> -->
 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <label>Business-Function </label>
+    <div class="form-group">
 <form id="add-bfunc">
   <div class="form-group">
     <label>Name</label>
@@ -21,7 +25,7 @@
     <label>Business Function to Remove</label>
     <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" ng-model placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
   </div>  
-  <button (click)="fbPostData(descr, name)">Add</button>
+  <button (click)="fbPostData(descr, name)" type="submit" class="btn btn-primary">Add</button>
  <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
   
 </form> 
@@ -33,11 +37,13 @@
   <b> Name: </b>{{bfunc.Name}} <br>
   <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
   <b> Key: </b>   {{bfunc.$key}}
-  <button (click)="deleteSth(bfunc.$key)">Delete Item </button>
+  <button (click)="deleteSth(bfunc.$key)" type="submit" class="btn btn-primary">Delete Item </button>
   
   </div>
   </ul>
-
+</div>
+</div>
+</div>
 <!-- <div class="panel panel-primary">
   <div class="panel-heading">
     <label>Business-Function </label>
@@ -95,3 +101,8 @@
     </form>  
   </div>
 </div> -->
+
+
+<div class="container">
+  <app-bfunc-list></app-bfunc-list>
+</div>
