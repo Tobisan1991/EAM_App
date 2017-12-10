@@ -20,9 +20,7 @@ export class BusinessFunctionComponent implements OnInit {
   constructor(private dataService: DataService) { }
 
   ngOnInit() {
-  //this.dataService.fetchData().subscribe(
- //   (data) => this.liste = data
- // );
+    
   this.fbGetData();
   }
 
@@ -33,10 +31,10 @@ fbGetData(){
   }
 )}
 
-fbPostData(descr, name){
+fbPostData(name,descr){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
   firebase.database().ref().child('/BFunctions/').child(name).set({
-    Descr: descr, Name: name
+    Name: name ,Descr: descr
     });
 }
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 

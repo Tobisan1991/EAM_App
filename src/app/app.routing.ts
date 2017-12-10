@@ -10,7 +10,26 @@ import { HomeComponent } from './home/home.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     
+<<<<<<< HEAD
     
+=======
+    {
+        path:"",
+        component: TopBarListComponent,
+    },
+    {
+        path:"topbar",
+        component: TopBarListComponent,
+    },
+    {
+        path:"topbar/:slug",
+        component: TopBarComponent,
+    },
+    {
+        path:"pictures",
+        component: ImageListComponent,
+    },
+>>>>>>> 2b17e4aa7001818947fe6e992262c82eef7ab98f
     {
         path:"tutorial",
         component: TutorialVideoListComponent,

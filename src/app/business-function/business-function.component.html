@@ -25,23 +25,52 @@
     <label>Business Function to Remove</label>
     <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" ng-model placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
   </div>  
+<<<<<<< HEAD
+<<<<<<< HEAD
+  <button (click)="fbPostData(name, descr)">Add</button>
+ <!-- <button (click)="fbDeleteData(key)">Delete Item </button>-->
+  
+</form> 
+
+=======
   <button (click)="fbPostData(descr, name)" type="submit" class="btn btn-primary">Add</button>
  <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
 </form> 
 
+=======
+  <button (click)="fbPostData(descr, name)">Add</button>
+ <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
+  
+</form> 
+
+>>>>>>> parent of 08da7d4... naming changes
 <ul id="bfunc-listing">
   <br>
    <div class="single-bfunctions" 
    *ngFor='let bfunc of liste'>
   <b> Name: </b>{{bfunc.Name}} <br>
   <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
+<<<<<<< HEAD
   <button (click)="fbDeleteData(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
+=======
+<<<<<<< HEAD
+  <button (click)="deleteSth(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
+>>>>>>> 2b17e4aa7001818947fe6e992262c82eef7ab98f
   
   </div>
   </ul>
 </div>
 </div>
 </div>
+>>>>>>> origin/master
+=======
+  <b> Key: </b>   {{bfunc.$key}}
+  <button (click)="deleteSth(bfunc.$key)">Delete Item </button>
+  
+  </div>
+  </ul>
+
+>>>>>>> parent of 08da7d4... naming changes
 <!-- <div class="panel panel-primary">
   <div class="panel-heading">
     <label>Business-Function </label>
