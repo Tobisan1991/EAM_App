@@ -47,7 +47,7 @@ deleteSth(key){
   firebase.database().ref().child('/BFunctions/'+key+'/').remove();
 }*/
 
-deleteSth(key){
+fbDeleteData(key){
   // firebase.database().ref('/BFunctions/').
    firebase.database().ref().child('/BFunctions/'+key+'/').remove();
  }

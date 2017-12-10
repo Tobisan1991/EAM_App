@@ -35,7 +35,7 @@
    *ngFor='let bfunc of liste'>
   <b> Name: </b>{{bfunc.Name}} <br>
   <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-  <button (click)="deleteSth(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
+  <button (click)="fbDeleteData(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
   
   </div>
   </ul>
