@@ -19,16 +19,16 @@
 <form id="add-bfunc">
   <div class="form-group">
     <label>Name</label>
-    <input type="form-group" [(ngModel)]="name" class="form-control" name="name" ngModel placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+    <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
     <label>Description</label>
-    <input type="text" [(ngModel)]="descr" class="form-control" name="descr" ngModel placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
+    <input type="text" [(ngModel)]="descr" class="form-control" name="descr" placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
     <label>Business Function to Remove</label>
-    <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" ng-model placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
+    <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
   </div>   
 </form> 
 
 <form>
-  <button (click)="fbPostData(descr, name)" type="submit" class="btn btn-primary">Add</button>
+  <button (click)="fbPostData(name, descr)" type="submit" class="btn btn-primary">Add</button>
 </form> 
 
 <ul id="bfunc-listing">
@@ -41,7 +41,6 @@
  
   </div>
   </ul>
-  
 <div class="container">
   <app-bfunc-list></app-bfunc-list>
 </div>
