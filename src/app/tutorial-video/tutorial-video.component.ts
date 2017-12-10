@@ -13,9 +13,9 @@ import { ActivatedRoute } from '@angular/router';
 
 export class TutorialVideoComponent implements OnInit, OnDestroy{
 
-  @Input()
+  
   private routeSub:any;
-  private slug:string;
+  sluggy:string;
   title = "Video Tutorials";
   
  
@@ -24,8 +24,8 @@ export class TutorialVideoComponent implements OnInit, OnDestroy{
     
       ngOnInit() {
        this.routeSub = this.route.params.subscribe(params=> {
-          console.log(params)
-          this.slug = params['slug']
+          // console.log(params['slug'])
+           this.sluggy = params['slug']
           })
       }
       ngOnDestroy(){

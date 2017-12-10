@@ -1,12 +1,13 @@
 
-<app-tutorial-video-list class='test2' [passedlink]='videoList'></app-tutorial-video-list>
-
+<!-- <app-tutorial-video-list class='test2' [passedlink]='videoList'></app-tutorial-video-list> -->
+{{title}}
 <div>
 
+        {{sluggy}}
         <!-- <app-tutorial-video-list [sanitizer]="getEmbedUrl()"> </app-tutorial-video-list> -->
                 <!-- <div [innerHTML]='"" | ytlink'></div>  -->
 
-test 123
+                <app-tutorial-video-list>{{videoList.slug}}</app-tutorial-video-list>
                
 <p>
 

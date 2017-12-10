@@ -19,9 +19,6 @@ const appRoutes: Routes = [
         path:"",
         component: TopBarListComponent,
     },
-    
-    
-
     {
         path:"topbar",
         component: TopBarListComponent,

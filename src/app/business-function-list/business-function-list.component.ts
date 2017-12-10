@@ -1,4 +1,8 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
+import { Http } from '@angular/http';
+declare var firebase: any;
 import { BusinessFunction } from '../business-function/businessfunction';
 import { businessfunctionService} from '../business-function/business-function.service';
 
