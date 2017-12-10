@@ -17,6 +17,7 @@ import { AppsystemComponent } from './appsystem/appsystem.component';
 import { ApplicationComponent } from './application/application.component';
 import { HomeComponent } from './home/home.component';
 import { BusinessFunctionListComponent } from './business-function-list/business-function-list.component';
+import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { BusinessFunctionListComponent } from './business-function-list/business
     AppsystemComponent,
     ApplicationComponent,
     HomeComponent,
-    BusinessFunctionListComponent
+    BusinessFunctionListComponent,
+    BfuncListComponent
   ],
 
   imports: [

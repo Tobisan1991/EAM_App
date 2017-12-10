@@ -1,6 +1,6 @@
 
 
-<ul id="bfunc-listing">
+<!-- <ul id="bfunc-listing">
 
  <div class="single-bfunctions" 
  *ngFor='let bfunc of liste'>
@@ -10,8 +10,12 @@
 <button (click)="fbDeleteData(bfunc.$key=bfunc.Name)">Delete Item </button>
 
 </div>
-</ul>
+</ul> -->
 
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <label>Business-Function </label>
+    <div class="form-group">
 <form id="add-bfunc">
   <div class="form-group">
     <label>Name</label>
@@ -21,11 +25,31 @@
     <label>Business Function to Remove</label>
     <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="key" ng-model placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
   </div>  
+<<<<<<< HEAD
   <button (click)="fbPostData(name, descr)">Add</button>
  <!-- <button (click)="fbDeleteData(key)">Delete Item </button>-->
   
 </form> 
 
+=======
+  <button (click)="fbPostData(descr, name)" type="submit" class="btn btn-primary">Add</button>
+ <!-- <button (click)="deleteSth(key)">Delete Item </button>-->
+</form> 
+
+<ul id="bfunc-listing">
+  <br>
+   <div class="single-bfunctions" 
+   *ngFor='let bfunc of liste'>
+  <b> Name: </b>{{bfunc.Name}} <br>
+  <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
+  <button (click)="deleteSth(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
+  
+  </div>
+  </ul>
+</div>
+</div>
+</div>
+>>>>>>> origin/master
 <!-- <div class="panel panel-primary">
   <div class="panel-heading">
     <label>Business-Function </label>
@@ -83,3 +107,8 @@
     </form>  
   </div>
 </div> -->
+
+
+<div class="container">
+  <app-bfunc-list></app-bfunc-list>
+</div>
