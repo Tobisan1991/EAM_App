@@ -1,17 +1,5 @@
 
 
-<!-- <ul id="bfunc-listing">
-
- <div class="single-bfunctions" 
- *ngFor='let bfunc of liste'>
-<b> Name: </b>{{bfunc.Name}} <br>
-<b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-
-<button (click)="deleteSth(bfunc.$key=bfunc.Name)">Delete Item </button>
-
-</div>
-</ul> -->
-
 <div class="panel panel-primary">
   <div class="panel-heading">
     <label>Business-Function </label>
@@ -22,16 +10,18 @@
     <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
     <label>Description</label>
     <input type="text" [(ngModel)]="descr" class="form-control" name="descr" placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
-    <label>Business Function to Remove</label>
-    <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}"> 
-  </div>   
+    <!-- <label>Business Function to Remove</label>
+    <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}">  -->
+  </div>  <!-- div form-group -->  
 </form> 
 
 <form>
   <button (click)="fbPostData(name, descr)" type="submit" class="btn btn-primary">Add</button>
 </form> 
+</div> 
+</div>   
 
-<ul id="bfunc-listing">
+<!-- <ul id="bfunc-listing">
   <br>
    <div class="single-bfunctions" 
    *ngFor='let bfunc of liste'>
@@ -39,8 +29,38 @@
   <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
   <button (click)="fbDeleteData(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
  
-  </div>
-  </ul>
-<div class="container">
+  
+  </ul> -->
+
+  <div class="bfunc-liste">
+  <table class="table table-striped table-hover table-bordered">
+    <thead class="thead-dark">
+      <tr>
+        <th>Name <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th >Description <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th  width="250px" class="text-center">Action</th>        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let bfunc of liste">
+        <td>{{bfunc.Name}}</td>
+        <td>{{bfunc.Descr}}</td>    
+        <td align="center">
+          <button type="button" class="btn btn-outline-primary" 
+              (click)="fbDeleteData(bfunc.$key=bfunc.Name)" >
+            <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
+          <button type="button" class="btn btn-outline-primary"> 
+            <i class="fa fa-pencil" aria-hidden="true"></i> </button>
+        </td>
+      </tr>
+
+    </tbody>
+  </table> 
+  </div> <!-- div zu ende bfunc liste -->
+
+
+</div> <!-- div panel primary -->
+
+  <!-- <div class="container">
   <app-bfunc-list></app-bfunc-list>
-</div>
+</div> -->

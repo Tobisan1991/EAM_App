@@ -16,6 +16,7 @@ import { Application } from './application/application.component';
 import { HomeComponent } from './home/home.component';
 import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
 import { ApplicListComponent } from './application/applic-list/applic-list.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { ApplicListComponent } from './application/applic-list/applic-list.compo
     Application,
     HomeComponent,
     BfuncListComponent,
-    ApplicListComponent
+    ApplicListComponent,
+    DashboardComponent
   ],
 
   imports: [

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
+import { rootRoute } from '@angular/router/src/router_module';
 declare var firebase: any;
 
 
@@ -45,9 +46,15 @@ deleteSth(key){
   firebase.database().ref().child('/BFunctions/'+key+'/').remove();
 }*/
 
+refreshList(){
+
+}
+
 fbDeleteData(key){
   // firebase.database().ref('/BFunctions/').
-   firebase.database().ref().child('/BFunctions/'+key+'/').remove();
+   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
+   window.location.reload();
+   
  }
 
 }

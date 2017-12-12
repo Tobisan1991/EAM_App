@@ -7,6 +7,7 @@ import { BusinessProcessComponent } from './business-process/business-process.co
 import { AppsystemComponent } from './appsystem/appsystem.component';
 import { Application } from './application/application.component';
 import { HomeComponent } from './home/home.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     
@@ -38,9 +39,11 @@ const appRoutes: Routes = [
     {
         path:"home",
         component: HomeComponent,
+    },
+    {
+        path:"dashboard",
+        component: DashboardComponent,
     }
-    ,
-    
 
 
 ]
