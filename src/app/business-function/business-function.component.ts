@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
+
 declare var firebase: any;
 
 

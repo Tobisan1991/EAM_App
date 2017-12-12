@@ -2,17 +2,19 @@
 
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <label>Business-Function </label>
+    <legend>Business-Function </legend>
     <div class="form-group">
 <form id="add-bfunc">
   <div class="form-group">
     <label>Name</label>
     <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
     <label>Description</label>
-    <input type="text" [(ngModel)]="descr" class="form-control" name="descr" placeholder="Enter Description" [ngModelOptions]="{standalone: true}">
+    <textarea type="text" [(ngModel)]="descr" class="form-control" name="descr" placeholder="Enter Description" [ngModelOptions]="{standalone: true}"></textarea>
     <!-- <label>Business Function to Remove</label>
     <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}">  -->
-  </div>  <!-- div form-group -->  
+  </div>
 </form> 
 
 <form>
@@ -32,11 +34,18 @@
   
   </ul> -->
 
+  <div class="form-group">
+      <div class="col-md-3" >
+        <input type="text" [(ngModel)]="searchText" 
+               class="form-control" placeholder="Search" />
+      </div>
+    </div>
+
   <div class="bfunc-liste">
   <table class="table table-striped table-hover table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th>Name <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th >Name <i class="fa fa-sort" aria-hidden="true"></i></th>
         <th >Description <i class="fa fa-sort" aria-hidden="true"></i></th>
         <th  width="250px" class="text-center">Action</th>        
       </tr>
