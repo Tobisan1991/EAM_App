@@ -18,14 +18,14 @@
           </select>
         </div>
       <div class="form-group">
-        <label for="bfunctions">Business Functions:</label>
-        <select multiple="" class="form-control" [(ngModel)]="bfunction" name="bfunction" [ngModelOptions]="{standalone: true}">
-          <option *ngFor='let bfunc of bfuncliste'>{{bfunc.Name}}</option>          
+        <label for="typ">Typ:</label>
+        <select multiple="" class="form-control" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}">
+          <option *ngFor='let typ of typliste'>{{typ.Name}}</option>          
         </select>
       </div>
 
  
-    <button (click)="fbPostData(name, descr, bfunction)" type="submit" class="btn btn-primary">Add</button>
+    <button (click)="fbPostData(name, descr, typ)" type="submit" class="btn btn-primary">Add</button>
     
   
   </div>

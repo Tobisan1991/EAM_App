@@ -15,7 +15,7 @@ declare var firebase: any;
 
 export class BusinessProcessComponent implements OnInit {
 
-  bfuncliste = [];
+  typliste = [];
   liste = [];
 
   constructor(private dataService: DataService) { }
@@ -27,15 +27,15 @@ export class BusinessProcessComponent implements OnInit {
 
 fbGetBFuncData(){
   firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
-    this.bfuncliste.push(snapshot.val())
+    this.typliste.push(snapshot.val())
     
   }
 )}
 
-fbPostData(name,descr, bfunc){
+fbPostData(name,descr, typ){
   // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
    firebase.database().ref().child('/BProcess/').child(name).set({
-     Name: name ,Descr: descr, Bfunc: bfunc
+     Name: name ,Descr: descr, Typ: typ
      });
  }
 
