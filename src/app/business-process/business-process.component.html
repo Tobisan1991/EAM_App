@@ -1,5 +1,11 @@
-<div class="panel panel-primary">
-    <div class="panel-heading">
+<p>
+  
+</p>
+
+<!-- das zeug hier hab ich von dieser seite : https://bootswatch.com/flatly/ -->
+
+<form class="myform">
+    <fieldset>
       <legend>Business-process</legend>
       <div class="form-group">
         <label for="name">Name</label>
@@ -9,24 +15,102 @@
         <label for="description">Description</label>
         <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
       </div>
-      <div class="form-group">
-          <label for="type">Type</label>
-          <select class="form-control" id="type">
-            <option>functional</option>
-            <option>non-functional</option>
-            <option>domain</option>
-          </select>
-        </div>
-      <div class="form-group">
-        <label for="typ">Typ:</label>
+     <!-- <div class="form-group">
+        <label for="bfunctions">Business Functions:</label>
+        <select multiple="" class="form-control" [(ngModel)]="bfunction" name="bfunction" [ngModelOptions]="{standalone: true}">
+          <option *ngFor='let bfunc of bfuncliste'>{{bfunc.Name}}</option>          
+        </select> -->
+        
+        <fieldset class="form-group" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+          <legend>Typ</legend>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="typ" id="optionsRadios1" value="Functional" checked="">
+              Functional
+            </label>
+          </div>
+          <div class="form-check">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="typ" id="optionsRadios2" value="Non_Functional">
+              Non-Functional
+            </label>
+          </div>
+          <div class="form-check">
+          <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="typ" id="optionsRadios3" value="Domain">
+              Domain
+            </label>
+          </div>
+        </fieldset>
+        
+        <!--    <fieldset class="form-group" >
+          <legend>Typ</legend>
+          <div class="form-check" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" id="optionsRadios1" value='Functional' checked="">
+              Functional
+              <input type="radio" class="form-check-input" id="optionsRadios2" value='Non_Functional'>
+              Non-Functional 
+              <input type="radio" class="form-check-input" id="optionsRadios3" value='Domain'>
+              Domain
+            </label>
+          </div>
+        </fieldset>
+
+
+           <div class="form-group">
+        <label for="bfunctions">Typ:</label>
         <select multiple="" class="form-control" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}">
-          <option *ngFor='let typ of typliste'>{{typ.Name}}</option>          
+          <option>Functional</option>
+          <option>Non-Functional</option>
+          <option>Domain</option>
         </select>
       </div>
 
- 
+  <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+      <div class="form-group">
+        <label for="exampleSelect2">Assigned Business Domains</label>
+        <select multiple="" class="form-control" id="exampleSelect2">
+          <option>Domain 1</option>
+          <option>Domain 2</option>
+          <option>Domain 3</option>
+          <option>Domain 4</option>
+          <option>Domain 5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputFile">File input</label>
+        <input type="file" class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+        <small id="fileHelp" class="form-text text-muted">This is some placeholder block-level help text for the above input. It's a bit lighter and easily wraps to a new line.</small>
+      </div>
+      <fieldset class="form-group">
+        <legend>Radio buttons</legend>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            Option one is this and that—be sure to include why it's great
+          </label>
+        </div>
+        <div class="form-check">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+            Option two can be something else and selecting it will deselect option one
+          </label>
+        </div>
+        <div class="form-check disabled">
+        <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled="">
+            Option three is disabled
+          </label>
+        </div>
+      </fieldset>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input type="checkbox" class="form-check-input">
+          Check me out
+        </label>
+      </div>
+    -->
     <button (click)="fbPostData(name, descr, typ)" type="submit" class="btn btn-primary">Add</button>
-    
-  
-  </div>
-</div>
+    </fieldset>
+  </form>

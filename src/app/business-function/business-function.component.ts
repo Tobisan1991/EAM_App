@@ -18,6 +18,7 @@ export class BusinessFunctionComponent implements OnInit {
 
   liste = [];
   bool = null;
+  
 
   constructor(private dataService: DataService) { }
 
@@ -27,16 +28,21 @@ export class BusinessFunctionComponent implements OnInit {
   }
 
 fbGetData(){
-  firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
-    this.liste.push(snapshot.val())
+
+  firebase.database().ref().child('/BFunctions/').orderByChild('Flag').equalTo('X').on('child_added', (snapshot) => {
+    
+  //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
+ // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
+  this.liste.push(snapshot.val())
     
   }
-)}
+)
+}
 
 fbPostData(name,descr){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
   firebase.database().ref().child('/BFunctions/').child(name).set({
-    Name: name ,Descr: descr
+    Name: name ,Descr: descr, Flag: 'X'
     });
 }
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 
@@ -52,8 +58,10 @@ refreshList(){
 }
 
 fbDeleteData(key){
-  // firebase.database().ref('/BFunctions/').
-   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
+  firebase.database().ref().child('/BFunctions/').child(key).set({
+    Flag: 'Removed'});
+    
+//   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
    window.location.reload();
    
  }
