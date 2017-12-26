@@ -16,10 +16,10 @@ declare var firebase: any;
 })
 export class BfuncListComponent implements OnInit {
   private sub: any;
-test = 'asdsad';
-ID: string;
-  Name;
-  Descr;
+  
+private ID: string;
+  name;
+  descr;
   
 
 private editData = [];
@@ -29,21 +29,20 @@ private editData = [];
       
   }
   
+  
+
   ngOnInit() {
-    
-    this.sub = this.route.params.subscribe(params=> {
-       this.ID = params['name']
-      })
-      //console.log(this.Name);
     this.fbGetData();
     }
     
-   
-
 
   fbGetData(){
-    
- firebase.database().ref().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
+   
+    this.sub = this.route.params.subscribe(params=> {
+      this.ID = params['name']
+     }) 
+
+     firebase.database().ref().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
      // firebase.database().ref().child('/BFunctions/'+this.ID+'/').subscribe(listing => {
         
        //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
@@ -54,10 +53,19 @@ private editData = [];
     }
       
     )
-
-    console.log(this.editData);
+    this.name = this.editData[2];
+    this.descr = this.editData[0];
+    // console.log(this.descr);
+    // console.log(this.name);
+    // console.log(this.editData);
     }
 
+    fbPostData(name,descr){
+      // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
+       firebase.database().ref().child('/BFunctions/').child(name).set({
+         Name: name ,Descr: descr, Flag: 'X'
+         });
+     }
 
     ngOnDestroy(){
       this.sub.unsubscribe();
