@@ -23,7 +23,7 @@
   <div class="form-group">
       <div class="col-md-3 search" >
         <input type="text" [(ngModel)]="searchText" 
-               class="form-control" placeholder="Search" />
+               class="form-control" placeholder="Search by Name" />
       </div>
     </div>
 
@@ -37,7 +37,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let bfunc of liste">
+      <tr *ngFor="let bfunc of liste | searchName: searchText">
         <td>{{bfunc.Name}}</td>
         <td>{{bfunc.Descr}}</td>
        <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->

@@ -17,6 +17,7 @@ import { HomeComponent } from './home/home.component';
 import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
 import { ApplicListComponent } from './application/applic-list/applic-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { SearchNamePipe } from './search-name.pipe';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     HomeComponent,
     BfuncListComponent,
     ApplicListComponent,
-    DashboardComponent
+    DashboardComponent,
+    SearchNamePipe
   ],
 
   imports: [

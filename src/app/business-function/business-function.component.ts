@@ -4,7 +4,7 @@ import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
 //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
-
+import { SearchNamePipe } from '../search-name.pipe'
 
 declare var firebase: any;
 
@@ -14,7 +14,7 @@ declare var firebase: any;
   templateUrl: './business-function.component.html',
   styleUrls: ['./business-function.component.css'],
   encapsulation: ViewEncapsulation.None,
-  providers: [DataService]
+  providers: [DataService, SearchNamePipe]
 })
 export class BusinessFunctionComponent implements OnInit {
 
@@ -26,8 +26,11 @@ export class BusinessFunctionComponent implements OnInit {
   removeDate:String;
   liste = [];
 
-  constructor(private dataService: DataService,
-    private router: Router, private route: ActivatedRoute) { 
+  constructor(
+    private dataService: DataService,
+    private router: Router, 
+    private route: ActivatedRoute,
+    private searchName: SearchNamePipe) { 
     //  this.creationDate=Date;
       // this.alterDate=Date;
       // this.removeDate=Date;
