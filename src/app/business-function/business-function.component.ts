@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, Params} from '@angular/router';
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
@@ -20,11 +20,13 @@ export class BusinessFunctionComponent implements OnInit {
   bool = null;
   
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService,
+    private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     
   this.fbGetData();
+  console.log(this.liste)
   }
 
 fbGetData(){
@@ -34,10 +36,11 @@ fbGetData(){
   //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
  // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
   this.liste.push(snapshot.val())
-    
   }
+  
 )
 }
+
 
 fbPostData(name,descr){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
@@ -58,7 +61,7 @@ refreshList(){
 }
 
 fbDeleteData(key){
-  firebase.database().ref().child('/BFunctions/').child(key).set({
+  firebase.database().ref().child('/BFunctions/').child(key).update({
     Flag: 'Removed'});
     
 //   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 

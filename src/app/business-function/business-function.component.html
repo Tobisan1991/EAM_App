@@ -47,14 +47,20 @@
       <tr>
         <th >Name <i class="fa fa-sort" aria-hidden="true"></i></th>
         <th >Description <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th >Test <i class="fa fa-sort" aria-hidden="true"></i></th>
         <th  width="250px" class="text-center">Action</th>        
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let bfunc of liste">
         <td>{{bfunc.Name}}</td>
-        <td>{{bfunc.Descr}}</td>    
-        <td align="center">
+        <td>{{bfunc.Descr}}</td>
+      
+        <a [routerLink]="['/function', bfunc.Name]">
+        {{ bfunc.Name }}
+      </a>
+       <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
+       <td align="center">
           <button type="button" class="btn btn-outline-primary" 
               (click)="fbDeleteData(bfunc.$key=bfunc.Name)" >
             <i class="fa fa-trash-o" aria-hidden="true"></i> </button>

@@ -1,29 +1,23 @@
-<p>
-  bfunc-list works!
-</p>
 
-<div class="bfunc-liste">
-  <table class="table table-striped table-hover table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th>#</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th align="center">Action</th>        
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let bfunc of liste">
-        <td>{{bfunc.Name}}</td>
-        <td>{{bfunc.Descr}}</td>    
-        <td align="center">
-          <button type="button" class="btn btn-outline-primary"> 
-            <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
-          <button type="button" class="btn btn-outline-primary"> 
-            <i class="fa fa-pencil" aria-hidden="true"></i> </button>
-        </td>
-      </tr>
 
-    </tbody>
-  </table> 
-  </div>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <legend>Edit Business-Function </legend>
+      <div class="form-group">
+  <form id="add-bfunc">
+    <div class="form-group">
+      <label>Name</label>
+      <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group">
+      <label>Description</label>
+      <textarea type="text" [(ngModel)]="descr" class="form-control" name="descr" placeholder="Enter Description" [ngModelOptions]="{standalone: true}"></textarea>
+      <!-- <label>Business Function to Remove</label>
+      <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}">  -->
+    </div>
+  </form> 
+  
+  </div> 
+  </div>   {{test}}
+

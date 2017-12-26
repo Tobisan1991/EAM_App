@@ -3,6 +3,7 @@ import { NgModule} from '@angular/core';
 import { TutorialVideoComponent } from './tutorial-video/tutorial-video.component';
 import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video-list.component';
 import { BusinessFunctionComponent } from './business-function/business-function.component';
+import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
 import { BusinessProcessComponent } from './business-process/business-process.component';
 import { AppsystemComponent } from './appsystem/appsystem.component';
 import { Application } from './application/application.component';
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
     {
         path:"function",
         component: BusinessFunctionComponent,
+    },
+    {
+        path:"function/:name",
+        component: BfuncListComponent,
     },
     {
         path:"process",
