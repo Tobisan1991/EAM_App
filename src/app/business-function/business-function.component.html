@@ -15,24 +15,10 @@
     <!-- <label>Business Function to Remove</label>
     <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}">  -->
   </div>
-</form> 
-
-<form>
   <button (click)="fbPostData(name, descr)" type="submit" class="btn btn-primary">Add</button>
 </form> 
 </div> 
 </div>   
-
-<!-- <ul id="bfunc-listing">
-  <br>
-   <div class="single-bfunctions" 
-   *ngFor='let bfunc of liste'>
-  <b> Name: </b>{{bfunc.Name}} <br>
-  <b> Beschreibung: </b>  {{bfunc.Descr}}<br>
-  <button (click)="fbDeleteData(bfunc.$key=bfunc.Name)" type="submit" class="btn btn-primary">Delete Item</button>
- 
-  
-  </ul> -->
 
   <div class="form-group">
       <div class="col-md-3 search" >
