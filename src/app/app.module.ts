@@ -18,6 +18,7 @@ import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.co
 import { ApplicListComponent } from './application/applic-list/applic-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchNamePipe } from './search-name.pipe';
+import { OrderByPipe } from './order-by.pipe';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { SearchNamePipe } from './search-name.pipe';
     BfuncListComponent,
     ApplicListComponent,
     DashboardComponent,
-    SearchNamePipe
+    SearchNamePipe,
+    OrderByPipe
   ],
 
   imports: [

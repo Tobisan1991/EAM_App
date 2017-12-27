@@ -1,5 +1,4 @@
 
-
 <div class="panel panel-primary">
   <div class="panel-heading">
     <legend>Business-Function </legend>
@@ -20,6 +19,7 @@
 </div> 
 </div>   
 
+
   <div class="form-group">
       <div class="col-md-3 search" >
         <input type="text" [(ngModel)]="searchText" 
@@ -31,13 +31,21 @@
   <table class="table table-striped table-hover table-bordered">
     <thead class="thead-dark">
       <tr>
-        <th >Name <i class="fa fa-sort" aria-hidden="true"></i></th>
-        <th >Description <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th class="pointer" (click)="sort('Name')">Name <i class="fa" 
+          [ngClass]="{'fa-sort': column != 'Name', 
+                              'fa-sort-asc': (column == 'Name' && !isDesc), 
+                              'fa-sort-desc': (column == 'Name' && isDesc) }"
+          aria-hidden="true"> </i></th>
+        <th class="pointer" (click)="sort('Description')">Description <i class="fa" 
+          [ngClass]="{'fa-sort': column != 'Description', 
+                              'fa-sort-asc': (column == 'Description' && !isDesc), 
+                              'fa-sort-desc': (column == 'Description' && isDesc) }"
+          aria-hidden="true"> </i></th>
         <th  width="250px" class="text-center">Action</th>        
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let bfunc of liste | searchName: searchText">
+      <tr *ngFor="let bfunc of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
         <td>{{bfunc.Name}}</td>
         <td>{{bfunc.Descr}}</td>
        <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
@@ -60,3 +68,5 @@
   <!-- <div class="container">
   <app-bfunc-list></app-bfunc-list>
 </div> -->
+
+
