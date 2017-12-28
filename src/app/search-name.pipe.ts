@@ -9,7 +9,7 @@ export class SearchNamePipe implements PipeTransform {
     if(searchText == null) return name;
 
     return name.filter(function(name){
-      return name.Name.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
+      return name.AName.toLowerCase().indexOf(searchText.toLowerCase()) > -1;
     })
   }
 }

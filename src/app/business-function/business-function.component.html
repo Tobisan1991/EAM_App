@@ -31,36 +31,36 @@
   <table class="table table-striped table-hover table-bordered">
     <thead class="thead-dark">
       <tr>
-<<<<<<< HEAD
-        <th >Name <i class="fa fa-sort" aria-hidden="true"></i></th>
-        <th >Description <i class="fa fa-sort" aria-hidden="true"></i></th>
-        <th >Datum <i class="fa fa-sort" aria-hidden="true"></i></th>
-        <th >Änderungsdatum <i class="fa fa-sort" aria-hidden="true"></i></th>
-=======
-        <th class="pointer" (click)="sort('Name')">Name <i class="fa" 
-          [ngClass]="{'fa-sort': column != 'Name', 
-                              'fa-sort-asc': (column == 'Name' && !isDesc), 
-                              'fa-sort-desc': (column == 'Name' && isDesc) }"
+        <th class="pointer" (click)="sort('AName')">Name <i class="fa" 
+          [ngClass]="{'fa-sort': column != 'AName', 
+                              'fa-sort-asc': (column == 'AName' && !isDesc), 
+                              'fa-sort-desc': (column == 'AName' && isDesc) }"
           aria-hidden="true"> </i></th>
-        <th class="pointer" (click)="sort('Description')">Description <i class="fa" 
-          [ngClass]="{'fa-sort': column != 'Description', 
-                              'fa-sort-asc': (column == 'Description' && !isDesc), 
-                              'fa-sort-desc': (column == 'Description' && isDesc) }"
+        <th class="pointer" (click)="sort('BDescr')">Description <i class="fa" 
+          [ngClass]="{'fa-sort': column != 'BDescr', 
+                              'fa-sort-asc': (column == 'BDescr' && !isDesc), 
+                              'fa-sort-desc': (column == 'BDescr' && isDesc) }"
           aria-hidden="true"> </i></th>
->>>>>>> origin/master
+
+          <th class="pointer" (click)="sort('DCreationDate')">Erstell Datum <i class="fa" 
+            [ngClass]="{'fa-sort': column != 'DCreationDate', 
+                                'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
+                                'fa-sort-desc': (column == 'DCreationDate' && isDesc) }"
+            aria-hidden="true"> </i></th>
+
+            <th class="pointer" (click)="sort('EEditDate')">Änderungsdatum <i class="fa" 
+              [ngClass]="{'fa-sort': column != 'EEditDate', 
+                                  'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
+                                  'fa-sort-desc': (column == 'EEditDate' && isDesc) }"
+              aria-hidden="true"> </i></th>
         <th  width="250px" class="text-center">Action</th>        
       </tr>
     </thead>
     <tbody>
-<<<<<<< HEAD
-      <tr *ngFor="let bfunc of liste | searchName: searchText">
+ <tr *ngFor="let bfunc of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
         <td>{{bfunc.AName}}</td>
         <td>{{bfunc.BDescr}}</td>
-=======
-      <tr *ngFor="let bfunc of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
-        <td>{{bfunc.Name}}</td>
-        <td>{{bfunc.Descr}}</td>
->>>>>>> origin/master
+
        <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
        <td>{{bfunc.DCreationDate}}</td>
        <td>{{bfunc.EEditDate}}</td>
