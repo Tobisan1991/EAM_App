@@ -22,6 +22,11 @@ export class BusinessFunctionComponent implements OnInit {
   descr:String;
   datum:String;
   liste = [];
+  isDesc: boolean = false;
+  column: string = 'Name';
+  direction: number;
+
+
 
   constructor(
     private dataService: DataService,
@@ -78,6 +83,12 @@ fbDeleteData(key){
    window.location.reload();
    
  }
+
+ sort(property){
+  this.isDesc = !this.isDesc; //change the direction    
+  this.column = property;
+  this.direction = this.isDesc ? 1 : -1;
+};
 
 }
 
