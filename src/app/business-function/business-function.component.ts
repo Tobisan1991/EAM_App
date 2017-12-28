@@ -5,7 +5,10 @@ import { Http } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
 //import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 import { SearchNamePipe } from '../search-name.pipe'
+import {Now} from '../utility/now'
+
 declare var firebase: any;
+const d: Date = new Date();
 
 
 @Component({
@@ -20,7 +23,12 @@ export class BusinessFunctionComponent implements OnInit {
   
   name:String;
   descr:String;
-  datum:String;
+  jahr;
+  monat;
+  tag;
+  stunde;
+  minute;
+  datum;
   liste = [];
   isDesc: boolean = false;
   column: string = 'Name';
@@ -33,11 +41,13 @@ export class BusinessFunctionComponent implements OnInit {
     private router: Router, 
     private route: ActivatedRoute,
     private searchName: SearchNamePipe) { 
-    this.datum=Date().toString();
   }
 
   ngOnInit() {
     
+    this.jahr=d.getFullYear();
+    this.monat=d.getMonth();
+    this.minute='hallo';
   this.fbGetData();
   console.log(this.liste)
   }
