@@ -20,12 +20,16 @@ export class BfuncListComponent implements OnInit {
 private ID: string;
   name;
   descr;
+  creationDate:String;
+  datum:String;
   
 
 private editData = [];
 
   constructor(private dataService: DataService,
     private router: Router, private route: ActivatedRoute, public http: Http) {
+
+      this.datum=Date().toString();
       
   }
   
@@ -33,37 +37,39 @@ private editData = [];
 
   ngOnInit() {
     this.fbGetData();
+
+     
     }
     
 
   fbGetData(){
-   
     this.sub = this.route.params.subscribe(params=> {
       this.ID = params['name']
-     }) 
-
+     })
      firebase.database().ref().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
-     // firebase.database().ref().child('/BFunctions/'+this.ID+'/').subscribe(listing => {
-        
-       //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
-     
-//       this.Name = listing.name
-  //     this.Descr = listing.descr
+          
+   //firebase.database().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
      this.editData.push(snapshot.val())
     }
       
     )
-    this.name = this.editData[2];
-    this.descr = this.editData[0];
+    console.log(this.editData);
+    this.name = this.editData[0];
+    this.descr = this.editData[1];
+    this.creationDate = this.editData[3];
     // console.log(this.descr);
     // console.log(this.name);
     // console.log(this.editData);
-    }
+    
+}
 
-    fbPostData(name,descr){
+    fbEditData(name,descr){
       // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
+      firebase.database().ref().child('/BFunctions/'+this.ID+'/').update({CFlag: 'Removed'//, removed: this.removeDate
+    })
+
        firebase.database().ref().child('/BFunctions/').child(name).set({
-         Name: name ,Descr: descr, Flag: 'X'
+         AName: name ,BDescr: descr, CFlag: 'X', DCreationDate: this.creationDate, EEditDate: this.datum
          });
      }
 

@@ -33,19 +33,23 @@
       <tr>
         <th >Name <i class="fa fa-sort" aria-hidden="true"></i></th>
         <th >Description <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th >Datum <i class="fa fa-sort" aria-hidden="true"></i></th>
+        <th >Änderungsdatum <i class="fa fa-sort" aria-hidden="true"></i></th>
         <th  width="250px" class="text-center">Action</th>        
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let bfunc of liste | searchName: searchText">
-        <td>{{bfunc.Name}}</td>
-        <td>{{bfunc.Descr}}</td>
+        <td>{{bfunc.AName}}</td>
+        <td>{{bfunc.BDescr}}</td>
        <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
+       <td>{{bfunc.DCreationDate}}</td>
+       <td>{{bfunc.EEditDate}}</td>
        <td align="center">
           <button type="button" class="btn btn-outline-primary" 
-              (click)="fbDeleteData(bfunc.$key=bfunc.Name)" >
+              (click)="fbDeleteData(bfunc.$key=bfunc.AName)" >
             <i class="fa fa-trash-o" aria-hidden="true"></i> </button>
-          <button type="button" class="btn btn-outline-primary" [routerLink]="['/function', bfunc.Name]"> 
+          <button type="button" class="btn btn-outline-primary" [routerLink]="['/function', bfunc.AName]"> 
             <i class="fa fa-pencil" aria-hidden="true"></i> </button>
         </td>
       </tr>
