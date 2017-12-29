@@ -4,15 +4,19 @@
 
 <!-- das zeug hier hab ich von dieser seite : https://bootswatch.com/flatly/ -->
 
-<form class="myform">
+  <form class="myform">
     <fieldset>
-      <legend>Business-process</legend>
+      <legend>Business Process</legend>
       <div class="form-group">
+        <b>
         <label for="name">Name</label>
+      </b>
         <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
       </div>
       <div class="form-group">
+        <b>
         <label for="description">Description</label>
+      </b>
         <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
       </div>
      <!-- <div class="form-group">
