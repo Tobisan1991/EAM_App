@@ -19,6 +19,8 @@ import { ApplicListComponent } from './application/applic-list/applic-list.compo
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchNamePipe } from './search-name.pipe';
 import { OrderByPipe } from './order-by.pipe';
+import { MyDatePickerModule} from 'mydatepicker';
+
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { OrderByPipe } from './order-by.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MyDatePickerModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
