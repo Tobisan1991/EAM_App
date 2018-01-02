@@ -65,11 +65,11 @@ private editData = [];
 
     fbEditData(name,descr){
       // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
-      firebase.database().ref().child('/BFunctions/'+this.ID+'/').update({CFlag: 'Removed'//, removed: this.removeDate
+      firebase.database().ref().child('/BFunctions/'+this.ID+'/').update({CFlag: 'archived'//, removed: this.removeDate
     })
 
        firebase.database().ref().child('/BFunctions/').child(name).set({
-         AName: name ,BDescr: descr, CFlag: 'X', DCreationDate: this.creationDate, EEditDate: this.datum
+         AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, EEditDate: this.datum
          });
      }
 

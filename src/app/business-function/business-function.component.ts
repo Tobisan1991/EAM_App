@@ -20,7 +20,6 @@ const d: Date = new Date();
 })
 export class BusinessFunctionComponent implements OnInit {
 
-  
   name:String;
   descr:String;
   jahr;
@@ -28,7 +27,7 @@ export class BusinessFunctionComponent implements OnInit {
   tag;
   stunde;
   minute;
-  datum;
+  datum: String;
   liste = [];
   isDesc: boolean = false;
   column: string = 'Name';
@@ -41,21 +40,23 @@ export class BusinessFunctionComponent implements OnInit {
     private router: Router, 
     private route: ActivatedRoute,
     private searchName: SearchNamePipe) { 
+
+      this.datum=Date().toString();
+
   }
 
   ngOnInit() {
-    
     this.jahr=d.getFullYear();
     this.monat=d.getMonth();
     this.minute='hallo';
-  this.fbGetData();
-  console.log(this.liste)
+    this.fbGetData();
+    console.log(this.liste)
   }
 
 fbGetData(){
 
-  firebase.database().ref().child('/BFunctions/').orderByChild('CFlag').equalTo('X').on('child_added', (snapshot) => {
-    
+  firebase.database().ref().child('/BFunctions/').orderByChild('CFlag').equalTo('active').
+  on('child_added', (snapshot) => {  
   //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
  // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
   this.liste.push(snapshot.val())
@@ -65,8 +66,8 @@ fbGetData(){
 
 fbPostData(name,descr){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
-  firebase.database().ref().child('/BFunctions/').child(name).set({
-    AName: name ,BDescr: descr, CFlag: 'X', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
+ firebase.database().ref().child('/BFunctions/').child(name).set({
+ AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';
@@ -86,12 +87,10 @@ refreshList(){
 
 fbDeleteData(key){
   firebase.database().ref().child('/BFunctions/').child(key).update({
-    CFlag: 'Removed'//, removed: this.removeDate
+    CFlag: 'archived'//, removed: this.removeDate
   });
-    
 //   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
    window.location.reload();
-   
  }
 
  sort(property){
