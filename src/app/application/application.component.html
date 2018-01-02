@@ -7,21 +7,29 @@
     <div class="panel-heading">
       <legend>Application</legend>
       <div class="form-group">
+        <b>
         <label>Name</label>
+      </b>
         <input type="text" class="form-control" name="name" ngModel>
       </div>
       <div class="form-group">
-          <label>Description</label>
+        <b>
+         <label>Description</label>
+        </b>
           <textarea type="text" class="form-control" name="descr" ngModel></textarea>
         </div>
       <div class="form-group">
+        <b>
         <label>Version</label>
+      </b>
         <input type="text" class="form-control" name="version" ngModel>
       </div>
       
       <div class="form-group">
+        <b>
           <label class="control-label">Usage Time</label>
-          <div class="form-group">
+        </b>
+          <!--<div class="form-group">
             <div class="input-group">
               <div class="input-group-addon"><i class="fa fa-calendar" aria-hidden="true"></i> 
               </div>
@@ -31,7 +39,7 @@
               <input type="text" class="form-control" id="fromTime" placeholder="to">  
             </div>
           </div>
-        </div>
+        </div>-->
 
         <form class="datepicker" #myForm ="ngForm" novalidate>
           
@@ -41,12 +49,14 @@
 
           <form #myForm ="ngForm" novalidate>
             
-                 <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)] ="model" required placeholder="to"> </my-date-picker>
+                 <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)] ="model2" required placeholder="to"> </my-date-picker>
             
             </form>
        
       <div class="form-group">
+        <b>
         <label>Geography</label>
+      </b>
         <input type="text" class="form-control" name="geography" ngModel>
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
