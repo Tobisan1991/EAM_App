@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {IMyOptions } from 'mydatepicker';
+import { IMyOptions } from 'mydatepicker';
 
 
 
@@ -11,23 +11,23 @@ import {IMyOptions } from 'mydatepicker';
   encapsulation: ViewEncapsulation.None
 })
 export class Application implements OnInit {
-  
+
   private myDatePickerOptions: IMyOptions = {
-    
-              dateFormat :'dd.mm.yyyy',
-    
-    };
-    
-    
-  
+
+    dateFormat: 'dd.mm.yyyy',
+
+  };
+
+
+
   constructor() {
 
-   }
+  }
 
   ngOnInit() {
   }
 
 
-  
+
 
 }
