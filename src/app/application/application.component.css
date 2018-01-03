@@ -2,9 +2,15 @@
     padding: 30px;
 
 }
-.datepicker{
-    border-radius: 10px;
 
 
+.date_from{
+    width: 40%;
+    
+}
+.date_to{
+    width: 40%;
+    clear: right;
+    
 
 }
