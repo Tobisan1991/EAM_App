@@ -16,8 +16,7 @@ declare var firebase: any;
 })
 export class BfuncListComponent implements OnInit {
   private sub: any;
-  
-private ID: string;
+  private ID: string;
   name;
   descr;
   creationDate:String;
