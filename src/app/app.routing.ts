@@ -9,9 +9,10 @@ import { AppsystemComponent } from './appsystem/appsystem.component';
 import { Application } from './application/application.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {LoginComponent} from "./login/login.component";
 const appRoutes: Routes = [
-    { path: '', redirectTo: '/home', pathMatch: 'full' },
-    
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+
 
     {
         path:"tutorial",
@@ -48,6 +49,10 @@ const appRoutes: Routes = [
     {
         path:"dashboard",
         component: DashboardComponent,
+    },
+    {
+      path:"login",
+      component: LoginComponent,
     }
 
 
@@ -56,7 +61,7 @@ const appRoutes: Routes = [
 @NgModule({
   imports:[
       RouterModule.forRoot(
-         appRoutes 
+         appRoutes
       )
   ],
   exports: [

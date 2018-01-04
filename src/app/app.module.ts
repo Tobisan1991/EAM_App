@@ -20,6 +20,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchNamePipe } from './search-name.pipe';
 import { OrderByPipe } from './order-by.pipe';
 import { MyDatePickerModule} from 'mydatepicker';
+import { LoginComponent } from './login/login.component';
+import {AuthenticationService} from "./authentication.service";
+import {NavbarService} from "./navbar.service";
 
 
 
@@ -38,7 +41,8 @@ import { MyDatePickerModule} from 'mydatepicker';
     ApplicListComponent,
     DashboardComponent,
     SearchNamePipe,
-    OrderByPipe
+    OrderByPipe,
+    LoginComponent
   ],
 
   imports: [
@@ -47,9 +51,9 @@ import { MyDatePickerModule} from 'mydatepicker';
     HttpModule,
     AppRoutingModule,
     MyDatePickerModule
-    
+
   ],
-  providers: [],
+  providers: [AuthenticationService, NavbarService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

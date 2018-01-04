@@ -1,16 +1,16 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <!-- <div style="text-align:center"></div> -->
-  
-  
+
+
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-color">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-color" *ngIf='navbarService.isVisible() | async'>
           <!-- <a class="navbar-brand" href="#">Navbar</a> -->
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
 
          <!-- <h3> {{BusinessFunction.test}}</h3> -->
-        
+
           <div class="collapse navbar-collapse navbar-adjustment" id="navbarColor01">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item activ-link">
@@ -44,14 +44,14 @@
       </header>
 
 <router-outlet></router-outlet>
-  
-<body> 
+
+<body>
   </body>
 
 <!-- <p *ngFor= 'let item of menueList'>
       <a href='/{{item.slug}}'>{{item.name}}</a>
       <!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
-  
+
 
   <!-- <div *ngFor="let image of imageList">
     <img class="image-poster" src="{{image.imageUrl}}"/> -->

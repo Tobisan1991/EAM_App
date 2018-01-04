@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {NavbarService} from "./navbar.service";
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,6 @@ export class AppComponent {
     name: "Application",
     slug: "application"
   } ];
-  constructor() { }
+  constructor(private navbarService: NavbarService) { }
   //generate Moduls! ng g component youcomponentName
 }
