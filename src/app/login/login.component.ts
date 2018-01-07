@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router, private navbarService: NavbarService, private authService: AuthenticationService) {  }
 
   ngOnInit() {
-    this.navbarService.hide();
+   // this.navbarService.hide();
   }
 
   login() {

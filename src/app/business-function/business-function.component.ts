@@ -3,7 +3,6 @@ import { Router, ActivatedRoute, Params} from '@angular/router';
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
-//import {FORM_DIRECTIVES, FormBuilder, ControlGroup, Validators, Control} from '@angular/common';
 import { SearchNamePipe } from '../search-name.pipe'
 import {LoginComponent} from '../login/login.component'
 

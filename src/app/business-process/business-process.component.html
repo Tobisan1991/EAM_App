@@ -1,53 +1,112 @@
 <div class="panel panel-primary">
-  <div class="panel-heading">
-    <legend>Business Process</legend>
-
-<form class="myform">
-    <fieldset>
-      <div class="form-group">
-        <b>
-        <label for="name">Name</label>
-      </b>
-        <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
-      </div>
-      <div class="form-group">
-        <b>
-        <label for="description">Description</label>
-      </b>
-        <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
-      </div>
-     <!-- <div class="form-group">
-        <label for="bfunctions">Business Functions:</label>
-        <select multiple="" class="form-control" [(ngModel)]="bfunction" name="bfunction" [ngModelOptions]="{standalone: true}">
-          <option *ngFor='let bfunc of bfuncliste'>{{bfunc.Name}}</option>          
-        </select> -->
-        
-        <fieldset class="form-group" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+    <div class="panel-heading">
+      <legend>Business Process</legend>
+  
+  <form class="myform">
+      <fieldset>
+        <div class="form-group">
           <b>
-            <label for="Typ">Typ</label>
-          </b>
-          <div class="form-check">
+          <label for="name">Name</label>
+        </b>
+          <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group">
+          <b>
+          <label for="description">Description</label>
+        </b>
+          <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
+        </div>
+          
+        
+          <fieldset class="form-group" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+            <b>
+              <label for="Typ">Typ</label>
+            </b>
+            <div class="form-check">
+              <label class="form-check-label">
+                <input type="radio" [(ngModel)]="typ" class="form-check-input" name="typ" [ngModelOptions]="{standalone: true}" id="optionsRadios1" value="Functional" checked="">
+                Functional
+              </label>
+            </div>
+            <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="typ" id="optionsRadios1" value="Functional" checked="">
-              Functional
-            </label>
-          </div>
-          <div class="form-check">
-          <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="typ" id="optionsRadios2" value="Non_Functional">
-              Non-Functional
-            </label>
-          </div>
-          <div class="form-check">
-          <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="typ" id="optionsRadios3" value="Domain">
-              Domain
-            </label>
-          </div>
-        </fieldset>
-    <button (click)="fbPostData(name, descr, typ)" type="submit" class="btn btn-primary">Add</button>
-    </fieldset>
-  </form>
-
-</div>
-</div>
+                <input type="radio" [(ngModel)]="typ" class="form-check-input" name="typ" [ngModelOptions]="{standalone: true}" id="optionsRadios2" value="Non-Functional">
+                Non-Functional
+              </label>
+            </div>
+            <div class="form-check">
+            <label class="form-check-label">
+                <input type="radio" [(ngModel)]="typ" class="form-check-input" name="typ" [ngModelOptions]="{standalone: true}" id="optionsRadios3" value="Domain">
+                Domain
+              </label>
+            </div>
+          </fieldset>
+          
+  
+      <button (click)="fbPostData(name, descr, typ)" type="submit" class="btn btn-primary">Add</button>
+      </fieldset>
+    </form>
+  
+  </div>
+  </div>
+  
+  
+  <div class="bprocess-liste">
+      <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
+     <br>
+    
+     <table class="table table-striped table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="pointer" (click)="sort('AName')">Name
+            <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
+                              'fa-sort-asc': (column == 'AName' && !isDesc), 
+                              'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+          <th class="pointer" (click)="sort('BDescr')">Description
+            <i class="fa" [ngClass]="{'fa-sort': column != 'BDescr', 
+                              'fa-sort-asc': (column == 'BDescr' && !isDesc), 
+                              'fa-sort-desc': (column == 'BDescr' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+          <th class="pointer" (click)="sort('FTyp')">Typ
+              <i class="fa" [ngClass]="{'fa-sort': column != 'FTyp', 
+                                'fa-sort-asc': (column == 'FTyp' && !isDesc), 
+                                'fa-sort-desc': (column == 'FTyp' && isDesc) }" aria-hidden="true"> </i>
+            </th>
+  
+          <th class="pointer" (click)="sort('DCreationDate')">Creation Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
+                                'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
+                                'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+  
+          <th class="pointer" (click)="sort('EEditDate')">Edit Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
+                                  'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
+                                  'fa-sort-desc': (column == 'EEditDate' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+          <th width="250px" class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bprocess of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
+          <td>{{bprocess.AName}}</td>
+          <td>{{bprocess.BDescr}}</td>
+          <td>{{bprocess.FTyp}}</td>
+          <!-- <a [routerLink]="['function/{{bprocess.Name}}']" [queryParams]="{{bprocess.Name}}">{{bprocess.Name}}</a> -->
+          <td>{{bprocess.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td>{{bprocess.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td align="center">
+            <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(bprocess.$key=bprocess.AName)">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/process', bprocess.AName]">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+  
+      </tbody>
+    </table>
+  </div>
+  
