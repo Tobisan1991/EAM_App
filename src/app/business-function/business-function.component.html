@@ -4,16 +4,45 @@
     <div class="form-group">
       <form id="add-bfunc">
         <div class="form-group">
-          <label>Name</label>
+          <b>
+            <label>Name</label>
+          </b>
           <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
         </div>
         <div class="form-group">
-          <label>Description</label>
+          <b>
+            <label>Description</label>
+          </b>
           <textarea type="text" [(ngModel)]="descr" class="form-control" name="descr" placeholder="Enter Description" [ngModelOptions]="{standalone: true}"></textarea>
           <!-- <label>Business Function to Remove</label>
     <input type="text" [(ngModel)]="key" name="txt" class="form-control" name="descr" placeholder="Key to be removed" [ngModelOptions]="{standalone: true}">  -->
         </div>
-        <button (click)="fbPostData(name, descr)" type="submit" class="btn btn-primary">Add</button>
+
+        <fieldset class="form-group" [(ngModel)]="typ" name="typ" [ngModelOptions]="{standalone: true}" ngDefaultControl>
+          <b>
+            <label for="Typ">Typ</label>
+          </b>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" [(ngModel)]="typ" class="form-check-input" name="typ" [ngModelOptions]="{standalone: true}" id="optionsRadios1"
+                value="Functional" checked=""> Functional
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" [(ngModel)]="typ" class="form-check-input" name="typ" [ngModelOptions]="{standalone: true}" id="optionsRadios2"
+                value="Non-Functional"> Non-Functional
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" [(ngModel)]="typ" class="form-check-input" name="typ" [ngModelOptions]="{standalone: true}" id="optionsRadios3"
+                value="Domain"> Domain
+            </label>
+          </div>
+        </fieldset>
+
+        <button (click)="fbPostData(name, descr,typ)" type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
   </div>
@@ -39,7 +68,11 @@
                               'fa-sort-asc': (column == 'BDescr' && !isDesc), 
                               'fa-sort-desc': (column == 'BDescr' && isDesc) }" aria-hidden="true"> </i>
           </th>
-
+          <th class="pointer" (click)="sort('FTyp')">Type
+            <i class="fa" [ngClass]="{'fa-sort': column != 'FTyp', 
+                              'fa-sort-asc': (column == 'FTyp' && !isDesc), 
+                              'fa-sort-desc': (column == 'FTyp' && isDesc) }" aria-hidden="true"> </i>
+          </th>
           <th class="pointer" (click)="sort('DCreationDate')">Creation Date
             <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
                                 'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
@@ -58,7 +91,7 @@
         <tr *ngFor="let bfunc of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
           <td>{{bfunc.AName}}</td>
           <td>{{bfunc.BDescr}}</td>
-
+          <td>{{bfunc.FTyp}}</td>
           <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
           <td>{{bfunc.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
           <td>{{bfunc.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>

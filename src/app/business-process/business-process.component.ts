@@ -23,7 +23,6 @@ export class BusinessProcessComponent implements OnInit {
   name:String;
   descr:String;
   datum: String;
-  typ: String;
   liste = [];
   isDesc: boolean = false;
   column: string = 'Name';
@@ -55,11 +54,11 @@ export class BusinessProcessComponent implements OnInit {
     })
   }
 
-fbPostData(name,descr, typ){
-  console.log(name,typ,descr);
+fbPostData(name,descr){
+  console.log(name,descr);
   // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
   firebase.database().ref().child('/BProcess/').child(name).set({
-  AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum, FTyp: typ //, created: this.creationDate, altered: 'none', removed: 'none'
+  AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
      });
      this.name = '';
      this.descr = '';

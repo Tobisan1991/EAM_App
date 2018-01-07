@@ -21,6 +21,7 @@ export class BusinessFunctionComponent implements OnInit {
 
   name:String;
   descr:String;
+  typ:String;
   datum: String;
   liste = [];
   isDesc: boolean = false;
@@ -57,10 +58,10 @@ fbGetData(){
 }
 
 
-fbPostData(name,descr){
+fbPostData(name,descr,typ){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
  firebase.database().ref().child('/BFunctions/').child(name).set({
- AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
+ AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ //, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';

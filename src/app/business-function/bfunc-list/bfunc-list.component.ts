@@ -19,6 +19,7 @@ export class BfuncListComponent implements OnInit {
   private ID: string;
   name;
   descr;
+  typ:String;
   creationDate:String;
   datum:String;
   
@@ -62,13 +63,13 @@ private editData = [];
     
 }
 
-    fbEditData(name,descr){
+    fbEditData(name,descr,typ){
       // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
       firebase.database().ref().child('/BFunctions/'+this.ID+'/').update({CFlag: 'archived'//, removed: this.removeDate
     })
 
        firebase.database().ref().child('/BFunctions/').child(name).set({
-         AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, EEditDate: this.datum
+         AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, EEditDate: this.datum, FTyp: typ
          });
      }
 
