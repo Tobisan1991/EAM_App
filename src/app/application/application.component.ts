@@ -58,7 +58,7 @@ export class Application implements OnInit {
 
   fbGetData(){
 
-    firebase.database().ref().child('/application/').orderByChild('CFlag').equalTo('active').
+    firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
     on('child_added', (snapshot) => {  
     //firebase.database().ref('/Appsystem/').orderByKey().on('child_added', (snapshot) => {
    // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
@@ -69,7 +69,7 @@ export class Application implements OnInit {
 fbPostData(name,descr,dateFrom,dateTo, geography ){
   console.log(name,descr, dateFrom,dateTo, geography);
   // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
-  firebase.database().ref().child('/application/').child(name).set({
+  firebase.database().ref().child('/Application/').child(name).set({
     AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum, GDateFrom: dateFrom, HdateTo: dateTo, Igeography: geography //, created: this.creationDate, altered: 'none', removed: 'none'
   });
   this.name = '';
@@ -81,7 +81,7 @@ fbPostData(name,descr,dateFrom,dateTo, geography ){
  }
 
  fbDeleteData(key){
-  firebase.database().ref().child('/application/').child(key).update({
+  firebase.database().ref().child('/Application/').child(key).update({
     CFlag: 'archived'//, removed: this.removeDate
   });
 //   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 

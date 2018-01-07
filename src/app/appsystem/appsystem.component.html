@@ -6,19 +6,20 @@
     </div>
   <div class="form-group">
   <b>
-  <label for="name">Name</label>
+  <label for="name">Application System</label>
 </b>
   <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
 </div>
 <div class="form-group">
   <b>
-  <label for="ApplicationID">Application-ID</label>
+  <label for="ApplicationID">Applications</label>
 </b>
-  <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Application-ID" rows="1" [ngModelOptions]="{standalone: true}" ></textarea>
+    <select multiple="" class="form-control" [(ngModel)]="application" name="application" [ngModelOptions]="{standalone: true}">
+      <option *ngFor='let app of applications'>{{app.AName}}</option> 
+    </select>
 </div>
-<button (click)="fbPostData(name, descr)" type="submit" class="btn btn-primary">Add</button>
+<button (click)="fbPostData(name, application)" type="submit" class="btn btn-primary">Add</button>
 
-</div>
 
 <div class="appsystem-liste">
     <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
@@ -32,10 +33,10 @@
                             'fa-sort-asc': (column == 'AName' && !isDesc), 
                             'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
         </th>
-        <th class="pointer" (click)="sort('BDescr')">Description
-          <i class="fa" [ngClass]="{'fa-sort': column != 'BDescr', 
-                            'fa-sort-asc': (column == 'BDescr' && !isDesc), 
-                            'fa-sort-desc': (column == 'BDescr' && isDesc) }" aria-hidden="true"> </i>
+        <th class="pointer" (click)="sort('IApplicationen')">Applicationen
+          <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
+                            'fa-sort-asc': (column == 'IApplicationen' && !isDesc), 
+                            'fa-sort-desc': (column == 'IApplicationen' && isDesc) }" aria-hidden="true"> </i>
         </th>
 
         <th class="pointer" (click)="sort('DCreationDate')">Creation Date
@@ -55,8 +56,7 @@
     <tbody>
       <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
         <td>{{appsystem.AName}}</td>
-        <td>{{appsystem.BDescr}}</td>
-
+        <td>{{appsystem.BApplication}}</td>
         <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
         <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
         <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>

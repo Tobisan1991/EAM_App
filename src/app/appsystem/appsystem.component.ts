@@ -19,9 +19,10 @@ const d: Date = new Date();
 export class AppsystemComponent implements OnInit {
 
   name:String;
-  descr:String;
+  application:String;
   datum: String;
   liste = [];
+  applications = [];
   isDesc: boolean = false;
   column: string = 'Name';
   direction: number;
@@ -48,16 +49,23 @@ export class AppsystemComponent implements OnInit {
     //firebase.database().ref('/Appsystem/').orderByKey().on('child_added', (snapshot) => {
    // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
     this.liste.push(snapshot.val())
+    });
+    firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
+    on('child_added', (snapshot) => {  
+    //firebase.database().ref('/Appsystem/').orderByKey().on('child_added', (snapshot) => {
+   // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
+    this.applications.push(snapshot.val());
     })
+    console.log(this.applications);
   }
 
-  fbPostData(name,descr){
+  fbPostData(name,application){
     // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
     firebase.database().ref().child('/Appsystem/').child(name).set({
-    AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
+    AName: name ,BApplication: application, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
        });
        this.name = '';
-       this.descr = '';
+       this.application = '';
              
    }
 
