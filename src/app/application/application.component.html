@@ -2,17 +2,17 @@
   <div class="panel-heading">
     <legend>Application</legend>
     <div class="form-group">
-      <b>
-        <label>Name</label>
+        <b>
+        <label for="name">Name</label>
       </b>
-      <input type="text" class="form-control" name="name" ngModel>
-    </div>
-    <div class="form-group">
-      <b>
-        <label>Description</label>
+        <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <b>
+        <label for="description">Description</label>
       </b>
-      <textarea type="text" class="form-control" name="descr" ngModel></textarea>
-    </div>
+        <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
+      </div>
     
     <div class="form-group">
       <b>
@@ -26,10 +26,10 @@
         <label class="control-label">Usage Time</label>
       </b>
       <form class="date_from" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model" required placeholder="from"> </my-date-picker>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from"> </my-date-picker>
       </form>
       <form class="date_to" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="model2" required placeholder="to"> </my-date-picker>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to"> </my-date-picker>
       </form>
     </div>
 
@@ -37,7 +37,7 @@
         <b>
           <label>Geography</label>
         </b>
-        <input type="text" class="form-control" name="geography" ngModel>
+        <input type="text" class="form-control" name="geography" >
       </div>
       <button type="submit" class="btn btn-primary">Add</button>
     
