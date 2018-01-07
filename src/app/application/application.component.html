@@ -14,22 +14,23 @@
         <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
       </div>
     
-    <div class="form-group">
+    <!-- <div class="form-group">
       <b>
         <label>Version</label>
-      </b>
+      <!-- war es nicht Vision ? -->
+      <!-- </b>
       <input type="text" class="form-control"  name="version" ngModel>
-    </div>
+    </div>  -->
 
     <div class="form-group">
       <b>
         <label class="control-label">Usage Time</label>
       </b>
-      <form class="date_from" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from"> </my-date-picker>
+      <form class="dateFrom" #myForm="ngForm" novalidate>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from" [ngModelOptions]="{standalone: true}"> </my-date-picker>
       </form>
-      <form class="date_to" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to"> </my-date-picker>
+      <form class="dateTo" #myForm="ngForm" novalidate>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to" [ngModelOptions]="{standalone: true}">  </my-date-picker>
       </form>
     </div>
 
@@ -37,10 +38,11 @@
         <b>
           <label>Geography</label>
         </b>
-        <input type="text" class="form-control" name="geography" >
+        <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}" >
       </div>
-      <button type="submit" class="btn btn-primary">Add</button>
-    
+
+      <button type="submit" class="btn btn-primary"  (click)="fbPostData(name,descr,dateFrom,dateTo,geography)" >Add</button>
+      
   </div>
 
   <!-- <div class="form-group">

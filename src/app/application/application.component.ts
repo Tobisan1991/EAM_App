@@ -1,16 +1,38 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router, ActivatedRoute, Params} from '@angular/router';
+import { DataService } from '../data.service';
+import { Http } from '@angular/http';
+import { SearchNamePipe } from '../search-name.pipe'
+import { rootRoute } from '@angular/router/src/router_module';
+import {LoginComponent} from '../login/login.component'
 import { IMyOptions } from 'mydatepicker';
 
 
+declare var firebase: any;
+const d: Date = new Date();
 
 
 @Component({
   selector: 'app-application',
   templateUrl: './application.component.html',
   styleUrls: ['./application.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
+  providers: [DataService, SearchNamePipe, LoginComponent ]
 })
 export class Application implements OnInit {
+
+  name:String;
+  descr:String;
+  datum: String;
+  typ: String;
+  liste = [];
+  isDesc: boolean = false;
+  column: string = 'Name';
+  direction: number;
+  loginName: String;
+  dateFrom:string;
+  dateTo:string;
+  geography:string;
 
   private myDatePickerOptions: IMyOptions = {
 
@@ -20,14 +42,57 @@ export class Application implements OnInit {
 
 
 
-  constructor() {
-
-  }
+  constructor(
+    private dataService: DataService,
+    private router: Router, 
+    private route: ActivatedRoute,
+    private searchName: SearchNamePipe,
+    private loginComponent: LoginComponent) {
+    
+      this.datum=Date().toString();
+     }
 
   ngOnInit() {
+    this.fbGetData();
   }
 
+  fbGetData(){
 
+    firebase.database().ref().child('/application/').orderByChild('CFlag').equalTo('active').
+    on('child_added', (snapshot) => {  
+    //firebase.database().ref('/Appsystem/').orderByKey().on('child_added', (snapshot) => {
+   // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
+    this.liste.push(snapshot.val())
+    })
+  }
+
+fbPostData(name,descr,dateFrom,dateTo, geography ){
+  console.log(name,descr, dateFrom,dateTo, geography);
+  // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
+  firebase.database().ref().child('/application/').child(name).set({
+    AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum, GDateFrom: dateFrom, HdateTo: dateTo, Igeography: geography //, created: this.creationDate, altered: 'none', removed: 'none'
+  });
+  this.name = '';
+  this.descr = '';
+  this.dateFrom = '';
+  this.dateTo = '';
+  this.geography = '';
+           
+ }
+
+ fbDeleteData(key){
+  firebase.database().ref().child('/application/').child(key).update({
+    CFlag: 'archived'//, removed: this.removeDate
+  });
+//   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
+   window.location.reload();
+ }
+
+ sort(property){
+  this.isDesc = !this.isDesc; //change the direction    
+  this.column = property;
+  this.direction = this.isDesc ? 1 : -1;
+};
 
 
 }
