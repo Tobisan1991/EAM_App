@@ -33,6 +33,7 @@ export class Application implements OnInit {
   dateFrom:string;
   dateTo:string;
   geography:string;
+  version:string;
 
   private myDatePickerOptions: IMyOptions = {
 
@@ -66,17 +67,18 @@ export class Application implements OnInit {
     })
   }
 
-fbPostData(name,descr,dateFrom,dateTo, geography ){
+fbPostData(name,descr,dateFrom,dateTo, geography, version ){
   console.log(name,descr, dateFrom,dateTo, geography);
   // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
   firebase.database().ref().child('/Application/').child(name).set({
-    AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum, GDateFrom: dateFrom, HdateTo: dateTo, Igeography: geography //, created: this.creationDate, altered: 'none', removed: 'none'
+    AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum, GDateFrom: dateFrom, HDateTo: dateTo, IGeography: geography, JVersion: version //, created: this.creationDate, altered: 'none', removed: 'none'
   });
   this.name = '';
   this.descr = '';
   this.dateFrom = '';
   this.dateTo = '';
   this.geography = '';
+  this.version = '';
            
  }
 
