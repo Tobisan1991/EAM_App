@@ -3,6 +3,12 @@
     <legend>Business Function </legend>
     <div class="form-group">
       <form id="add-bfunc">
+          <div class="form-group">
+              <b>
+                <label>ID</label>
+              </b>
+              <input type="form-group" [(ngModel)]="id" class="form-control" name="id" placeholder="Enter ID" [ngModelOptions]="{standalone: true}">
+            </div>
         <div class="form-group">
           <b>
             <label>Name</label>
@@ -58,6 +64,11 @@
     <table class="table table-striped table-hover table-bordered">
       <thead class="thead-dark">
         <tr>
+            <th class="pointer" (click)="sort('ZID')">ID
+                <i class="fa" [ngClass]="{'fa-sort': column != 'ZID', 
+                                  'fa-sort-asc': (column == 'ZID' && !isDesc), 
+                                  'fa-sort-desc': (column == 'ZID' && isDesc) }" aria-hidden="true"> </i>
+          </th>
           <th class="pointer" (click)="sort('AName')">Name
             <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
                               'fa-sort-asc': (column == 'AName' && !isDesc), 
@@ -89,6 +100,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let bfunc of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
+          <td>{{bfunc.ZID}}</td>
           <td>{{bfunc.AName}}</td>
           <td>{{bfunc.BDescr}}</td>
           <td>{{bfunc.FTyp}}</td>
