@@ -19,6 +19,7 @@ const d: Date = new Date();
 })
 export class BusinessFunctionComponent implements OnInit {
 
+  id:String; 
   name:String;
   descr:String;
   typ:String;
@@ -58,10 +59,10 @@ fbGetData(){
 }
 
 
-fbPostData(name,descr,typ){
+fbPostData(id,name,descr,typ){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
  firebase.database().ref().child('/BFunctions/').child(name).set({
- AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ //, created: this.creationDate, altered: 'none', removed: 'none'
+ AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, ZID: id//, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';

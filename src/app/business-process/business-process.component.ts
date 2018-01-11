@@ -20,6 +20,7 @@ const d: Date = new Date();
 
 export class BusinessProcessComponent implements OnInit {
 
+  id:String; 
   name:String;
   descr:String;
   datum: String;
@@ -54,11 +55,11 @@ export class BusinessProcessComponent implements OnInit {
     })
   }
 
-fbPostData(name,descr){
+fbPostData(id,name,descr){
   console.log(name,descr);
   // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
   firebase.database().ref().child('/BProcess/').child(name).set({
-  AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
+  AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum, ZID: id//, created: this.creationDate, altered: 'none', removed: 'none'
      });
      this.name = '';
      this.descr = '';

@@ -22,7 +22,7 @@
             </b>
             <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
           </div>
-          <button (click)="fbPostData(name, descr)" type="submit" class="btn btn-primary">Add</button>
+          <button (click)="fbPostData(id, name, descr)" type="submit" class="btn btn-primary">Add</button>
         </fieldset>
       </form>
     </div>
