@@ -27,6 +27,8 @@ export class AppsystemComponent implements OnInit {
   column: string = 'Name';
   direction: number;
   loginName: String;
+  openForm: Boolean=false;
+  closeForm: Boolean=true;
 
   constructor(
     private dataService: DataService,
@@ -83,6 +85,16 @@ export class AppsystemComponent implements OnInit {
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   };
+
+  displayForm(val){
+    if(val==true){
+      this.openForm=false;
+      this.closeForm=true;
+      console.log("methode funktioniert und der wert ist " + this.openForm);
+    }else if(val==false)
+    this.openForm=true;
+    this.closeForm=false;
+  }
 
 
 }
