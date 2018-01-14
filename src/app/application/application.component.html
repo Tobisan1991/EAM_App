@@ -2,46 +2,77 @@
   <div class="panel-heading">
     <legend>Application</legend>
     <div class="form-group">
-        <b>
+      <div class="form-group">
+
+        <fieldset>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="as-is" value="as-is" (click)='onRadioClick(0)'> As-Is
+            </label>
+            <div>
+              <input type="form-group" *ngIf="radio_asis==true" id="As-Is-Input" name="as-is" placeholder="As-Is">
+            </div>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be" (click)='onRadioClick(1)'> To-Be
+            </label>
+            <div>
+                <input type="form-group" *ngIf="radio_tobe==true" id="To-Be-Input" name="To-Be" placeholder="To-Be">
+              </div>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been" (click)='onRadioClick(2)'> Has-Been
+            </label>
+            <div>
+                <input type="form-group" *ngIf="radio_hasbeen==true" id="Has-been-Input" name="has-been" placeholder="Has-Been">
+              </div>
+          </div>
+        </fieldset>
+      </div>
+      <b>
         <label for="name">Name</label>
       </b>
-        <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
-      </div>
-      <div class="form-group">
-        <b>
+      <input type="form-group" [(ngModel)]="name" id="inputName" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+    </div>
+    <div class="form-group">
+      <b>
         <label for="description">Description</label>
       </b>
-        <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}" ></textarea>
-      </div>
-    
+      <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+
     <div class="form-group">
       <b>
         <label>Version</label>
       </b>
       <input type="text" class="form-control" [(ngModel)]="version" name="version" placeholder="Enter Version" [ngModelOptions]="{standalone: true}">
-    </div> 
+    </div>
 
     <div class="form-group">
       <b>
         <label class="control-label">Usage Time</label>
       </b>
       <form class="dateFrom" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from" [ngModelOptions]="{standalone: true}"> </my-date-picker>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from" [ngModelOptions]="{standalone: true}">
+        </my-date-picker>
       </form>
       <form class="dateTo" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to" [ngModelOptions]="{standalone: true}">  </my-date-picker>
+        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to" [ngModelOptions]="{standalone: true}">
+        </my-date-picker>
       </form>
     </div>
 
-      <div class="form-group">
-        <b>
-          <label>Geography</label>
-        </b>
-        <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}" >
-      </div>
+    <div class="form-group">
+      <b>
+        <label>Geography</label>
+      </b>
+      <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}">
+    </div>
 
-      <button type="submit" class="btn btn-primary"  (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)" >Add</button>
-      
+    <button type="submit" class="btn btn-primary" (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)">Add</button>
+
   </div>
 
   <!-- <div class="form-group">

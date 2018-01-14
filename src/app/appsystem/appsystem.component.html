@@ -1,75 +1,103 @@
-
-
 <div class="panel panel-primary">
-    <div class="panel-heading">
-      <legend>Application System</legend>
+
+ 
+
+  <div class="panel-heading" *ngIf="false">
+    <legend>Application System</legend>
+    <div class="form-group">
+      <div class="form-group">
+
+        <fieldset>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="as-is" value="as-is"> As-Is
+            </label>
+          </div>
+          <div class="form-check">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be"> To-Be
+            </label>
+          </div>
+          <div class="form-check disabled">
+            <label class="form-check-label">
+              <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been"> Has-Been
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <b>
+          <label for="ApplicationID">Application System Name</label>
+        </b>
+        <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+      </div>
+      <div class="form-group">
+        <b>
+          <label for="ApplicationID">Applications</label>
+        </b>
+        <select multiple="" class="form-control" [(ngModel)]="application" name="application" [ngModelOptions]="{standalone: true}">
+          <option *ngFor='let app of applications'>{{app.AName}}</option>
+        </select>
+      </div>
+      <button (click)="fbPostData(name, application)" type="submit" class="btn btn-primary">Add</button>
     </div>
+  </div>
+
   <div class="form-group">
-  <b>
-  <label for="name">Application System</label>
-</b>
-  <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
-</div>
-<div class="form-group">
-  <b>
-  <label for="ApplicationID">Applications</label>
-</b>
-    <select multiple="" class="form-control" [(ngModel)]="application" name="application" [ngModelOptions]="{standalone: true}">
-      <option *ngFor='let app of applications'>{{app.AName}}</option> 
-    </select>
-</div>
-<button (click)="fbPostData(name, application)" type="submit" class="btn btn-primary">Add</button>
+    <div class="col-md-3 search">
+      <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
+    </div>
+  </div>
+
+  <div class="appsystem-liste">
 
 
-<div class="appsystem-liste">
-    <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
-   <br>
-  
-   <table class="table table-striped table-hover table-bordered">
-    <thead class="thead-dark">
-      <tr>
-        <th class="pointer" (click)="sort('AName')">Application System Name
-          <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="pointer" (click)="sort('AName')">Application System Name
+            <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
                             'fa-sort-asc': (column == 'AName' && !isDesc), 
                             'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
-        </th>
-        <th class="pointer" (click)="sort('IApplicationen')">Applications
-          <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
+          </th>
+          <th class="pointer" (click)="sort('IApplicationen')">Applications
+            <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
                             'fa-sort-asc': (column == 'IApplicationen' && !isDesc), 
                             'fa-sort-desc': (column == 'IApplicationen' && isDesc) }" aria-hidden="true"> </i>
-        </th>
+          </th>
 
-        <th class="pointer" (click)="sort('DCreationDate')">Creation Date
-          <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
+          <th class="pointer" (click)="sort('DCreationDate')">Creation Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
                               'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
                               'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
-        </th>
+          </th>
 
-        <th class="pointer" (click)="sort('EEditDate')">Edit Date
-          <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
+          <th class="pointer" (click)="sort('EEditDate')">Edit Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
                                 'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
                                 'fa-sort-desc': (column == 'EEditDate' && isDesc) }" aria-hidden="true"> </i>
-        </th>
-        <th width="250px" class="text-center">Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
-        <td>{{appsystem.AName}}</td>
-        <td>{{appsystem.BApplication}}</td>
-        <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
-        <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-        <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-        <td align="center">
-          <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(appsystem.$key=appsystem.AName)">
-            <i class="fa fa-trash-o" aria-hidden="true"></i>
-          </button>
-          <button type="button" class="btn btn-outline-primary" [routerLink]="['/appsystem', appsystem.AName]">
-            <i class="fa fa-pencil" aria-hidden="true"></i>
-          </button>
-        </td>
-      </tr>
+          </th>
+          <th width="250px" class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
+          <td>{{appsystem.AName}}</td>
+          <td>{{appsystem.BApplication}}</td>
+          <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
+          <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td align="center">
+            <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(appsystem.$key=appsystem.AName)">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/appsystem', appsystem.AName]">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </div>
 </div>
