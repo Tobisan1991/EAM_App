@@ -25,6 +25,9 @@ export class BusinessFunctionComponent implements OnInit {
   typ:String;
   datum: String;
   liste = [];
+  bprocessliste=[];
+  applicationliste=[];
+  appsystemliste=[];
   isDesc: boolean = false;
   column: String = 'Name';
   direction: number;
@@ -68,6 +71,33 @@ fbGetData(){
   console.log(this.liste)
   // firebase.database().ref().child('/ID/').on('child_added', (snapshot) => {  
     
+  //Bprocess DB Zugriff
+    firebase.database().ref().child('/BProcess/').orderByChild('CFlag').equalTo('active').
+    on('child_added', (snapshot) => {  
+
+    this.bprocessliste.push(snapshot.val())
+    });
+    console.log(this.bprocessliste)
+  //Application DB Zugriff
+    firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
+    on('child_added', (snapshot) => {  
+
+    this.applicationliste.push(snapshot.val())
+    });
+    console.log(this.applicationliste)
+
+      //Appsystem DB Zugriff
+      firebase.database().ref().child('/Appsystem/').orderByChild('CFlag').equalTo('active').
+      on('child_added', (snapshot) => {  
+  
+      this.appsystemliste.push(snapshot.val())
+      });
+      console.log(this.appsystemliste)
+    
+      
+    
+      
+
 }
 
 

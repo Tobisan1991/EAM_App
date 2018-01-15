@@ -49,6 +49,33 @@
             </label>
           </div>
         </fieldset>
+        <div class="form-group">
+          <b>
+            <label for="BProcessID">Business Processes</label>
+          </b>
+          <select multiple="" class="form-control" [(ngModel)]="bprocess" name="bprocess" [ngModelOptions]="{standalone: true}">
+            <option *ngFor='let bprocess of bprocessliste'>{{bprocess.AName}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <b>
+            <label for="BProcessID">Applications</label>
+          </b>
+          <select multiple="" class="form-control" [(ngModel)]="applications" name="applications" [ngModelOptions]="{standalone: true}">
+            <option *ngFor='let apps of applicationliste'>{{apps.AName}}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <b>
+            <label for="AppsystemID">Appsystems</label>
+          </b>
+          <select multiple="" class="form-control" [(ngModel)]="appsystems" name="appsystems" [ngModelOptions]="{standalone: true}">
+            <option *ngFor='let appsys of appsystemliste'>{{appsys.AName}}</option>
+          </select>
+        </div>
+
 
         <button (click)="fbPostData(name, descr,typ)" type="submit" class="btn btn-primary">Add</button>
       </form>
