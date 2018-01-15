@@ -47,14 +47,14 @@ private editData = [];
       this.ID = params['name']
      })
      firebase.database().ref().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
-          
-   //firebase.database().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
+        //firebase.database().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
      this.editData.push(snapshot.val())
     }
       
     )
     console.log(this.editData);
     this.name = this.editData[0];
+    // console.log(this.editData[0]);
     this.descr = this.editData[1];
     this.creationDate = this.editData[3];
     // console.log(this.descr);
@@ -65,11 +65,8 @@ private editData = [];
 
     fbEditData(name,descr,typ){
       // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
-      firebase.database().ref().child('/BFunctions/'+this.ID+'/').update({CFlag: 'archived'//, removed: this.removeDate
-    })
-
-       firebase.database().ref().child('/BFunctions/').child(name).set({
-         AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, EEditDate: this.datum, FTyp: typ
+       firebase.database().ref().child('/BFunctions/').child(this.ID).set({
+         ZID: this.ID, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, EEditDate: this.datum, FTyp: typ
          });
      }
 

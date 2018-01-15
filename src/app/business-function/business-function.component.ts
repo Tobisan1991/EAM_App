@@ -19,25 +19,27 @@ const d: Date = new Date();
 })
 export class BusinessFunctionComponent implements OnInit {
 
-  id:String; 
+  id; 
   name:String;
   descr:String;
   typ:String;
   datum: String;
   liste = [];
   isDesc: boolean = false;
-  column: string = 'Name';
+  column: String = 'Name';
   direction: number;
   loginName: String;
 
 
+  private idlist = [];
+  
   constructor(
     private dataService: DataService,
     private router: Router, 
     private route: ActivatedRoute,
     private searchName: SearchNamePipe,
     private loginComponent: LoginComponent) { 
-
+      
       this.datum=Date().toString();
 
   }
@@ -46,6 +48,13 @@ export class BusinessFunctionComponent implements OnInit {
     this.fbGetData();
     
     //console.log(this.liste)
+    firebase.database().ref().child('/AllID/').
+    on('child_added', (snapshot) => { 
+      this.idlist.push(snapshot.val()
+    )})
+    this.id = this.idlist[0]
+    this.id++;
+   console.log(this.id);
   }
 
 fbGetData(){
@@ -55,17 +64,29 @@ fbGetData(){
   //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
  // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
   this.liste.push(snapshot.val())
-  })
+  });
+  console.log(this.liste)
+  // firebase.database().ref().child('/ID/').on('child_added', (snapshot) => {  
+    
 }
 
 
-fbPostData(id,name,descr,typ){
+
+fbPostData(name,descr,typ){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
- firebase.database().ref().child('/BFunctions/').child(name).set({
- AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, ZID: id//, created: this.creationDate, altered: 'none', removed: 'none'
+ 
+
+ firebase.database().ref().child('/BFunctions/').child(this.id).set({
+ ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ//, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';
+
+    firebase.database().ref().child('/AllID/').set({
+      
+      BfuncID: this.id++
+         });
+    
           
 }
   // https://www.youtube.com/watch?v=Fb9o2uwRAk0 minute 3:24 
