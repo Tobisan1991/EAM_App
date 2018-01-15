@@ -1,8 +1,16 @@
 <div class="panel panel-primary">
 
- 
+    <div>
+        <b *ngIf="closeForm" >Add Entity
+          <i class="fa fa-plus" (click)='displayForm(openForm)' aria-hidden="true"></i>
+        </b>
+      </div>
 
+<<<<<<< HEAD
   <div class="panel-heading" *ngIf="true">
+=======
+  <div class="panel-heading" *ngIf="openForm">
+>>>>>>> origin/master
     <legend>Application System</legend>
     <div class="form-group">
       <div class="form-group">
