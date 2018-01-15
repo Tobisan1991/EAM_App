@@ -23,6 +23,9 @@ export class BusinessFunctionComponent implements OnInit {
   name:String;
   descr:String;
   typ:String;
+  bprocess:String;
+  appsystem:String;
+  application:String;
   datum: String;
   liste = [];
   bprocessliste=[];
@@ -102,15 +105,18 @@ fbGetData(){
 
 
 
-fbPostData(name,descr,typ){
+fbPostData(name, descr, typ, bprocess, application, appsystem){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
  
 
  firebase.database().ref().child('/BFunctions/').child(this.id).set({
- ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ//, created: this.creationDate, altered: 'none', removed: 'none'
+ ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, GBProcess:bprocess,HApllication:application,IAppsystem:appsystem//, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';
+    this.bprocess="";
+    this.application="";
+    this.appsystem="";
 
     firebase.database().ref().child('/AllID/').set({
       
