@@ -80,43 +80,39 @@ fbGetData(){
 
     this.bprocessliste.push(snapshot.val())
     });
-    console.log(this.bprocessliste)
+    // console.log(this.bprocessliste)
+
+      //Appsystem DB Zugriff
+      firebase.database().ref().child('/Appsystem/').orderByChild('CFlag').equalTo('active').
+      on('child_added', (snapshot) => {  
+        this.applicationliste.push(snapshot.val())})
+
   //Application DB Zugriff
     firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
     on('child_added', (snapshot) => {  
 
     this.applicationliste.push(snapshot.val())
     });
-    console.log(this.applicationliste)
+    // console.log(this.applicationliste)
 
-      //Appsystem DB Zugriff
-      firebase.database().ref().child('/Appsystem/').orderByChild('CFlag').equalTo('active').
-      on('child_added', (snapshot) => {  
-  
-      this.appsystemliste.push(snapshot.val())
-      });
-      console.log(this.appsystemliste)
-    
-      
-    
-      
 
+      ; 
+      
 }
 
 
 
-fbPostData(name, descr, typ, bprocess, application, appsystem){
+fbPostData(name, descr, typ, bprocess, application){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
  
 
  firebase.database().ref().child('/BFunctions/').child(this.id).set({
- ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, GBProcess:bprocess,HApllication:application,IAppsystem:appsystem//, created: this.creationDate, altered: 'none', removed: 'none'
+ ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, GBProcess:bprocess,HApllication:application//, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';
     this.bprocess="";
     this.application="";
-    this.appsystem="";
 
     firebase.database().ref().child('/AllID/').set({
       

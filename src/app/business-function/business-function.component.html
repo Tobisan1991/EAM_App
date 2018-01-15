@@ -60,24 +60,14 @@
 
         <div class="form-group">
           <b>
-            <label for="ApplicationID">Applications</label>
+            <label for="ApplicationID">Applicantion Systems and Applications</label>
           </b>
-          <select multiple="" class="form-control" [(ngModel)]="applications" name="applications" [ngModelOptions]="{standalone: true}">
+          <select multiple="true" class="form-control" [(ngModel)]="applications" name="applications" [ngModelOptions]="{standalone: true}">
             <option *ngFor='let apps of applicationliste'>{{apps.AName}}</option>
           </select>
         </div>
 
-        <div class="form-group">
-          <b>
-            <label for="AppsystemID">Appsystems</label>
-          </b>
-          <select multiple="" class="form-control" [(ngModel)]="appsystems" name="appsystems" [ngModelOptions]="{standalone: true}">
-            <option *ngFor='let appsys of appsystemliste'>{{appsys.AName}}</option>
-          </select>
-        </div>
-
-
-        <button (click)="fbPostData(name, descr,typ,bprocess,applications,appsystems)" type="submit" class="btn btn-primary">Add</button>
+       <button (click)="fbPostData(name, descr,typ,bprocess,applications)" type="submit" class="btn btn-primary">Add</button>
       </form>
     </div>
   </div>
@@ -113,6 +103,16 @@
                               'fa-sort-asc': (column == 'FTyp' && !isDesc), 
                               'fa-sort-desc': (column == 'FTyp' && isDesc) }" aria-hidden="true"> </i>
           </th>
+          <th class="pointer" (click)="sort('GBProcess')">Business Process
+            <i class="fa" [ngClass]="{'fa-sort': column != 'GBProcess', 
+                              'fa-sort-asc': (column == 'GBProcess' && !isDesc), 
+                              'fa-sort-desc': (column == 'GBProcess' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+          <th class="pointer" (click)="sort('HApllication')">Applicantion Systems and Applications
+            <i class="fa" [ngClass]="{'fa-sort': column != 'HApllication', 
+                              'fa-sort-asc': (column == 'HApllication' && !isDesc), 
+                              'fa-sort-desc': (column == 'HApllication' && isDesc) }" aria-hidden="true"> </i>
+          </th>
           <th class="pointer" (click)="sort('DCreationDate')">Creation Date
             <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
                                 'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
@@ -133,6 +133,9 @@
           <td>{{bfunc.AName}}</td>
           <td>{{bfunc.BDescr}}</td>
           <td>{{bfunc.FTyp}}</td>
+          <td>{{bfunc.GBProcess}}</td>
+          <td>{{bfunc.HApllication}}</td>
+          
           <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
           <td>{{bfunc.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
           <td>{{bfunc.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
