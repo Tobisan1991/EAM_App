@@ -25,7 +25,7 @@ export class BusinessFunctionComponent implements OnInit {
   typ:String;
   bprocess:String;
   appsystem:String;
-  application:String;
+  applications:String;
   datum: String;
   liste = [];
   bprocessliste=[];
@@ -80,7 +80,7 @@ fbGetData(){
 
     this.bprocessliste.push(snapshot.val())
     });
-    // console.log(this.bprocessliste)
+    console.log(this.bprocessliste)
 
       //Appsystem DB Zugriff
       firebase.database().ref().child('/Appsystem/').orderByChild('CFlag').equalTo('active').
@@ -93,26 +93,26 @@ fbGetData(){
 
     this.applicationliste.push(snapshot.val())
     });
-    // console.log(this.applicationliste)
+    console.log(this.applicationliste) 
 
 
-      ; 
+      ;   
       
 }
 
 
 
-fbPostData(name, descr, typ, bprocess, application){
+fbPostData(name, descr, typ, bprocess, applications){
  // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
  
 
  firebase.database().ref().child('/BFunctions/').child(this.id).set({
- ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, GBProcess:bprocess,HApllication:application//, created: this.creationDate, altered: 'none', removed: 'none'
+ ZID: this.id, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.datum,FTyp: typ, GBProcess:bprocess,HApllication:applications//, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.descr = '';
     this.bprocess="";
-    this.application="";
+    this.applications="";
 
     firebase.database().ref().child('/AllID/').set({
       
