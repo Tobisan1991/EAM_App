@@ -119,10 +119,10 @@
                                 'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
           </th>
 
-          <th class="pointer" (click)="sort('EEditDate')">Edit Date
-            <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
-                                  'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
-                                  'fa-sort-desc': (column == 'EEditDate' && isDesc) }" aria-hidden="true"> </i>
+          <th class="pointer" (click)="sort('KEditDate')">Edit Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'KEditDate', 
+                                  'fa-sort-asc': (column == 'KEditDate' && !isDesc), 
+                                  'fa-sort-desc': (column == 'KEditDate' && isDesc) }" aria-hidden="true"> </i>
           </th>
           <th width="250px" class="text-center">Action</th>
         </tr>
@@ -138,7 +138,7 @@
           
           <!-- <a [routerLink]="['function/{{bfunc.Name}}']" [queryParams]="{{bfunc.Name}}">{{bfunc.Name}}</a> -->
           <td>{{bfunc.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-          <td>{{bfunc.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td>{{bfunc.KEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
           <td align="center">
             <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(bfunc.$key=bfunc.ZID)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>

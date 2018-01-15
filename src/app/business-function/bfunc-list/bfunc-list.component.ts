@@ -22,7 +22,8 @@ export class BfuncListComponent implements OnInit {
   typ:String;
   creationDate:String;
   datum:String;
-  
+  bprocessliste=[];
+  applicationliste=[];
 
 private editData = [];
 
@@ -38,7 +39,17 @@ private editData = [];
   ngOnInit() {
     this.fbGetData();
 
-     
+    firebase.database().ref().child('/BProcess/').orderByChild('CFlag').equalTo('active').
+    on('child_added', (snapshot) => {  
+
+    this.bprocessliste.push(snapshot.val())
+    });
+    firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
+    on('child_added', (snapshot) => {  
+
+    this.applicationliste.push(snapshot.val())
+    }); 
+
     }
     
 
@@ -57,16 +68,19 @@ private editData = [];
     // console.log(this.editData[0]);
     this.descr = this.editData[1];
     this.creationDate = this.editData[3];
+    this.typ = this.editData[4];
+    // this.bprocessliste = this.editData[5];
+    // this.applicationliste = this.editData[6];
     // console.log(this.descr);
     // console.log(this.name);
     // console.log(this.editData);
     
 }
 
-    fbEditData(name,descr,typ){
+    fbEditData(name,descr,typ,bprocess,applications){
       // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
        firebase.database().ref().child('/BFunctions/').child(this.ID).set({
-         ZID: this.ID, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, EEditDate: this.datum, FTyp: typ
+         ZID: this.ID, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, FTyp: typ, KEditDate: this.datum, GBProcess:bprocess,HApllication:applications
          });
      }
 

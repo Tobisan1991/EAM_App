@@ -37,9 +37,26 @@
                   value="Domain"> Domain
               </label>
             </div>
+            <div class="form-group">
+              <b>
+                <label for="BProcessID">Business Processes</label>
+              </b>
+              <select multiple="" class="form-control" [(ngModel)]="bprocess" name="bprocess" [ngModelOptions]="{standalone: true}">
+                <option *ngFor='let bprocess of bprocessliste'>{{bprocess.AName}}</option>
+              </select>
+            </div>
+    
+            <div class="form-group">
+              <b>
+                <label for="ApplicationID">Applicantion Systems and Applications</label>
+              </b>
+              <select multiple="true" class="form-control" [(ngModel)]="applications" name="applications" [ngModelOptions]="{standalone: true}">
+                <option *ngFor='let apps of applicationliste'>{{apps.AName}}</option>
+              </select>
+            </div>
           </fieldset>
         </div>
-        <button (click)="fbEditData(name, descr, typ)" type="submit" class="btn btn-primary" [routerLink]="['/function']">Submit</button>
+        <button (click)="fbEditData(name, descr, typ, bprocess,applications)" type="submit" class="btn btn-primary" [routerLink]="['/function']">Submit</button>
       </form>
 
     </div>
