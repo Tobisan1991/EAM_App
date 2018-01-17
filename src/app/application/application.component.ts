@@ -37,6 +37,10 @@ export class Application implements OnInit {
   radio_asis: boolean;
   radio_tobe: boolean;
   radio_hasbeen: boolean;
+  openForm: Boolean = false;
+  statusForm: Boolean = true;
+  closeForm: Boolean = true;
+  closeHeading: Boolean = false;
 
   private myDatePickerOptions: IMyOptions = {
 
@@ -58,6 +62,8 @@ export class Application implements OnInit {
 
   ngOnInit() {
     this.fbGetData();
+    console.log("openform " + this.openForm);
+    console.log("closeform " + this.closeForm);
   }
 
   fbGetData() {
@@ -98,6 +104,23 @@ export class Application implements OnInit {
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   };
+
+  displayForm(val) {
+    if (val == false) {
+      this.statusForm=true;
+      this.closeHeading=false; 
+      //this.openForm = false;
+      //this.closeForm = true;
+      console.log("openform " + this.openForm);
+      console.log("closeform " + this.closeForm);
+    } 
+      this.statusForm=false; 
+      this.closeHeading=true; 
+    //this.openForm = true;
+      //this.closeForm = false;
+    console.log("openform " + this.openForm);
+    console.log("closeform " + this.closeForm);
+  }
 
   onRadioClick(val) {
     if (val == 0) {

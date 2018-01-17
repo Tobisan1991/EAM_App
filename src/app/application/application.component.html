@@ -1,7 +1,39 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
-    <legend>Application</legend>
+    <h3 class="header">Application</h3>
+
     <div class="form-group">
+
+      <h6 for="name">Name</h6>
+
+      <input type="form-group" [(ngModel)]="name" id="inputName" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+
+      <h6 for="description">Description</h6>
+
+      <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
+    </div>
+
+    
+      <h5 *ngIf="statusForm">Details 
+        <small class="text-muted">click for more details</small>
+        <i class="fa fa-angle-double-down" (click)='displayForm(statusForm)' aria-hidden="true"></i>
+      </h5>
+      
+      <h5 *ngIf="closeHeading">Details
+          <small class="text-muted">click for less details</small>
+          <i class="fa fa-angle-double-up" (click)='displayForm(closeHeading)' aria-hidden="true"></i>
+        </h5>
+
+      <div class="form-group details" *ngIf="closeHeading">  
+          
+      <div class="form-group">
+
+        <h6>Version</h6>
+
+        <input type="text" class="form-control" [(ngModel)]="version" name="version" placeholder="Enter Version" [ngModelOptions]="{standalone: true}">
+      </div>
+
+
       <div class="form-group">
 
         <fieldset>
@@ -18,42 +50,20 @@
               <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be" (click)='onRadioClick(1)'> To-Be
             </label>
             <div>
-                <input type="form-group" *ngIf="radio_tobe==true" id="To-Be-Input" name="To-Be" placeholder="To-Be">
-              </div>
+              <input type="form-group" *ngIf="radio_tobe==true" id="To-Be-Input" name="To-Be" placeholder="To-Be">
+            </div>
           </div>
           <div class="form-check disabled">
             <label class="form-check-label">
               <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been" (click)='onRadioClick(2)'> Has-Been
             </label>
             <div>
-                <input type="form-group" *ngIf="radio_hasbeen==true" id="Has-been-Input" name="has-been" placeholder="Has-Been">
-              </div>
+              <input type="form-group" *ngIf="radio_hasbeen==true" id="Has-been-Input" name="has-been" placeholder="Has-Been">
+            </div>
           </div>
         </fieldset>
       </div>
-      <b>
-        <label for="name">Name</label>
-      </b>
-      <input type="form-group" [(ngModel)]="name" id="inputName" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
-    </div>
-    <div class="form-group">
-      <b>
-        <label for="description">Description</label>
-      </b>
-      <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
-    </div>
 
-    <div class="form-group">
-      <b>
-        <label>Version</label>
-      </b>
-      <input type="text" class="form-control" [(ngModel)]="version" name="version" placeholder="Enter Version" [ngModelOptions]="{standalone: true}">
-    </div>
-
-    <div class="form-group">
-      <b>
-        <label class="control-label">Usage Time</label>
-      </b>
       <form class="dateFrom" #myForm="ngForm" novalidate>
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from" [ngModelOptions]="{standalone: true}">
         </my-date-picker>
@@ -62,21 +72,79 @@
         <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to" [ngModelOptions]="{standalone: true}">
         </my-date-picker>
       </form>
-    </div>
 
-    <div class="form-group">
-      <b>
-        <label>Geography</label>
-      </b>
-      <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}">
-    </div>
 
-    <button type="submit" class="btn btn-primary" (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)">Add</button>
+      <div class="form-group">
+
+        <h6>Geography</h6>
+
+        <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}">
+      </div>
+
+      <button type="submit" class="btn btn-primary" (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)">Add</button>
+
+    </div>
 
   </div>
 
-  <!-- <div class="form-group">
+
+  <div class="form-group">
     <div class="col-md-3 search">
       <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
     </div>
-  </div> -->
+  </div>
+
+  <div class="application-liste">
+
+
+    <table class="table table-striped table-hover table-bordered">
+      <thead class="thead-dark">
+        <tr>
+          <th class="pointer" (click)="sort('AName')">Application Name
+            <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
+                            'fa-sort-asc': (column == 'AName' && !isDesc), 
+                            'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+          <th class="pointer" (click)="sort('IApplicationen')">Description
+            <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
+                            'fa-sort-asc': (column == 'IApplicationen' && !isDesc), 
+                            'fa-sort-desc': (column == 'IApplicationen' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+
+          <th class="pointer" (click)="sort('DCreationDate')">Creation Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
+                              'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
+                              'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+
+          <th class="pointer" (click)="sort('EEditDate')">Edit Date
+            <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
+                                'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
+                                'fa-sort-desc': (column == 'EEditDate' && isDesc) }" aria-hidden="true"> </i>
+          </th>
+          <th width="250px" class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
+          <td>{{appsystem.AName}}</td>
+          <td>{{appsystem.BApplication}}</td>
+          <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
+          <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td align="center">
+            <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(appsystem.$key=appsystem.AName)">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </button>
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/appsystem', appsystem.AName]">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </button>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
