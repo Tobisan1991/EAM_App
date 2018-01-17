@@ -13,18 +13,18 @@
       <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
     </div>
 
-    
-      <h5 *ngIf="statusForm">Details 
+    <h5 *ngIf="statusForm==true">Details
+      <small class="text-muted">click for less details</small>
+      <i class="fa fa-angle-double-up" (click)='displayForm(true)' aria-hidden="true"></i>
+    </h5>
+      <h5 *ngIf="statusForm==false">Details 
         <small class="text-muted">click for more details</small>
-        <i class="fa fa-angle-double-down" (click)='displayForm(statusForm)' aria-hidden="true"></i>
+        <i class="fa fa-angle-double-down" (click)='displayForm(false)' aria-hidden="true"></i>
       </h5>
       
-      <h5 *ngIf="closeHeading">Details
-          <small class="text-muted">click for less details</small>
-          <i class="fa fa-angle-double-up" (click)='displayForm(closeHeading)' aria-hidden="true"></i>
-        </h5>
+     
 
-      <div class="form-group details" *ngIf="closeHeading">  
+      <div class="form-group details" *ngIf="statusForm">  
           
       <div class="form-group">
 

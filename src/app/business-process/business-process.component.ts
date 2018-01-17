@@ -30,6 +30,7 @@ export class BusinessProcessComponent implements OnInit {
   loginName: String;
 
   constructor(
+    
     private dataService: DataService,
     private router: Router, 
     private route: ActivatedRoute,
