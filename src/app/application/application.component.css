@@ -1,41 +1,13 @@
-.panel-primary{
-    padding: 30px;
 
-}
-
-.panel-heading{
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(238, 238, 238);
-}
-
-.details{
-    
-}
-
-h5{
-    font-weight: bold;
-
-}
-
-h6{
-    margin-top: 7px;
-}
-
-.search{
-    margin-top: 15px;
-    padding: 0px;
-}
-.header{
-    border-bottom-width: 2px;
-    border-bottom-style: solid;
-    border-bottom-color: rgb(238, 238, 238);
- 
-}
 
 .date_from{
+    
     width: 40%;
     
+}
+
+.application-date{
+    width: 30%;
 }
 .date_to{
     width: 40%;

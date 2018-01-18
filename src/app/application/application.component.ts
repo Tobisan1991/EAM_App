@@ -103,14 +103,13 @@ export class Application implements OnInit {
   };
 
   displayForm(val) {
-    // console.log("val " +val);
     if (val == true) {
-      this.statusForm=false;
-      // console.log("status " +this.statusForm);
-    } else{
-      this.statusForm=true; 
-    // console.log(this.statusForm);
-  }
+      this.statusForm = false;
+      console.log("status " + this.statusForm);
+    } else {
+      this.statusForm = true;
+      console.log(this.statusForm);
+    }
   }
 
   onRadioClick(val) {

@@ -1,94 +1,110 @@
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h3 class="header">Application</h3>
+  </div>
+
+  <div class="form-group">
+
+    <label for="name">Name</label>
+
+    <input type="form-group" [(ngModel)]="name" id="inputName" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+
+    <label for="description">Description</label>
+
+    <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
+  </div>
+
+  <h5 *ngIf="statusForm==true">Details
+    <small class="text-muted">click for less details</small>
+    <i class="fa fa-angle-double-up" (click)='displayForm(true)' aria-hidden="true"></i>
+  </h5>
+  <h5 *ngIf="statusForm==false">Details
+    <small class="text-muted">click for more details</small>
+    <i class="fa fa-angle-double-down" (click)='displayForm(false)' aria-hidden="true"></i>
+  </h5>
+
+
+
+  <div class="form-group details" *ngIf="statusForm">
 
     <div class="form-group">
 
-      <h6 for="name">Name</h6>
+      <label>Version</label>
 
-      <input type="form-group" [(ngModel)]="name" id="inputName" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+      <input type="text" class="form-control" [(ngModel)]="version" name="version" placeholder="Enter Version" [ngModelOptions]="{standalone: true}">
 
-      <h6 for="description">Description</h6>
+      <label>Select the operating Time of the application</label>
+      <fieldset>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" 
+            id="as-is" value="as-is" (click)='onRadioClick(0)'> As-Is 
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </label>
+        </div>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input type="radio" class="form-check-input" name="optionsRadios" 
+            id="to-be" value="to-be" (click)='onRadioClick(1)'> To-Be
+            <i class="fa fa-question-circle" aria-hidden="true"></i>
+          </label>
 
-      <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
-    </div>
-
-    <h5 *ngIf="statusForm==true">Details
-      <small class="text-muted">click for less details</small>
-      <i class="fa fa-angle-double-up" (click)='displayForm(true)' aria-hidden="true"></i>
-    </h5>
-      <h5 *ngIf="statusForm==false">Details 
-        <small class="text-muted">click for more details</small>
-        <i class="fa fa-angle-double-down" (click)='displayForm(false)' aria-hidden="true"></i>
-      </h5>
-      
-     
-
-      <div class="form-group details" *ngIf="statusForm">  
+        </div>
+        <div class="form-check">
+          <label class="form-check-label" >
+            <input type="radio" class="form-check-input" name="optionsRadios" 
+            id="has-been" value="has-been" (click)='onRadioClick(2)'> Has-Been
+            <i class="fa fa-question-circle" aria-hidden="true" 
+            data-toggle="tooltip" data-placement="right" title="Das ist ein Has-Been Feld" ></i>
+          </label>
           
-      <div class="form-group">
+        </div>
+      </fieldset>
 
-        <h6>Version</h6>
+  
 
-        <input type="text" class="form-control" [(ngModel)]="version" name="version" placeholder="Enter Version" [ngModelOptions]="{standalone: true}">
+
+      <div class="application-date" *ngIf="radio_tobe==true">
+        <form class="dateFrom" #myForm="ngForm" novalidate>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="launching date" [ngModelOptions]="{standalone: true}">
+          </my-date-picker>
+        </form>
+        
+      </div>
+
+      <div class="application-date" *ngIf="radio_hasbeen==true">
+        
+        <form class="dateTo" #myForm="ngForm" novalidate>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="termination date" [ngModelOptions]="{standalone: true}">
+          </my-date-picker>
+        </form>
+      </div>
+
+      <div class="application-date" *ngIf="radio_asis==true">
+        <form class="dateFrom" #myForm="ngForm" novalidate>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="launching date" [ngModelOptions]="{standalone: true}">
+          </my-date-picker>
+        </form>
+        <form class="dateTo" #myForm="ngForm" novalidate>
+          <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="termination date" [ngModelOptions]="{standalone: true}">
+          </my-date-picker>
+        </form>
       </div>
 
 
-      <div class="form-group">
+      <label>Geography</label>
 
-        <fieldset>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="as-is" value="as-is" (click)='onRadioClick(0)'> As-Is
-            </label>
-            <div>
-              <input type="form-group" *ngIf="radio_asis==true" id="As-Is-Input" name="as-is" placeholder="As-Is">
-            </div>
-          </div>
-          <div class="form-check">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be" (click)='onRadioClick(1)'> To-Be
-            </label>
-            <div>
-              <input type="form-group" *ngIf="radio_tobe==true" id="To-Be-Input" name="To-Be" placeholder="To-Be">
-            </div>
-          </div>
-          <div class="form-check disabled">
-            <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been" (click)='onRadioClick(2)'> Has-Been
-            </label>
-            <div>
-              <input type="form-group" *ngIf="radio_hasbeen==true" id="Has-been-Input" name="has-been" placeholder="Has-Been">
-            </div>
-          </div>
-        </fieldset>
-      </div>
-
-      <form class="dateFrom" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="from" [ngModelOptions]="{standalone: true}">
-        </my-date-picker>
-      </form>
-      <form class="dateTo" #myForm="ngForm" novalidate>
-        <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="to" [ngModelOptions]="{standalone: true}">
-        </my-date-picker>
-      </form>
-
-
-      <div class="form-group">
-
-        <h6>Geography</h6>
-
-        <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}">
-      </div>
-
-      <button type="submit" class="btn btn-primary" (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)">Add</button>
-
+      <input type="text" class="form-control" placeholder="Geography" name="geography" [(ngModel)]="geography" [ngModelOptions]="{standalone: true}">
     </div>
+
+    <button type="submit" class="btn btn-primary" (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)">Add</button>
 
   </div>
 
 
-  <div class="form-group">
+
+
+  <div class="form-group list-overview">
     <div class="col-md-3 search">
       <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
     </div>
@@ -105,10 +121,10 @@
                             'fa-sort-asc': (column == 'AName' && !isDesc), 
                             'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
           </th>
-          <th class="pointer" (click)="sort('IApplicationen')">Description
-            <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
-                            'fa-sort-asc': (column == 'IApplicationen' && !isDesc), 
-                            'fa-sort-desc': (column == 'IApplicationen' && isDesc) }" aria-hidden="true"> </i>
+          <th class="pointer" (click)="sort('BDescr')">Description
+            <i class="fa" [ngClass]="{'fa-sort': column != 'BDescr', 
+                            'fa-sort-asc': (column == 'BDescr' && !isDesc), 
+                            'fa-sort-desc': (column == 'BDescr' && isDesc) }" aria-hidden="true"> </i>
           </th>
 
           <th class="pointer" (click)="sort('DCreationDate')">Creation Date
@@ -126,9 +142,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
-          <td>{{appsystem.AName}}</td>
-          <td>{{appsystem.BApplication}}</td>
+        <tr *ngFor="let application of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
+          <td>{{application.AName}}</td>
+          <td>{{application.BDescr}}</td>
           <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
           <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
           <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
