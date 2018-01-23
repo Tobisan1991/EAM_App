@@ -6,6 +6,8 @@ import { SearchNamePipe } from '../search-name.pipe'
 import { rootRoute } from '@angular/router/src/router_module';
 import { LoginComponent } from '../login/login.component'
 import { IMyOptions } from 'mydatepicker';
+import {NavbarService} from '../navbar.service';
+import { resolve } from 'q';
 
 
 declare var firebase: any;
@@ -47,22 +49,25 @@ export class Application implements OnInit {
 
 
 
+
+
   constructor(
     private dataService: DataService,
     private router: Router,
+    private navbarService: NavbarService,
     private route: ActivatedRoute,
     private searchName: SearchNamePipe,
     private loginComponent: LoginComponent) {
 
     this.datum = Date().toString();
-  }
 
+}
   ngOnInit() {
     this.fbGetData();
-    // console.log("openform " + this.openForm);
-    console.log(this.liste);
+    this.navbarService.show(); 
   }
 
+  
   fbGetData() {
 
     firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
@@ -92,9 +97,28 @@ export class Application implements OnInit {
     firebase.database().ref().child('/Application/').child(key).update({
       CFlag: 'archived'//, removed: this.removeDate
     });
+    this.performDelete('erste').then((res) => {
+      return('refresh confirmed');
+      }).then((res) => {
+        window.location.href = window.location.href;
+      })
     //   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
-    window.location.reload();
+    // window.location.reload(false);
+    
+    // window.location.reload();
   }
+
+  performDelete = function( test :string ) : Promise<{test :string }>{
+    return new Promise((resolve) => {
+      console.log(`Status: ${test}`);
+      setTimeout(() => {
+        resolve({ test: test});
+      }, 200);
+    });
+}
+
+
+
 
   sort(property) {
     this.isDesc = !this.isDesc; //change the direction    

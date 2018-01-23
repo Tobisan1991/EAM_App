@@ -15,7 +15,7 @@ import { AppsystemComponent } from './appsystem/appsystem.component';
 import { Application } from './application/application.component';
 import { HomeComponent } from './home/home.component';
 import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
-import { ApplicListComponent } from './application/applic-list/applic-list.component';
+import { ApplicationListComponent } from './application/application-list/application-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchNamePipe } from './search-name.pipe';
 import { OrderByPipe } from './order-by.pipe';
@@ -38,11 +38,11 @@ import {NavbarService} from "./navbar.service";
     Application,
     HomeComponent,
     BfuncListComponent,
-    ApplicListComponent,
     DashboardComponent,
     SearchNamePipe,
     OrderByPipe,
-    LoginComponent
+    LoginComponent,
+    ApplicationListComponent
   ],
 
   imports: [
