@@ -19,12 +19,12 @@ export class AppComponent {
   menueList = [
     // HIER KOMMT DANN DIE DATENBANK ANBINDUNG Z.B. REIN
   {
-    name: "Business Function",
-    slug: "function"
-  },
-  {
     name: "Business Process",
     slug: "process"
+  },
+  {
+    name: "Business Function",
+    slug: "function"
   },
   {
     name: "Appsystem",

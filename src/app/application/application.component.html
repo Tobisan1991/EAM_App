@@ -147,14 +147,13 @@
         <tr *ngFor="let application of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
           <td>{{application.AName}}</td>
           <td>{{application.BDescr}}</td>
-          <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
-          <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-          <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td>{{application.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          <td>{{application.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
           <td align="center">
-            <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(appsystem.$key=appsystem.AName)">
+            <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(application.$key=application.AName)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>
             </button>
-            <button type="button" class="btn btn-outline-primary" [routerLink]="['/appsystem', appsystem.AName]">
+            <button type="button" class="btn btn-outline-primary" [routerLink]="['/application', application.AName]">
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </button>
           </td>
@@ -164,5 +163,6 @@
     </table>
   </div>
 
+  
 
 </div>

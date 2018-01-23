@@ -60,7 +60,7 @@ export class Application implements OnInit {
   ngOnInit() {
     this.fbGetData();
     // console.log("openform " + this.openForm);
-    console.log(this.statusForm);
+    console.log(this.liste);
   }
 
   fbGetData() {
