@@ -9,23 +9,23 @@ import { LoginComponent } from '../login/login.component'
 declare var firebase: any;
 const d: Date = new Date();
 
-function performGet(){
-  return new Promise((resolve, reject) => {
-    setTimeout(()=> {
-      let result = 0;
-      for (let i = 0; i<= 200000; i++){
-        result = result +1;
-      }
-      resolve(result);
-    },0);
+// function performGet(){
+//   return new Promise((resolve, reject) => {
+//     setTimeout(()=> {
+//       let result = 0;
+//       for (let i = 0; i<= 200000; i++){
+//         result = result +1;
+//       }
+//       resolve(result);
+//     },0);
 
     // firebase.database().ref().child('/AllID/').
     // on('child_added', (snapshot) => {
     //   this.idlist.push(snapshot.val()
     //   )
 
- });
- }
+//  });
+//  }
 
 @Component({
   selector: 'app-business-function',
@@ -71,21 +71,32 @@ export class BusinessFunctionComponent implements OnInit {
  
 
   ngOnInit() {
-  this.test();
+    firebase.database().ref().child('/AllID/').
+    on('child_added', (snapshot) => {
+      this.idlist.push(snapshot.val()
+      )})
+   this.id = this.idlist[0];
+   this.id++;
+   this.fbGetData()
   }
 
 
- test(){
+//  test(){
 
-    performGet().then((res) => console.log((res)
+//     // performGet().then((res) => console.log((res)
        
-       )
-    ).catch((error) => console.log(error))
-    this.id = this.idlist[0]
-    this.id++;
-    return performGet();
+//     //    )
+//     // ).catch((error) => console.log(error))
+//     firebase.database().ref().child('/AllID/').
+//      on('child_added', (snapshot) => {
+//        this.idlist.push(snapshot.val()
+//        )})
+//     this.id = this.idlist[0];
+//     this.id++;
+//     // return performGet();
 
-  }
+  
+// }
 
 
 
