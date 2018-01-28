@@ -27,6 +27,12 @@ color: rgb(142, 143, 143);
     justify-content: center;
 }
 
+.sponsor-img{
+    width: 30%;
+    height: 30%;
+    
+}
+
 .image{
     border-radius:100%;
     width: 15rem;
