@@ -3,9 +3,6 @@ body {
     background-color: rgb(255, 255, 255);
     
 }
-
-
-
 p {
     font-family: verdana;
     font-size: 20px;
@@ -59,16 +56,38 @@ color: rgb(142, 143, 143);
 
 }
 
-.list-overview{
-    padding-top: 15px;
-
+.pointer{
+    cursor: pointer;
 }
 
+
+
+.main-form{
+    margin: 8px;
+    margin-top: 25px;
+}
+.list-overview{
+    margin: 8px;
+    
+}
+.details{
+    margin-bottom: 10px;
+    
+}
+
+.details-liste-trenner{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: #b5b5b5;
+}
 
 
 .form-check{
     margin-bottom: 10px;
 }
+
 
 h5{
     font-weight: bold;

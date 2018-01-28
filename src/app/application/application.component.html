@@ -3,6 +3,7 @@
     <h3 class="header">Application</h3>
   </div>
 
+  <div class="main-form">
   <div class="form-group">
 
     <label for="name">Name</label>
@@ -13,19 +14,19 @@
 
     <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
   </div>
-
+<div class="details">
   <h5 *ngIf="statusForm==true">Details
     <small class="text-muted">click for less details</small>
-    <i class="fa fa-angle-double-up" (click)='displayForm(true)' aria-hidden="true"></i>
+    <i class="fa fa-angle-double-up pointer" (click)='displayForm(true)' aria-hidden="true"></i>
   </h5>
-  <h5 *ngIf="statusForm==false">Details
+  <h5  *ngIf="statusForm==false">Details
     <small class="text-muted">click for more details</small>
-    <i class="fa fa-angle-double-down" (click)='displayForm(false)' aria-hidden="true"></i>
+    <i class="fa fa-angle-double-down pointer" (click)='displayForm(false)' aria-hidden="true"></i>
   </h5>
 
 
 
-  <div class="form-group details" *ngIf="statusForm">
+  <div class="form-group" *ngIf="statusForm">
 
     <div class="form-group">
 
@@ -102,15 +103,20 @@
     <button type="submit" class="btn btn-primary" (click)="fbPostData(name,descr,dateFrom,dateTo,geography,version)">Add</button>
 
   </div>
+</div>
+</div>
+
+<div class="details-liste-trenner"></div>
 
 
 
 
   <div class="form-group list-overview">
+      <h4>Application Liste</h4>
     <div class="col-md-3 search">
       <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
     </div>
-  </div>
+  
 
   <div class="application-liste">
 
@@ -162,6 +168,7 @@
       </tbody>
     </table>
   </div>
+</div>
 
   
 
