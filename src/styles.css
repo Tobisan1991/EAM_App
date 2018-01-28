@@ -21,6 +21,19 @@ bottom: 0px;
 color: rgb(142, 143, 143);
 }
 
+.team-presentation{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image{
+    border-radius:100%;
+    width: 15rem;
+    height: 15rem;
+    
+}
+
 .form-control{
     margin-bottom: 10px;
 }

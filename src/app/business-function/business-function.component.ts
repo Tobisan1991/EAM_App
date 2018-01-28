@@ -53,6 +53,7 @@ export class BusinessFunctionComponent implements OnInit {
   column: String = 'Name';
   direction: number;
   loginName: String;
+  statusForm: Boolean = false;
 
 
   private idlist = [];
@@ -181,6 +182,16 @@ deleteSth(key){
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   };
+
+  displayForm(val) {
+    if (val == true) {
+      this.statusForm = false;
+      console.log("status " + this.statusForm);
+    } else {
+      this.statusForm = true;
+      console.log(this.statusForm);
+    }
+  }
 
 }
 
