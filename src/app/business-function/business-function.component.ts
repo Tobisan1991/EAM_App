@@ -3,8 +3,9 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { DataService } from '../data.service';
 import { Http } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
-import { SearchNamePipe } from '../search-name.pipe'
-import { LoginComponent } from '../login/login.component'
+import { SearchNamePipe } from '../search-name.pipe';
+import { LoginComponent } from '../login/login.component';
+import {NavbarService} from '../navbar.service';
 
 declare var firebase: any;
 const d: Date = new Date();
@@ -63,7 +64,7 @@ export class BusinessFunctionComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private searchName: SearchNamePipe,
-    private loginComponent: LoginComponent,
+    private navbarService: NavbarService
     ) {
        
     this.datum = Date().toString();
@@ -72,6 +73,8 @@ export class BusinessFunctionComponent implements OnInit {
  
 
   ngOnInit() {
+    
+    this.navbarService.show(); 
     firebase.database().ref().child('/AllID/').
     on('child_added', (snapshot) => {
       this.idlist.push(snapshot.val()
@@ -165,9 +168,6 @@ deleteSth(key){
   firebase.database().ref().child('/BFunctions/'+key+'/').remove();
 }*/
 
-  refreshList() {
-
-  }
 
   fbDeleteData(key) {
     firebase.database().ref().child('/BFunctions/').child(key).update({
