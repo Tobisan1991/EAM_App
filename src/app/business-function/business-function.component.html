@@ -5,11 +5,14 @@
 
   <div class="main-form">
 
-    <form id="add-bfunc">
+    <form id="add-bfunc" >
       <div class="form-group">
-        <label>ID</label>
-        
-        <input type="form-group" selectable="false" [(ngModel)]="id" class="form-control" name="id" [ngModelOptions]="{standalone: true}">
+        <fieldset disabled="">
+          <b>
+            <label>ID</label>
+          </b>
+          <input type="form-group" selectable="false" [(ngModel)]="id" class="form-control" name="id" [ngModelOptions]="{standalone: true}">
+          </fieldset>
         <label>Name</label>
         <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
         <label>Description</label>
