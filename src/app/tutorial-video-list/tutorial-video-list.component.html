@@ -23,9 +23,8 @@
      -->     
 
       <br>
-     <div class="cross-liste">
-      <table class="table table-striped table-hover table-bordered">
-        <thead class="thead-dark">
+     <div class="table table-striped table-hover table-bordered">
+      <table class="thead-dark">
           <tr>
             <th class="pointer">
                 Name
@@ -34,7 +33,10 @@
             <th class="pointer" *ngFor= 'let item of applicationlist'>{{item.AName}}
             </th>
           </tr>
-        </thead></table></div>
+          <tr *ngFor= 'let item2 of liste'>
+              <th class="pointer">{{item2.AName}}</th><td>123</td><td>234</td><td>345</td><td>456</td>
+          </tr>
+        </table></div>
 
      <!--
         <div class="cross-liste">

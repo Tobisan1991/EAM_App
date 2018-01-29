@@ -27,14 +27,15 @@ export class TutorialVideoListComponent implements OnInit {
     private navbarService: NavbarService
   ) { }
 
-  test = 'hello'
-  keys = [];
+  
   liste = [];
   applicationlist = [];
-
+  Processlist= [];
   ngOnInit() {
     this.bestfuncever()
-
+    console.log(this.liste);
+    console.log(this.applicationlist);
+    console.log(this.Processlist);
     // firebase.database().ref().child('/BFunctions/').on('child_added',(snap) => { this.liste.push(snap.key) })
     //       console.log( this.liste);
 
@@ -59,9 +60,9 @@ export class TutorialVideoListComponent implements OnInit {
       }
       console.log(this.liste)
       let BFuncGBProcess = rootRef.child('BFunctions/' + snap.key + '/HApllication');
-      BFuncGBProcess.once('value').then(Processes => {
-        //  console.log(Processes.val())
-        Processes.val();
+      BFuncGBProcess.once('value').then(Processes => { 
+        if (Processes.val()) {
+          this.Processlist.push(Processes.val())};
         let BProess = rootRef.child('Application/' + Processes.val());
         BProess.once('value').then(Applications => {
           if (Applications.val()) {
@@ -120,4 +121,4 @@ export class TutorialVideoListComponent implements OnInit {
   //   return 'https://www.youtube.com/embed/' + item.embed
   //   }
 
-}
+
