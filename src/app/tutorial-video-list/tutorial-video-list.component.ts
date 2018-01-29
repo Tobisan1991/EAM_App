@@ -52,20 +52,27 @@ export class TutorialVideoListComponent implements OnInit {
     const rootRef = firebase.database().ref();
     const maintable = rootRef.child('/BFunctions/').orderByChild('CFlag').equalTo('active');
     maintable.on('child_added', snap => {
-      console.log(snap.val()) 
-      this.liste.push(snap.val()); 
-      // console.log(this.liste)
+       
+      
+      if (snap.val()) {
+        this.liste.push(snap.val());
+      }
+      console.log(this.liste)
       let BFuncGBProcess = rootRef.child('BFunctions/' + snap.key + '/HApllication');
       BFuncGBProcess.once('value').then(Processes => {
         //  console.log(Processes.val())
         Processes.val();
         let BProess = rootRef.child('Application/' + Processes.val());
         BProess.once('value').then(Applications => {
-          //  console.log(Applications.val())
-          this.applicationlist.push(Applications.val());
+          if (Applications.val()) {
+            this.applicationlist.push(Applications.val());
+              console.log(this.applicationlist)
+          }
         })
       })
     })
+  }
+
   }
 
 
