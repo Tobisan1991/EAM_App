@@ -1,11 +1,10 @@
-
 <!-- <h1>{{title}}</h1>
 
 <div class="video-anordnung" *ngFor= 'let item of videoList'>
     <a href='tutorial/{{item.slug}}'>{{item.name}}</a> -->
-    <!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
+<!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
 
-     <!-- <div class="video-div" *ngIf='item.embed'>   <iframe width="400" height="227" [src]="getEmbedUrl(item) | ytlink" frameborder="0" allowfullscreen></iframe>
+<!-- <div class="video-div" *ngIf='item.embed'>   <iframe width="400" height="227" [src]="getEmbedUrl(item) | ytlink" frameborder="0" allowfullscreen></iframe>
       {{item.text}}      
     </div>
 
@@ -16,29 +15,34 @@
 
 
 
-    <!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
+<!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
 
-     <!-- <div class="video-div" *ngIf='item.embed'>   <iframe width="400" height="227" [src]="getEmbedUrl(item) | ytlink" frameborder="0" allowfullscreen></iframe>
+<!-- <div class="video-div" *ngIf='item.embed'>   <iframe width="400" height="227" [src]="getEmbedUrl(item) | ytlink" frameborder="0" allowfullscreen></iframe>
       {{item.text}}
-     -->     
+     -->
 
-      <br>
-     <div class="table table-striped table-hover table-bordered">
-      <table class="thead-dark">
-          <tr>
-            <th class="pointer">
-                Name
-            </th>
+<br>
+<div class="table table-striped table-hover table-bordered">
+  <table class="thead-dark">
+    <tr>
+      <th class="pointer">
+        Name
+      </th>
 
-            <th class="pointer" *ngFor= 'let item of applicationlist'>{{item.AName}}
-            </th>
-          </tr>
-          <tr *ngFor= 'let item2 of liste'>
-              <th class="pointer">{{item2.AName}}</th><td>123</td><td>234</td><td>345</td><td>456</td>
-          </tr>
-        </table></div>
+      <th class="pointer" *ngFor='let item of applicationlist'>{{item.AName}}
+      </th>
+    </tr>
+    <tr *ngFor='let item2 of liste'>
+      <th class="pointer">{{item2.AName}}</th>
+      <td>{{item2.HApllication}}</td>
+      <td>{{item2.HApllication}}</td>
+      <td>{{item2.HApllication}}</td>
+      <td>{{item2.HApllication}}</td>
+    </tr>
+  </table>
+</div>
 
-     <!--
+<!--
         <div class="cross-liste">
           <table class="table table-striped table-hover table-bordered">
             <thead class="thead-dark">
@@ -47,4 +51,3 @@
                 </th>
               </tr>
             </thead></table></div> -->
-
