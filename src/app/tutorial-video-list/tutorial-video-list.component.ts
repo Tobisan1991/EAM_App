@@ -36,18 +36,6 @@ export class TutorialVideoListComponent implements OnInit {
     console.log(this.liste);
     console.log(this.applicationlist);
     console.log(this.Processlist);
-    // firebase.database().ref().child('/BFunctions/').on('child_added',(snap) => { this.liste.push(snap.key) })
-    //       console.log( this.liste);
-
-    //       firebase.database().ref().child('/BFunctions/'+ this.liste + '/GBProcess/').on('child_added',(snap) => {
-    //          this.keys.push(snap.val())})
-
-    //         console.log( this.keys);
-
-
-
-
-
   }
   bestfuncever() {
     const rootRef = firebase.database().ref();

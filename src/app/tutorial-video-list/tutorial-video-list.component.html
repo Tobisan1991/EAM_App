@@ -34,10 +34,11 @@
     </tr>
     <tr *ngFor='let item2 of liste'>
       <th class="pointer">{{item2.AName}}</th>
-      <td>{{item2.HApllication}}</td>
-      <td>{{item2.HApllication}}</td>
-      <td>{{item2.HApllication}}</td>
-      <td>{{item2.HApllication}}</td>
+      <ng-container *ngFor='let item of applicationlist'>
+          <td  *ngIf="{{item.AName}}=={{item2.HApllication}}; else wrong">1</td>
+          <ng-template #wrong>0</ng-template>
+        </ng-container>
+      
     </tr>
   </table>
 </div>
