@@ -27,23 +27,81 @@ export class TutorialVideoListComponent implements OnInit {
     private navbarService: NavbarService
     ) {}
 
-
+test = 'hello'
+    keys = [];
   liste = [];
-  rootRef = firebase.database().ref();
- 
+  applicationlist= [];
+
   ngOnInit() {
+    this.bestfuncever()
 
-    //     console.log(this.passedlink);
+    // firebase.database().ref().child('/BFunctions/').on('child_added',(snap) => { this.liste.push(snap.key) })
+    //       console.log( this.liste);
+
+    //       firebase.database().ref().child('/BFunctions/'+ this.liste + '/GBProcess/').on('child_added',(snap) => {
+    //          this.keys.push(snap.val())})
+          
+    //         console.log( this.keys);
+
+
+
+
+          
       }
+      bestfuncever(){
+        const rootRef = firebase.database().ref();
+        const maintable = rootRef.child('/BFunctions/').orderByChild('CFlag').equalTo('active');
+     
+        maintable.on('child_added', snap => {
+       //  console.log((snap.val()))
+        this.liste = (snap.val());
+        // console.log(this.liste)
+         
+         let BFuncGBProcess = rootRef.child('BFunctions/'+snap.key+'/HApllication');
+         BFuncGBProcess.once('value').then(Processes => {
+        //  console.log(Processes.val())
+         
+         let BProess = rootRef.child('Application/'+ Processes.val());
+         BProess.once('value').then(Applications => {
+        //  console.log(Applications.val())
+           this.applicationlist = (Applications.val());
+         })
+         })
+     
+          
+        })
+       
+        let handles = [];
 
-      fbGetData() {
+        this.performDelete('scheiß callback').then((res) => {
+          return('refresh confirmed');
+          }).then((res) => {
+            console.log( this.liste);
+          })
+        //   firebase.database().ref().child('/BFunctions/'+key+'/').remove(), 
+        // window.location.reload(false);
+        
+        // window.location.reload();
+      }
+    
+      performDelete = function( test :string ) : Promise<{test :string }>{
+        return new Promise((resolve) => {
+          console.log(`Status: ${test}`);
+          setTimeout(() => {
+            resolve({ test: test});
+          }, 200);
+        });
+    }
 
-        firebase.database().ref().child('/BFunctions/').orderByChild('CFlag').equalTo('active').
-          on('child_added', (snapshot) => {
-            //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
-            // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
-            this.liste.push(snapshot.val())
-          })}
+
+      // fbGetData() {
+
+      //   firebase.database().ref().child('/BFunctions/').orderByChild('CFlag').equalTo('active').
+      //     on('child_added', (snapshot) => {
+      //       //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
+      //       // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
+      //       this.liste.push(snapshot.val())
+      //     })}
 
 
   // @Input()
