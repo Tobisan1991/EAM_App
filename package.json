@@ -29,6 +29,7 @@
     "chart.js": "^2.7.1",
     "core-js": "^2.4.1",
     "firebase": "^4.8.2",
+    "git": "^0.1.5",
     "mydatepicker": "^2.6.1",
     "ng2-charts": "^1.6.0",
     "ng2-datepicker": "^2.1.7",
