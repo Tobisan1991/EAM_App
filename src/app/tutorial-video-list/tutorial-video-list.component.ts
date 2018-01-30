@@ -27,45 +27,52 @@ export class TutorialVideoListComponent implements OnInit {
     private navbarService: NavbarService
   ) { }
 
-  
+
   liste = [];
   applicationlist = [];
-  Processlist= [];
+  Processlist = [];
   ngOnInit() {
     this.bestfuncever()
-    console.log(this.liste);
-    console.log(this.applicationlist);
-    console.log(this.Processlist);
+    // console.log(this.liste);
+    // console.log(this.applicationlist);
+    // console.log(this.Processlist);
   }
   bestfuncever() {
     const rootRef = firebase.database().ref();
     const maintable = rootRef.child('/BFunctions/').orderByChild('CFlag').equalTo('active');
     maintable.on('child_added', snap => {
-       
-      
       if (snap.val()) {
         this.liste.push(snap.val());
       }
-      console.log(this.liste)
+      // console.log(this.liste)
       let BFuncGBProcess = rootRef.child('BFunctions/' + snap.key + '/HApllication');
-      BFuncGBProcess.once('value').then(Processes => { 
+      BFuncGBProcess.once('value').then(Processes => {
         if (Processes.val()) {
-          this.Processlist.push(Processes.val())};
+          this.Processlist.push(Processes.val())
+        }
+
         let BProess = rootRef.child('Application/' + Processes.val());
         BProess.once('value').then(Applications => {
           if (Applications.val()) {
-            this.applicationlist.push(Applications.val());
-              console.log(this.applicationlist)
+            this.applicationlist.push(Applications.val())
+
           }
+          let BProess = rootRef.child('Appsystem/' + Processes.val());
+          BProess.once('value').then(Appsystems => {
+            if (Appsystems.val()) {
+              this.applicationlist.push(Appsystems.val());
+              console.log(this.applicationlist)
+
+            }
+          })
+
         })
       })
     })
   }
 
-  }
 
-
-
+}
   // fbGetData() {
 
   //   firebase.database().ref().child('/BFunctions/').orderByChild('CFlag').equalTo('active').
@@ -108,5 +115,3 @@ export class TutorialVideoListComponent implements OnInit {
   //   getEmbedUrl(item){
   //   return 'https://www.youtube.com/embed/' + item.embed
   //   }
-
-

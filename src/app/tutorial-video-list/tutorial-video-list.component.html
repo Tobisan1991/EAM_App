@@ -28,10 +28,11 @@
       <th class="pointer">
         Name
       </th>
-
+      <!--  <th class="pointer" ng-options="item.AName as item.AName for item in applicationlist  | unique:'AName'">{{item.AName}} -->
       <th class="pointer" *ngFor='let item of applicationlist'>{{item.AName}}
       </th>
     </tr>
+    <!-- <tr  ng-options="item2.AName as item2.AName for item2 in liste group by item.AName"> -->
     <tr *ngFor='let item2 of liste'>
       <th class="pointer">{{item2.AName}}</th>
       <ng-container *ngFor='let item of applicationlist'>
