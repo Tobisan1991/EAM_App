@@ -1,3 +1,31 @@
 <p>
   dashboard works!
 </p>
+<!--
+<div style="display: block;width : 500px; height : 500px">
+  <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>-->
+
+<div style="display: block;width : 500px; height : 500px">
+ 
+    <canvas baseChart
+                [data]="lineChartData"
+                [labels]="lineChartLabels"
+                [options]="lineChartOptions"
+                [chartType]="lineChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+
+    <canvas baseChart
+                [data]="pieChartData"
+                [labels]="pieChartLabels"
+                [chartType]="pieChartType"
+                (chartHover)="chartHovered($event)"
+                (chartClick)="chartClicked($event)"></canvas>
+                <button (click)="randomizeType()" style="display: inline-block">Toggle</button>
+  </div>
