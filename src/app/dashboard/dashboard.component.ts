@@ -18,15 +18,6 @@ declare var firebase: any;
 })
 export class DashboardComponent implements OnInit {
 
-  USA = false;
-  ITALY = false;
-  GERMANY = false;
-  POLAND = false;
-  UK = false;
-  SPAIN = false;
-  BRAZIL = false;
-  FRANCE = false;
-  MEXICO = false;
 
 
   activeGeos2 = [];
@@ -38,7 +29,6 @@ export class DashboardComponent implements OnInit {
     private navbarService: NavbarService) { }
 
   ngOnInit() {
-    this.fbGetGeo();
   }
   /*
 
@@ -87,56 +77,7 @@ export class DashboardComponent implements OnInit {
   //////////////////////// LANDKARTE
 
 
-  fbGetGeo() {
-    const rootRef = firebase.database().ref();
-    const maintable = rootRef.child('Application/').orderByChild('CFlag').equalTo('active');
-    maintable.on('child_added', snap => {
-      if (snap.val()) { console.log(snap.val()) }
-      // console.log(this.liste)
-
-
-      let geographys = rootRef.child('/Application/' + snap.key + '/IGeography');
-
-      geographys.once('value').then(activeGeos => {
-        if (activeGeos.val()) {
-          this.activeGeos2.push(activeGeos.val())
-          console.log(this.activeGeos2);
-        }
-
-
-        console.log(this.activeGeos2.length-1)
-        if (this.activeGeos2[this.activeGeos2.length-1] == "DE" ){
-          this.GERMANY = true;
-         }
-        if(this.activeGeos2[this.activeGeos2.length-1] == "US"){
-           this.USA = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "IT"){
-           this.ITALY = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "UK"){
-           this.UK = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "PL"){
-           this.POLAND = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "BR"){
-           this.BRAZIL = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "ES"){
-           this.SPAIN = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "FR"){
-           this.FRANCE = true;
-         }
-
-      })
-      
-    })
-
-    
-
-  }
+  
 
 
 }
