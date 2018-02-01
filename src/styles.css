@@ -5,8 +5,11 @@ body {
 }
 p {
     font-family: verdana;
-    
 }
+
+h2{
+    text-align: center;
+}    
 
 .header{  
     border-bottom-width: 1px;
@@ -135,3 +138,9 @@ h6{
     margin-top: 15px;
     padding: 0px;
 }
+
+.geofill-color{
+    background-color: #2C3E50 !important;
+    align-content: center;
+}
+
