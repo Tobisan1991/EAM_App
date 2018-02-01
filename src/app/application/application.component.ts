@@ -90,7 +90,7 @@ export class Application implements OnInit {
     this.dateTo = '';
     this.geography = '';
     this.version = '';
-
+    this.statusForm = false;
   }
 
   fbDeleteData(key) {

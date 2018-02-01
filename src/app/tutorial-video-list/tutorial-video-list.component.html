@@ -42,8 +42,8 @@
         stroke-width: 1px;
         stroke: #a0aac1;
         }
-       .active, .active rect{fill: rgb(19, 24, 0);stroke: rgb(255, 255, 0);}
-       .active{opacity: 0.6;transition:opacity 0.5s ease;}
+       .active, .active rect{fill: rgb(255, 241, 47);stroke: rgb(255, 255, 0);}
+       .active{opacity: 0.55;transition:opacity 0.5s ease;}
        .active:hover{opacity: 1;}
        </style>
   <g id="Guatemala">
@@ -173,7 +173,7 @@
     <rect x="165.5" y="197.4" width="1.4" height="1.4"/>
     <rect x="165.5" y="200.2" width="1.4" height="1.4"/>
   </g>
-  <g id="USA">
+  <g id="USA" [ngClass]="{'active': USA}">
     <rect x="40.2" y="66.6" width="1.4" height="1.4"/>
     <rect x="40.2" y="72.1" width="1.4" height="1.4"/>
     <rect x="40.2" y="74.9" width="1.4" height="1.4"/>

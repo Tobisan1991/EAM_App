@@ -28,6 +28,7 @@ export class TutorialVideoListComponent implements OnInit {
   ) { }
 
 
+  USA = true;
   liste = [];
   applicationlist = [];
   Processlist = [];
