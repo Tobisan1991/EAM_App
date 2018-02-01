@@ -28,12 +28,24 @@ export class TutorialVideoListComponent implements OnInit {
   ) { }
 
 
-  USA = true;
+  USA = false;
+  ITALY = false;
+  GERMANY = false;
+  POLAND = false;
+  UK = false;
+  SPAIN = false;
+  BRAZIL = false;
+  FRANCE = false;
+  MEXICO = false;
+
+
+  activeGeos = [];
   liste = [];
   applicationlist = [];
   Processlist = [];
   ngOnInit() {
     this.bestfuncever()
+    this.fbGetGeo();
     // console.log(this.liste);
     // console.log(this.applicationlist);
     // console.log(this.Processlist);
@@ -62,8 +74,6 @@ export class TutorialVideoListComponent implements OnInit {
           BProess.once('value').then(Appsystems => {
             if (Appsystems.val()) {
               this.applicationlist.push(Appsystems.val());
-              console.log(this.applicationlist)
-
             }
           })
 
@@ -72,5 +82,59 @@ export class TutorialVideoListComponent implements OnInit {
     })
   }
 
+  fbGetGeo() {
+    const rootRef = firebase.database().ref();
+    const maintable = rootRef.child('Application/').orderByChild('CFlag').equalTo('active');
+    maintable.on('child_added', snap => {
+      if (snap.val()) { }
+      // console.log(this.liste)
+      let geographys = rootRef.child('Application/' + snap.key + '/IGeography');
+      geographys.once('value').then(activeGeos => {
+        if (activeGeos.val()) {
 
-}
+          let geop = activeGeos
+          geographys.once('value').then(activeGeos2 =>{
+                this.activeGeos.push(activeGeos2.val())
+            var tempGeo = tempGeo.push(activeGeos2.val());
+            console.log(activeGeos2.val());
+  
+          })
+
+        }
+       
+       
+        
+
+     
+        
+      })
+    })
+  }
+
+  
+}     
+         
+// if (tempGeo.equalTo = 'Germany' ){
+//   this.GERMANY = true;
+//  }
+// if(activeGeos.val().equalTo = 'United States of America'){
+//    this.USA = true;
+//  }
+//  if(activeGeos.val().equalTo = 'Italy'){
+//    this.ITALY = true;
+//  }
+//  if(activeGeos.val().equalTo = 'United Kingom'){
+//    this.UK = true;
+//  }
+//  if(activeGeos.val().equalTo = 'Poland'){
+//    this.POLAND = true;
+//  }
+//  if(activeGeos.val().equalTo = 'Brazil'){
+//    this.BRAZIL = true;
+//  }
+//  if(activeGeos.val().equalTo = 'Spain'){
+//    this.SPAIN = true;
+//  }
+//  if(activeGeos.val().equalTo = 'France'){
+//    this.FRANCE = true;
+//  }
