@@ -39,7 +39,7 @@ export class TutorialVideoListComponent implements OnInit {
   MEXICO = false;
 
 
-  activeGeos = [];
+  activeGeos2 = [];
   liste = [];
   applicationlist = [];
   Processlist = [];
@@ -86,55 +86,57 @@ export class TutorialVideoListComponent implements OnInit {
     const rootRef = firebase.database().ref();
     const maintable = rootRef.child('Application/').orderByChild('CFlag').equalTo('active');
     maintable.on('child_added', snap => {
-      if (snap.val()) { }
+      if (snap.val()) { console.log(snap.val()) }
       // console.log(this.liste)
-      let geographys = rootRef.child('Application/' + snap.key + '/IGeography');
+
+
+      let geographys = rootRef.child('/Application/' + snap.key + '/IGeography');
+
       geographys.once('value').then(activeGeos => {
         if (activeGeos.val()) {
-
-          let geop = activeGeos
-          geographys.once('value').then(activeGeos2 =>{
-                this.activeGeos.push(activeGeos2.val())
-            var tempGeo = tempGeo.push(activeGeos2.val());
-            console.log(activeGeos2.val());
-  
-          })
-
+          this.activeGeos2.push(activeGeos.val())
+          console.log(this.activeGeos2);
         }
-       
-       
-        
 
-     
-        
+
+        console.log(this.activeGeos2.length-1)
+        if (this.activeGeos2[this.activeGeos2.length-1] == "DE" ){
+          this.GERMANY = true;
+         }
+        if(this.activeGeos2[this.activeGeos2.length-1] == "US"){
+           this.USA = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "IT"){
+           this.ITALY = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "UK"){
+           this.UK = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "PL"){
+           this.POLAND = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "BR"){
+           this.BRAZIL = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "ES"){
+           this.SPAIN = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "FR"){
+           this.FRANCE = true;
+         }
+
       })
+      
     })
-  }
 
-  
-}     
-         
-// if (tempGeo.equalTo = 'Germany' ){
-//   this.GERMANY = true;
-//  }
-// if(activeGeos.val().equalTo = 'United States of America'){
-//    this.USA = true;
-//  }
-//  if(activeGeos.val().equalTo = 'Italy'){
-//    this.ITALY = true;
-//  }
-//  if(activeGeos.val().equalTo = 'United Kingom'){
-//    this.UK = true;
-//  }
-//  if(activeGeos.val().equalTo = 'Poland'){
-//    this.POLAND = true;
-//  }
-//  if(activeGeos.val().equalTo = 'Brazil'){
-//    this.BRAZIL = true;
-//  }
-//  if(activeGeos.val().equalTo = 'Spain'){
-//    this.SPAIN = true;
-//  }
-//  if(activeGeos.val().equalTo = 'France'){
-//    this.FRANCE = true;
-//  }
+    
+
+  }
+}
+
+
+
+      // 
+
+
+
