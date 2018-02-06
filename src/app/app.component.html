@@ -2,62 +2,63 @@
 <!-- <div style="text-align:center"></div> -->
 
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-color" [hidden]='(navbarService.isVisible() | async)'>
-          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+<header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-color" [hidden]='(navbarService.isVisible() | async)'>
+    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- <h3> {{BusinessFunction.test}}</h3> -->
+
+    <div class="collapse navbar-collapse navbar-adjustment" id="navbarColor01">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item activ-link">
+
+          <button type="button" class="nav-link nav-item" routerLink="/home">
+            <i class="fa fa-home" aria-hidden="true"></i>
           </button>
 
-         <!-- <h3> {{BusinessFunction.test}}</h3> -->
-
-          <div class="collapse navbar-collapse navbar-adjustment" id="navbarColor01">
-            <ul class="navbar-nav mr-auto">
-              <li class="nav-item activ-link">
-
-                  <button type="button" class="nav-link" routerLink="/home">
-                      <i class="fa fa-home" aria-hidden="true"></i>
-                    </button>
-              
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/dashboard">Dashboard</a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/process">Business Process</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/function">Capability</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" routerLink="/appsystem">Application System</a>
-              </li>
-              <li class="nav-item">
-                  <a class="nav-link" routerLink="/application">Application</a>
-                </li>
-                <!-- <li class="nav-item">
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/process">Business Process</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/function">Capability</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/appsystem">Application System</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/application">Application</a>
+        </li>
+        <!-- <li class="nav-item">
                   <a class="nav-link" routerLink="/tutorial">Tutorial</a>
                 </li> -->
-            </ul>
-            <!-- <form class="form-inline my-2 my-lg-0">
+      </ul>
+      <!-- <form class="form-inline my-2 my-lg-0">
               <input class="form-control mr-sm-2" type="text" placeholder="Search">
               <button class="btn btn-style my-2 my-sm-0" type="submit">Search</button>
             </form> -->
-          </div>
-        </nav>
-      </header>
+    </div>
+  </nav>
+</header>
 
 <router-outlet></router-outlet>
 
 <body>
-  </body>
+</body>
 
 <!-- <p *ngFor= 'let item of menueList'>
       <a href='/{{item.slug}}'>{{item.name}}</a>
       <!-- <a href='{{item.slug}}' *ngIf='item.slug!="item-4"'>{{item.name}}</a>  -->
 
 
-  <!-- <div *ngFor="let image of imageList">
+<!-- <div *ngFor="let image of imageList">
     <img class="image-poster" src="{{image.imageUrl}}"/> -->
 
 
@@ -74,4 +75,3 @@
     <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
   </li>
 </ul>  -->
-

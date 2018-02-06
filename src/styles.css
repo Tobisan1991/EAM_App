@@ -43,9 +43,13 @@ color: rgb(142, 143, 143);
     
 }
 
+.last-container{
+        padding-bottom: 40px;
+}
+
 .heading-h2{
-    padding-top: 50px;
-    padding-bottom: 30px;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
 }
 
 .start-container{
