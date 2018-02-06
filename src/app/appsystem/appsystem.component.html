@@ -12,11 +12,14 @@
     <div class="form-group">
 
       <label for="ApplicationID">Application System</label>
-
       <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
 
       <label for="description">Description</label>
       <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
+      
+      <label for="AnsprechpartnerID">Contact Person</label>
+      <input type="form-group" [(ngModel)]="ansprechpartnername" class="form-control" name="name" placeholder="Enter Contact Person Name" [ngModelOptions]="{standalone: true}">
+    
     </div>
 
     <div class="details">
@@ -96,7 +99,7 @@
         </div>
 
 
-        <button (click)="fbPostData(name, application)" type="submit" class="btn btn-primary">Add</button>
+        <button (click)="fbPostData(name, application, ansprechpartnername)" type="submit" class="btn btn-primary">Add</button>
       </div>
     </div>
 

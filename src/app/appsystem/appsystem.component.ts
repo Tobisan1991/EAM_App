@@ -19,6 +19,7 @@ const d: Date = new Date();
 export class AppsystemComponent implements OnInit {
 
   name: String;
+  ansprechpartner:String;
   application: String;
   datum: String;
   liste = [];
@@ -65,13 +66,14 @@ export class AppsystemComponent implements OnInit {
     console.log(this.applications);
   }
 
-  fbPostData(name, application) {
+  fbPostData(name, application, ansprechpartner) {
     // firebase.database().ref('/Appsystem/').push({Descr: descr, Name: name});
     firebase.database().ref().child('/Appsystem/').child(name).set({
-      AName: name, BApplication: application, CFlag: 'active', DCreationDate: this.datum //, created: this.creationDate, altered: 'none', removed: 'none'
+      AName: name, BApplication: application, CFlag: 'active', DCreationDate: this.datum, EAnsprechpartner: ansprechpartner //, created: this.creationDate, altered: 'none', removed: 'none'
     });
     this.name = '';
     this.application = '';
+    this.ansprechpartner='';
 
   }
 
