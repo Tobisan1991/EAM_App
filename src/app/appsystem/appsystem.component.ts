@@ -29,6 +29,10 @@ export class AppsystemComponent implements OnInit {
   loginName: String;
   openForm: Boolean = false;
   closeForm: Boolean = true;
+  radio_asis: boolean;
+  radio_tobe: boolean;
+  radio_hasbeen: boolean;
+  statusForm: Boolean = false;
 
   constructor(
     private dataService: DataService,
@@ -88,12 +92,31 @@ export class AppsystemComponent implements OnInit {
 
   displayForm(val) {
     if (val == true) {
-      this.openForm = false;
-      this.closeForm = true;
-      console.log("methode funktioniert und der wert ist " + this.openForm);
-    } else if (val == false)
-      this.openForm = true;
-    this.closeForm = false;
+      this.statusForm = false;
+      console.log("status " + this.statusForm);
+    } else {
+      this.statusForm = true;
+      console.log(this.statusForm);
+    }
+  }
+
+  onRadioClick(val) {
+    if (val == 0) {
+      console.log(val);
+      this.radio_asis = true;
+      this.radio_tobe = false;
+      this.radio_hasbeen = false;
+    } else if (val == 1) {
+      console.log(val);
+      this.radio_asis = false;
+      this.radio_tobe = true;
+      this.radio_hasbeen = false;
+    } else if (val == 2) {
+      console.log(val);
+      this.radio_asis = false;
+      this.radio_tobe = false;
+      this.radio_hasbeen = true;
+    }
   }
 
 

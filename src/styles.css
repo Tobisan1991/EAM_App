@@ -30,9 +30,9 @@ color: rgb(142, 143, 143);
     justify-content: center;
 }
 
-.sponsor-img{
-    width: 30%;
-    height: 30%;
+.function-img{
+    width: 75%;
+    height: 75%;
     
 }
 
@@ -43,7 +43,19 @@ color: rgb(142, 143, 143);
     
 }
 
+.heading-h2{
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
+
+.start-container{
+    margin: 40px;
+
+    
+}
+
 .function-container {
+    
     text-align: center;
     display: block;
     width: 100%;

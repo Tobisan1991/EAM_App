@@ -1,109 +1,166 @@
 <div class="panel panel-primary">
 
-
   <div class="panel-heading">
-    <legend class="header">Application System</legend>
+    <h3 class="header">Application System</h3>
+  </div>
 
-    <div>
-      <b *ngIf="closeForm">Add Entity
-        <i class="fa fa-plus" (click)='displayForm(openForm)' aria-hidden="true"></i>
-      </b>
+
+
+  <div class="main-form">
+
+
+    <div class="form-group">
+
+      <label for="ApplicationID">Application System</label>
+
+      <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+
+      <label for="description">Description</label>
+      <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
     </div>
 
-    <div class="form-group" *ngIf="openForm">
-      <div class="form-group">
+    <div class="details">
+      <h5 *ngIf="statusForm==true">Details
+        <small class="text-muted">click for less details</small>
+        <i class="fa fa-angle-double-up pointer" (click)='displayForm(true)' aria-hidden="true"></i>
+      </h5>
+      <h5 *ngIf="statusForm==false">Details
+        <small class="text-muted">click for more details</small>
+        <i class="fa fa-angle-double-down pointer" (click)='displayForm(false)' aria-hidden="true"></i>
+      </h5>
+
+      <div class="form-group" *ngIf="statusForm">
+
+        <label for="ApplicationID">Applications</label>
+
+        <select multiple="" class="form-control" [(ngModel)]="application" name="application" [ngModelOptions]="{standalone: true}">
+          <option *ngFor='let app of applications'>{{app.AName}}</option>
+        </select>
+
+
+        <label>Select the operating Time of the application system</label>
 
         <fieldset>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="as-is" value="as-is"> As-Is
+              <input type="radio" class="form-check-input" name="optionsRadios" id="as-is" value="as-is" (click)='onRadioClick(0)'> As-Is
+              <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Das ist ein As-Is Feld"></i>
             </label>
           </div>
           <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be"> To-Be
+              <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be" (click)='onRadioClick(1)'> To-Be
+              <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Das ist ein To-Be Feld"></i>
             </label>
+
           </div>
-          <div class="form-check disabled">
+          <div class="form-check">
             <label class="form-check-label">
-              <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been"> Has-Been
+              <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been" (click)='onRadioClick(2)'> Has-Been
+              <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Das ist ein Has-Been Feld"></i>
             </label>
+
           </div>
         </fieldset>
+
+
+        <div class="application-date" *ngIf="radio_tobe==true">
+          <form class="dateFrom" #myForm="ngForm" novalidate>
+            <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="launching date"
+              [ngModelOptions]="{standalone: true}">
+            </my-date-picker>
+          </form>
+
+        </div>
+
+        <div class="application-date" *ngIf="radio_hasbeen==true">
+
+          <form class="dateTo" #myForm="ngForm" novalidate>
+            <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="termination date"
+              [ngModelOptions]="{standalone: true}">
+            </my-date-picker>
+          </form>
+        </div>
+
+        <div class="application-date" *ngIf="radio_asis==true">
+          <form class="dateFrom" #myForm="ngForm" novalidate>
+            <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="launching date"
+              [ngModelOptions]="{standalone: true}">
+            </my-date-picker>
+          </form>
+          <form class="dateTo" #myForm="ngForm" novalidate>
+            <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="termination date"
+              [ngModelOptions]="{standalone: true}">
+            </my-date-picker>
+          </form>
+        </div>
+
+
+        <button (click)="fbPostData(name, application)" type="submit" class="btn btn-primary">Add</button>
       </div>
-      <div class="form-group">
-        <b>
-          <label for="ApplicationID">Application System Name</label>
-        </b>
-        <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
-      </div>
-      <div class="form-group">
-        <b>
-          <label for="ApplicationID">Applications</label>
-        </b>
-        <select multiple="" class="form-control" [(ngModel)]="application" name="application" [ngModelOptions]="{standalone: true}">
-          <option *ngFor='let app of applications'>{{app.AName}}</option>
-        </select>
-      </div>
-      <button (click)="fbPostData(name, application)" type="submit" class="btn btn-primary">Add</button>
     </div>
+
   </div>
 
-  <div class="form-group">
+  <div class="details-liste-trenner"></div>
+
+  <div class="form-group list-overview">
+    <h4>Application System List</h4>
     <div class="col-md-3 search">
       <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search by Name" />
     </div>
-  </div>
-
-  <div class="appsystem-liste">
 
 
-    <table class="table table-striped table-hover table-bordered">
-      <thead class="thead-dark">
-        <tr>
-          <th class="pointer" (click)="sort('AName')">Application System Name
-            <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
+    <div class="appsystem-liste">
+
+
+      <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+          <tr>
+            <th class="pointer" (click)="sort('AName')">Application System Name
+              <i class="fa" [ngClass]="{'fa-sort': column != 'AName', 
                             'fa-sort-asc': (column == 'AName' && !isDesc), 
                             'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
-          </th>
-          <th class="pointer" (click)="sort('IApplicationen')">Applications
-            <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
+            </th>
+            <th class="pointer" (click)="sort('IApplicationen')">Applications
+              <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
                             'fa-sort-asc': (column == 'IApplicationen' && !isDesc), 
                             'fa-sort-desc': (column == 'IApplicationen' && isDesc) }" aria-hidden="true"> </i>
-          </th>
+            </th>
 
-          <th class="pointer" (click)="sort('DCreationDate')">Creation Date
-            <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
+            <th class="pointer" (click)="sort('DCreationDate')">Creation Date
+              <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
                               'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
                               'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
-          </th>
+            </th>
 
-          <th class="pointer" (click)="sort('EEditDate')">Edit Date
-            <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
+            <th class="pointer" (click)="sort('EEditDate')">Edit Date
+              <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
                                 'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
                                 'fa-sort-desc': (column == 'EEditDate' && isDesc) }" aria-hidden="true"> </i>
-          </th>
-          <th width="250px" class="text-center">Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
-          <td>{{appsystem.AName}}</td>
-          <td>{{appsystem.BApplication}}</td>
-          <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
-          <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-          <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-          <td align="center">
-            <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(appsystem.$key=appsystem.AName)">
-              <i class="fa fa-trash-o" aria-hidden="true"></i>
-            </button>
-            <button type="button" class="btn btn-outline-primary" [routerLink]="['/appsystem', appsystem.AName]">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          </td>
-        </tr>
+            </th>
+            <th width="250px" class="text-center">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
+            <td>{{appsystem.AName}}</td>
+            <td>{{appsystem.BApplication}}</td>
+            <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
+            <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+            <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+            <td align="center">
+              <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(appsystem.$key=appsystem.AName)">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+              <button type="button" class="btn btn-outline-primary" [routerLink]="['/appsystem', appsystem.AName]">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+            </td>
+          </tr>
 
-      </tbody>
-    </table>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
