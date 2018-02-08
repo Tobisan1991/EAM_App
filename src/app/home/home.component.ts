@@ -27,7 +27,9 @@ export class HomeComponent implements OnInit {
   SPAIN = false;
   BRAZIL = false;
   FRANCE = false;
-  MEXICO = false;
+  MEXIKO = false;
+  CHINA=false;
+  AUSTRALIA=false;
 
 
   activeGeos2 = [];
@@ -94,6 +96,15 @@ export class HomeComponent implements OnInit {
          }
          if(this.activeGeos2[this.activeGeos2.length-1] == "FR"){
            this.FRANCE = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "CN"){
+           this.CHINA = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "AU"){
+           this.AUSTRALIA = true;
+         }
+         if(this.activeGeos2[this.activeGeos2.length-1] == "MX"){
+           this.MEXIKO = true;
          }
 
       })

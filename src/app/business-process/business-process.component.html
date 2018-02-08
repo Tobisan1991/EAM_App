@@ -52,11 +52,7 @@
                                 'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
           </th>
 
-          <th class="pointer" (click)="sort('KEditDate')">Edit Date
-            <i class="fa" [ngClass]="{'fa-sort': column != 'KEditDate', 
-                                  'fa-sort-asc': (column == 'KEditDate' && !isDesc), 
-                                  'fa-sort-desc': (column == 'KEditDate' && isDesc) }" aria-hidden="true"> </i>
-          </th>
+          
           <th width="250px" class="text-center">Action</th>
         </tr>
       </thead>
@@ -66,7 +62,7 @@
           <td>{{bprocess.BDescr}}</td>
           <!-- <a [routerLink]="['function/{{bprocess.Name}}']" [queryParams]="{{bprocess.Name}}">{{bprocess.Name}}</a> -->
           <td>{{bprocess.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-          <td>{{bprocess.KEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
+          
           <td align="center">
             <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(bprocess.$key=bprocess.AName)">
               <i class="fa fa-trash-o" aria-hidden="true"></i>

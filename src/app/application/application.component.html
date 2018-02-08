@@ -383,18 +383,22 @@
                             'fa-sort-asc': (column == 'BDescr' && !isDesc), 
                             'fa-sort-desc': (column == 'BDescr' && isDesc) }" aria-hidden="true"> </i>
             </th>
-
+            <th class="pointer" (click)="sort('JVersion')">Version
+              <i class="fa" [ngClass]="{'fa-sort': column != 'JVersion', 
+                            'fa-sort-asc': (column == 'JVersion' && !isDesc), 
+                            'fa-sort-desc': (column == 'JVersion' && isDesc) }" aria-hidden="true"> </i>
+            </th>
+            <th class="pointer" (click)="sort('IGeography')">Geography
+              <i class="fa" [ngClass]="{'fa-sort': column != 'IGeography', 
+                                'fa-sort-asc': (column == 'IGeography' && !isDesc), 
+                                'fa-sort-desc': (column == 'IGeography' && isDesc) }" aria-hidden="true"> </i>
+            </th>
             <th class="pointer" (click)="sort('DCreationDate')">Creation Date
               <i class="fa" [ngClass]="{'fa-sort': column != 'DCreationDate', 
                               'fa-sort-asc': (column == 'DCreationDate' && !isDesc), 
                               'fa-sort-desc': (column == 'DCreationDate' && isDesc) }" aria-hidden="true"> </i>
             </th>
 
-            <th class="pointer" (click)="sort('EEditDate')">Edit Date
-              <i class="fa" [ngClass]="{'fa-sort': column != 'EEditDate', 
-                                'fa-sort-asc': (column == 'EEditDate' && !isDesc), 
-                                'fa-sort-desc': (column == 'EEditDate' && isDesc) }" aria-hidden="true"> </i>
-            </th>
             <th width="250px" class="text-center">Action</th>
           </tr>
         </thead>
@@ -402,8 +406,9 @@
           <tr *ngFor="let application of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
             <td>{{application.AName}}</td>
             <td>{{application.BDescr}}</td>
+            <td>{{application.JVersion}}</td>
+            <td>{{application.IGeography}}</td>
             <td>{{application.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
-            <td>{{application.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
             <td align="center">
               <button type="button" class="btn btn-outline-primary" (click)="fbDeleteData(application.$key=application.AName)">
                 <i class="fa fa-trash-o" aria-hidden="true"></i>
