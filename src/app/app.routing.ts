@@ -4,6 +4,7 @@ import { TutorialVideoComponent } from './tutorial-video/tutorial-video.componen
 import { TutorialVideoListComponent } from './tutorial-video-list/tutorial-video-list.component';
 import { BusinessFunctionComponent } from './business-function/business-function.component';
 import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
+import { BpListComponent } from './business-process/bp-list/bp-list.component';
 import { BusinessProcessComponent } from './business-process/business-process.component';
 import { AppsystemComponent } from './appsystem/appsystem.component';
 import { ApplicationListComponent }  from './application/application-list/application-list.component';
@@ -30,6 +31,10 @@ const appRoutes: Routes = [
     {
         path:"function/:name",
         component: BfuncListComponent,
+    },
+    {
+        path:"process/:name",
+        component: BpListComponent,
     },
     {
         path:"process",

@@ -1,0 +1,34 @@
+<div class="panel panel-primary">
+        <div class="panel-heading">
+          <legend>Edit Business-Process </legend>
+          <div class="form-group">
+            <form id="add-bfunc">
+              <div class="form-group">
+                <b>
+                  <label>Name</label>
+                </b>
+                <input type="form-group" [(ngModel)]="name" class="form-control" name="name" [ngModelOptions]="{standalone: true}">
+              </div>
+              <div class="form-group">
+                <b>
+                  <label>Description</label>
+                </b>
+                <textarea type="text" [(ngModel)]="descr" class="form-control" name="descr" [ngModelOptions]="{standalone: true}"></textarea>
+      
+                  <div class="form-group">
+                    <b>
+                      <label for="BProcessID">Business Processes</label>
+                    </b>
+                    <select multiple="" class="form-control" [(ngModel)]="bprocess" name="bprocess" [ngModelOptions]="{standalone: true}">
+                      <option *ngFor='let bprocess of bprocessliste'>{{bprocess.AName}}</option>
+                    </select>
+                  </div>
+
+              </div>
+              <button (click)="fbEditData(name, descr)" type="submit" class="btn btn-primary" [routerLink]="['/process']">Submit</button>
+            </form>
+      
+          </div>
+        </div>
+      
+      </div>
