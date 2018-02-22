@@ -27,116 +27,100 @@ export class TutorialVideoListComponent implements OnInit {
     private navbarService: NavbarService
   ) { }
 
-
-  USA = false;
-  ITALY = false;
-  GERMANY = false;
-  POLAND = false;
-  UK = false;
-  SPAIN = false;
-  BRAZIL = false;
-  FRANCE = false;
-  MEXICO = false;
-
-
-  activeGeos2 = [];
+  
   liste = [];
   applicationlist = [];
-  Processlist = [];
+  Processlist= [];
+  
   ngOnInit() {
     this.bestfuncever()
-    this.fbGetGeo();
-    // console.log(this.liste);
-    // console.log(this.applicationlist);
-    // console.log(this.Processlist);
+
+    console.log(this.liste);
+    console.log(this.applicationlist);
+    console.log(this.Processlist);
+    // firebase.database().ref().child('/BFunctions/').on('child_added',(snap) => { this.liste.push(snap.key) })
+    //       console.log( this.liste);
+
+    //       firebase.database().ref().child('/BFunctions/'+ this.liste + '/GBProcess/').on('child_added',(snap) => {
+    //          this.keys.push(snap.val())})
+
+    //         console.log( this.keys);
+
+
+
+
+
   }
   bestfuncever() {
     const rootRef = firebase.database().ref();
     const maintable = rootRef.child('/BFunctions/').orderByChild('CFlag').equalTo('active');
     maintable.on('child_added', snap => {
+       
+      
       if (snap.val()) {
         this.liste.push(snap.val());
       }
-      // console.log(this.liste)
+      console.log(this.liste)
       let BFuncGBProcess = rootRef.child('BFunctions/' + snap.key + '/HApllication');
-      BFuncGBProcess.once('value').then(Processes => {
+      BFuncGBProcess.once('value').then(Processes => { 
         if (Processes.val()) {
-          this.Processlist.push(Processes.val())
-        }
-
+          this.Processlist.push(Processes.val())};
         let BProess = rootRef.child('Application/' + Processes.val());
         BProess.once('value').then(Applications => {
           if (Applications.val()) {
-            this.applicationlist.push(Applications.val())
-
+            this.applicationlist.push(Applications.val());
+              console.log(this.applicationlist)
           }
-          let BProess = rootRef.child('Appsystem/' + Processes.val());
-          BProess.once('value').then(Appsystems => {
-            if (Appsystems.val()) {
-              this.applicationlist.push(Appsystems.val());
-            }
-          })
-
         })
       })
     })
   }
 
-  fbGetGeo() {
-    const rootRef = firebase.database().ref();
-    const maintable = rootRef.child('Application/').orderByChild('CFlag').equalTo('active');
-    maintable.on('child_added', snap => {
-      if (snap.val()) { console.log(snap.val()) }
-      // console.log(this.liste)
-
-
-      let geographys = rootRef.child('/Application/' + snap.key + '/IGeography');
-
-      geographys.once('value').then(activeGeos => {
-        if (activeGeos.val()) {
-          this.activeGeos2.push(activeGeos.val())
-          console.log(this.activeGeos2);
-        }
-
-
-        console.log(this.activeGeos2.length-1)
-        if (this.activeGeos2[this.activeGeos2.length-1] == "DE" ){
-          this.GERMANY = true;
-         }
-        if(this.activeGeos2[this.activeGeos2.length-1] == "US"){
-           this.USA = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "IT"){
-           this.ITALY = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "UK"){
-           this.UK = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "PL"){
-           this.POLAND = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "BR"){
-           this.BRAZIL = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "ES"){
-           this.SPAIN = true;
-         }
-         if(this.activeGeos2[this.activeGeos2.length-1] == "FR"){
-           this.FRANCE = true;
-         }
-
-      })
-      
-    })
-
-    
-
   }
-}
 
 
 
-      // 
+  // fbGetData() {
 
+  //   firebase.database().ref().child('/BFunctions/').orderByChild('CFlag').equalTo('active').
+  //     on('child_added', (snapshot) => {
+  //       //firebase.database().ref('/BFunctions/').orderByKey().on('child_added', (snapshot) => {
+  //       // alter code ... neuer Code nimmt nur die Validen mit dem X Flag    
+  //       this.liste.push(snapshot.val())
+  //     })}
+
+
+  // @Input()
+  // passedlink: string;
+
+
+  // videoList = [{
+  //   // HIER KOMMT DANN DIE DATENBANK ANBINDUNG Z.B. REIN
+  //   name: "Einführungsvideo",
+  //   slug: "video-1",
+  //   embed:`6wD4V0rvlDI`,
+  //   text: "hier kommt der Text zu Tutorial 1"
+  // },
+  // {
+  //   name: "Fortgeschritten",
+  //   slug: "video-2",
+  //   embed: `nzyJ9imm29w`,
+  //   text: "hier kommt der Text zu Tutorial 2"
+  // },{
+  //   name: "Perfection",
+  //   slug: "video-3",
+  //   embed: `lYvmbQiFnXE`,
+  //   text: "hier kommt der Text zu Tutorial 3"
+  // } ];
+
+
+  //   ngOnInit() {
+
+  //     console.log(this.passedlink);
+  //   }
+
+  //   getEmbedUrl(item){
+  //   return 'https://www.youtube.com/embed/' + item.embed
+  //   }
 
 
