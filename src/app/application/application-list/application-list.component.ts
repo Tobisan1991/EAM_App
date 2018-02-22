@@ -2,7 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { DataService } from '../../data.service';
 import { Http, HttpModule } from '@angular/http';
 import { rootRoute } from '@angular/router/src/router_module';
-import { Router, ActivatedRoute, Params} from '@angular/router'
+import { Router, ActivatedRoute, Params} from '@angular/router';
+import { IMyOptions } from 'mydatepicker';
 import 'rxjs/add/operator/map';
 
 
@@ -17,20 +18,34 @@ declare var firebase: any;
 })
 
 export class ApplicationListComponent implements OnInit {
-  private sub: any;
+  private sub2: any;
   private ID: string;
   name;
   descr;
   typ:String;
   creationDate:String;
   datum:String;
-  bprocessliste=[];
-  applicationliste=[];
+  geography: string;
+  version: string;
+  isDesc: boolean = false;
+  column: string = 'Name';
+  direction: number;
+  loginName: String;
+  dateFrom: string;
+  dateTo: string;
+  radio_asis: boolean;
+  radio_tobe: boolean;
+  radio_hasbeen: boolean;
+  statusForm: Boolean = false;
 
 private editData = [];
 
-constructor(private dataService: DataService,
-  private router: Router, private route: ActivatedRoute, public http: Http) {
+private myDatePickerOptions: IMyOptions = {
+
+  dateFormat: 'dd.mm.yyyy',
+
+};
+constructor(private dataService: DataService, private router: Router, private route: ActivatedRoute, public http: Http) {
 
     this.datum=Date().toString();
     
@@ -39,20 +54,19 @@ constructor(private dataService: DataService,
 ngOnInit() {
   this.fbGetData();
 
-  firebase.database().ref().child('/Application/').orderByChild('CFlag').equalTo('active').
-  on('child_added', (snapshot) => {  
-
-  this.applicationliste.push(snapshot.val())
-  });
   }
 
   fbGetData(){
-    this.sub = this.route.params.subscribe(params=> {
-      this.ID = params['name']
+    this.sub2 = this.route.params.subscribe(params=> {
+      this.name = params['name']
+      console.log(this.name);
      })
-     firebase.database().ref().child('/Application/'+this.ID+'/').on('child_added', (snapshot) => {
+     console.log(this.name);
+
+     firebase.database().ref().child('/Application/'+this.name).on('child_added', (snapshot) => {
         //firebase.database().child('/BFunctions/'+this.ID+'/').on('child_added', (snapshot) => {
      this.editData.push(snapshot.val())
+     console.log(this.editData);
     }
       
     )
@@ -61,7 +75,9 @@ ngOnInit() {
     // console.log(this.editData[0]);
     this.descr = this.editData[1];
     this.creationDate = this.editData[3];
-    this.typ = this.editData[4];
+    this.geography = this.editData[6];
+    this.version = this.editData[7];
+    
     // this.bprocessliste = this.editData[5];
     // this.applicationliste = this.editData[6];
     // console.log(this.descr);
@@ -70,15 +86,34 @@ ngOnInit() {
     
 }
 
-fbEditData(name,descr,typ,bprocess,applications){
+fbEditData(name,descr,dateFrom,dateTo,geography,version){
   // firebase.database().ref('/BFunctions/').push({Descr: descr, Name: name});
-   firebase.database().ref().child('/Application//').child(this.ID).set({
-     ZID: this.ID, AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, FTyp: typ, KEditDate: this.datum, GBProcess:bprocess,HApllication:applications
+   firebase.database().ref().child('/Application/').child(this.name).set({
+    AName: name ,BDescr: descr, CFlag: 'active', DCreationDate: this.creationDate, KEditDate: this.datum, GDateFrom: dateFrom, HDateTo: dateTo, IGeography: geography, JVersion: version
      });
  }
 
 ngOnDestroy(){
-  this.sub.unsubscribe();
+  this.sub2.unsubscribe();
 }
+onRadioClick(val) {
+  if (val == 0) {
+    console.log(val);
+    this.radio_asis = true;
+    this.radio_tobe = false;
+    this.radio_hasbeen = false;
+  } else if (val == 1) {
+    console.log(val);
+    this.radio_asis = false;
+    this.radio_tobe = true;
+    this.radio_hasbeen = false;
+  } else if (val == 2) {
+    console.log(val);
+    this.radio_asis = false;
+    this.radio_tobe = false;
+    this.radio_hasbeen = true;
+  }
+}
+
 
 }

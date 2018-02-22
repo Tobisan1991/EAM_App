@@ -44,7 +44,7 @@ const appRoutes: Routes = [
         component: Application,
     },
     {
-        path:"application:/Name",
+        path:"application/:name",
         component: ApplicationListComponent,
     },
     {
