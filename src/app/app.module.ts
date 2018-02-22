@@ -17,6 +17,8 @@ import { HomeComponent } from './home/home.component';
 import { BfuncListComponent } from './business-function/bfunc-list/bfunc-list.component';
 import { BpListComponent } from './business-process/bp-list/bp-list.component';
 import { ApplicationListComponent } from './application/application-list/application-list.component';
+import { AppsysListComponent } from './appsystem/appsys-list/appsys-list.component';
+
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { SearchNamePipe } from './search-name.pipe';
 import { OrderByPipe } from './order-by.pipe';
@@ -47,7 +49,8 @@ import {Chart} from 'chart.js';
     OrderByPipe,
     LoginComponent,
     ApplicationListComponent,
-    BpListComponent
+    BpListComponent,
+    AppsysListComponent
   ],
 
   imports: [

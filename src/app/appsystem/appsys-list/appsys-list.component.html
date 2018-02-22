@@ -1,0 +1,101 @@
+<div class="panel panel-primary">
+    
+      <div class="panel-heading">
+        <h3 class="header">Application System</h3>
+      </div>
+    
+    
+    
+      <div class="main-form">
+    
+    
+        <div class="form-group">
+    
+          <label for="ApplicationID">Application System</label>
+          <input type="form-group" [(ngModel)]="name" class="form-control" name="name" placeholder="Enter Name" [ngModelOptions]="{standalone: true}">
+    
+          <label for="description">Description</label>
+          <textarea class="form-control" [(ngModel)]="descr" name="descr" placeholder="Enter Description" rows="3" [ngModelOptions]="{standalone: true}"></textarea>
+          
+          
+        
+        </div>
+    
+        <div class="details">
+        
+    
+    
+            <label for="AnsprechpartnerID">Contact Person</label>
+            <input type="form-group" [(ngModel)]="ansprechpartner" class="form-control" name="ansprechpartner" placeholder="Enter Contact Person Name" [ngModelOptions]="{standalone: true}">
+    
+            <label for="ApplicationID">Applications</label>
+    
+            <select multiple="true" class="form-control" [(ngModel)]="application" name="application" [ngModelOptions]="{standalone: true}">
+              <option *ngFor='let apps of applicationliste'>{{apps.AName}}</option>
+            </select>
+    
+    
+            <label>Select the operating Time of the application system</label>
+    
+            <fieldset>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionsRadios" id="as-is" value="as-is" (click)='onRadioClick(0)'> As-Is
+                  <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Das ist ein As-Is Feld"></i>
+                </label>
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionsRadios" id="to-be" value="to-be" (click)='onRadioClick(1)'> To-Be
+                  <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Das ist ein To-Be Feld"></i>
+                </label>
+    
+              </div>
+              <div class="form-check">
+                <label class="form-check-label">
+                  <input type="radio" class="form-check-input" name="optionsRadios" id="has-been" value="has-been" (click)='onRadioClick(2)'> Has-Been
+                  <i class="fa fa-question-circle" aria-hidden="true" data-toggle="tooltip" data-placement="right" title="Das ist ein Has-Been Feld"></i>
+                </label>
+    
+              </div>
+            </fieldset>
+    
+    
+            <div class="application-date" *ngIf="radio_tobe==true">
+              <form class="dateFrom" #myForm="ngForm" novalidate>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="launching date"
+                  [ngModelOptions]="{standalone: true}">
+                </my-date-picker>
+              </form>
+    
+            </div>
+    
+            <div class="application-date" *ngIf="radio_hasbeen==true">
+    
+              <form class="dateTo" #myForm="ngForm" novalidate>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="termination date"
+                  [ngModelOptions]="{standalone: true}">
+                </my-date-picker>
+              </form>
+            </div>
+    
+            <div class="application-date" *ngIf="radio_asis==true">
+              <form class="dateFrom" #myForm="ngForm" novalidate>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateFrom" required placeholder="launching date"
+                  [ngModelOptions]="{standalone: true}">
+                </my-date-picker>
+              </form>
+              <form class="dateTo" #myForm="ngForm" novalidate>
+                <my-date-picker name="mydate" [options]="myDatePickerOptions" [(ngModel)]="dateTo" required placeholder="termination date"
+                  [ngModelOptions]="{standalone: true}">
+                </my-date-picker>
+              </form>
+            </div>
+    
+    
+            <button (click)="fbEditData(name, descr, application, ansprechpartner)" type="submit" class="btn btn-primary" [routerLink]="['/appsystem']">Submit</button>
+        </div>
+    
+      </div>
+    
+    </div>

@@ -34,7 +34,7 @@
       <div class="form-group" *ngIf="statusForm">
 
         <label for="AnsprechpartnerID">Contact Person</label>
-        <input type="form-group" [(ngModel)]="ansprechpartnername" class="form-control" name="name" placeholder="Enter Contact Person Name" [ngModelOptions]="{standalone: true}">
+        <input type="form-group" [(ngModel)]="ansprechpartner" class="form-control" name="ansprechpartner" placeholder="Enter Contact Person Name" [ngModelOptions]="{standalone: true}">
 
         <label for="ApplicationID">Applications</label>
 
@@ -101,7 +101,7 @@
         </div>
 
 
-        <button (click)="fbPostData(name, application, ansprechpartnername)" type="submit" class="btn btn-primary">Add</button>
+        <button (click)="fbPostData(name, descr, application, ansprechpartner)" type="submit" class="btn btn-primary">Add</button>
       </div>
     </div>
 
@@ -127,10 +127,10 @@
                             'fa-sort-asc': (column == 'AName' && !isDesc), 
                             'fa-sort-desc': (column == 'AName' && isDesc) }" aria-hidden="true"> </i>
             </th>
-            <th class="pointer" (click)="sort('IApplicationen')">Applications
-              <i class="fa" [ngClass]="{'fa-sort': column != 'IApplicationen', 
-                            'fa-sort-asc': (column == 'IApplicationen' && !isDesc), 
-                            'fa-sort-desc': (column == 'IApplicationen' && isDesc) }" aria-hidden="true"> </i>
+            <th class="pointer" (click)="sort('FApplication')">Applications
+              <i class="fa" [ngClass]="{'fa-sort': column != 'FApplication', 
+                            'fa-sort-asc': (column == 'FApplication' && !isDesc), 
+                            'fa-sort-desc': (column == 'FApplication' && isDesc) }" aria-hidden="true"> </i>
             </th>
 
             <th class="pointer" (click)="sort('DCreationDate')">Creation Date
@@ -150,7 +150,7 @@
         <tbody>
           <tr *ngFor="let appsystem of liste | searchName: searchText | orderBy: {property: column, direction: direction}">
             <td>{{appsystem.AName}}</td>
-            <td>{{appsystem.BApplication}}</td>
+            <td>{{appsystem.FApplication}}</td>
             <!-- <a [routerLink]="['function/{{appsystem.Name}}']" [queryParams]="{{appsystem.Name}}">{{appsystem.Name}}</a> -->
             <td>{{appsystem.DCreationDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>
             <td>{{appsystem.EEditDate | date: 'yyyy-MM-dd; HH:mm:ss'}}</td>

@@ -12,6 +12,7 @@ import { Application } from './application/application.component';
 import { HomeComponent } from './home/home.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import {LoginComponent} from "./login/login.component";
+import { AppsysListComponent } from './appsystem/appsys-list/appsys-list.component';
 const appRoutes: Routes = [
     { path: '', redirectTo: '/login', pathMatch: 'full' },
 
@@ -35,6 +36,10 @@ const appRoutes: Routes = [
     {
         path:"process/:name",
         component: BpListComponent,
+    },
+    {
+        path:"appsystem/:name",
+        component: AppsysListComponent,
     },
     {
         path:"process",
